@@ -118,7 +118,6 @@ function color_change()
 
 			styleSheet.cssRules[cardBorder_idx].style.setProperty('border', '3px solid aqua');
 
-
 			const updateNavIndicator = (target) =>
 			{
 				if (navIndicator.style.left == `${target.offsetLeft}px`)
@@ -133,11 +132,13 @@ function color_change()
 
 			for (const nav of navLinks)
 			{
-				nav.addEventListener("mouseover", () => {
+				nav.addEventListener("mouseover", () =>
+				{
 					updateNavIndicator(nav);
 					clickedLink = null;
 				});
-				nav.addEventListener("mouseout", () => {
+				nav.addEventListener("mouseout", () =>
+				{
 					navIndicator.style.backgroundColor = 'black';
 					clickedLink = null;
 				});
@@ -180,7 +181,7 @@ function color_change()
 				styleSheet.cssRules[cardBorder_idx].style.setProperty('transition', 'border-color 2s ease');
 				styleSheet.cssRules[cardBorder_idx].style.setProperty('border', '3px solid yellow');
 			}
-			logo[0].addEventListener("mouseout", () => (navIndicator.style.backgroundColor = 'black'));
+			logo.addEventListener("mouseout", () => (navIndicator.style.backgroundColor = 'black'));
 		}
 	}
 }
@@ -243,10 +244,20 @@ function navIndicator_windowScroll()
 			{
 				if (section.hasAttribute('id') && nav.getAttribute("href") == '#' + section.id)
 				{
-					if(!clickedLink)
+					if (!clickedLink)
 					{
 						navIndicator.style.width = `${nav.offsetWidth}px`;
-						navIndicator.style.left = `${nav.offsetLeft}px`;						
+						navIndicator.style.left = `${nav.offsetLeft}px`;
+
+						if (nav.matches(":hover"))
+						{
+							navIndicator.style.backgroundColor = 'white';
+						}
+						else
+						{
+							navIndicator.style.backgroundColor = 'black';
+						}
+
 					}
 				}
 			}
