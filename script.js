@@ -9,18 +9,53 @@ const navLinks = nav.querySelectorAll("ul a");
 
 const styleSheet = document.styleSheets[0];
 
-const sectionTitle_selector = '.container-title::after';
-const AfterSectionTitleIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === sectionTitle_selector);
+const sectionTitleSelector = '.container-title::after';
+const AfterSectionTitleIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === sectionTitleSelector);
 
 const cardSelector = '.card';
 const cardIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === cardSelector);
 
+const websiteSrcSelector = '.websiteCode';
+const websiteSrcIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === websiteSrcSelector);
+
+const skillBarSelector = '.skill-bar';
+const skillBarIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === skillBarSelector);
+
+const skillLevelSelector = '.skill-level';
+const skillLevelIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === skillLevelSelector);
+
+var skillLevel;
+
 const navIndicator = document.querySelector(".indicator");
 
 const sections = document.querySelectorAll('section');
+const bodyTag = document.getElementsByTagName('body')[0];
 const windowHeight = window.innerHeight;
+
+const containers = document.querySelectorAll('.container');
+
+// ARRAY OF SKILLS AND THEIR LEVEL
+const skills = [
+	{ name: "Android", level: 90 },
+	{ name: "Java", level: 85 },
+	{ name: "Cpp", level: 80 },
+	{ name: "CSharp", level: 75 },
+	{ name: "C", level: 70 },
+	{ name: "JavaScript", level: 70 },
+	{ name: "Python", level: 65 },
+	{ name: "HTML", level: 60 },
+	{ name: "CSS", level: 60 },
+	{ name: "Firebase", level: 55 },
+	{ name: "SQL", level: 50 }
+];
 /* ----------------------------------------------VARIABLES END----------------------------------------- */
 
+function preloadImage(url)
+{
+	var img = new Image();
+	img.src = url;
+}
+preloadImage("images/bg6.jpg");
 
 // SCROLLING ANIMATION
 const observer = new IntersectionObserver((entries) =>
@@ -28,14 +63,22 @@ const observer = new IntersectionObserver((entries) =>
 	entries.forEach((entry) =>
 	{
 		if (entry.isIntersecting)
-			entry.target.classList.add("show");
+		{
+			entry.target.classList.remove("hidden");
+			entry.target.classList.add("shown");
+		}
 		else
-			entry.target.classList.remove("show");
+		{
+			entry.target.classList.add("hidden");
+			entry.target.classList.remove("shown");
+		}
 	});
 });
 
 const hidden_elements = document.querySelectorAll(".hidden");
 hidden_elements.forEach((element) => observer.observe(element));
+
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 
@@ -43,7 +86,17 @@ hidden_elements.forEach((element) => observer.observe(element));
 function updateOnEvent()
 {
 	window.addEventListener('scroll', updateColors);
-	window.addEventListener('scroll', navIndicator_windowScroll);
+	window.addEventListener('scroll', () => 
+	{
+		navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.3s ease top, 1s ease background-color';
+		navIndicator_windowScroll();
+	});
+	window.addEventListener('resize', () => 
+	{
+		updateColors();
+		navIndicator_windowScroll();
+		navIndicator.style.transition = 'none';
+	});
 
 	logo.addEventListener("mouseover", updateColors);
 	logo.addEventListener("mouseout", updateColors);
@@ -56,12 +109,12 @@ function updateOnEvent()
 
 	function updateColors()
 	{
-		pageStart = (window.scrollY <= 180);
+		pageStart = (window.scrollY <= 120);
 
 		if (pageStart)
 		{
 			header.style.transition = 'background-color 0.5s ease';
-			header.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+			header.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
 
 			if (logo.matches(":hover"))
 				logoLink.style.color = "aqua";
@@ -88,8 +141,18 @@ function updateOnEvent()
 
 			logoLink.style.color = "black";
 
+			navIndicator.style.backgroundColor = 'black';
+
 			styleSheet.cssRules[AfterSectionTitleIndex].style.backgroundColor = 'aqua';
+
 			styleSheet.cssRules[cardIndex].style.border = '3px solid aqua';
+
+			styleSheet.cssRules[websiteSrcIndex].style.transition = 'transform 0.2s ease, border-color 2s ease';
+			styleSheet.cssRules[websiteSrcIndex].style.border = '3px solid aqua';
+
+			styleSheet.cssRules[skillBarIndex].style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
+			styleSheet.cssRules[skillLevelIndex].style.backgroundColor = 'aqua';
+
 
 			for (const nav of navLinks)
 			{
@@ -129,11 +192,15 @@ function updateOnEvent()
 				styleSheet.cssRules[AfterSectionTitleIndex].style.transition = 'background-color 2s ease';
 				styleSheet.cssRules[AfterSectionTitleIndex].style.backgroundColor = 'yellow';
 
-				styleSheet.cssRules[cardIndex].style.transition = 'border-color 2s ease';
+				styleSheet.cssRules[cardIndex].style.transition = 'transform 0.2s ease, border-color 2s ease';
 				styleSheet.cssRules[cardIndex].style.border = '3px solid yellow';
-			}
 
-			logo.addEventListener("mouseout", () => { navIndicator.style.backgroundColor = 'black'; });
+				styleSheet.cssRules[websiteSrcIndex].style.transition = 'border-color 2s ease';
+				styleSheet.cssRules[websiteSrcIndex].style.border = '3px solid yellow';
+
+				styleSheet.cssRules[skillBarIndex].style.backgroundColor = 'rgba(234, 255, 0, 0.2)';
+				styleSheet.cssRules[skillLevelIndex].style.backgroundColor = 'yellow';
+			}
 		}
 	}
 }
@@ -176,15 +243,12 @@ function navIndicator_windowScroll()
 			const sectionTop = section.offsetTop;
 			const sectionBottom = section.offsetTop + section.offsetHeight;
 
-			if (scrollTop >= sectionTop - 150 && sectionBottom > scrollBottom - 200) 
+			if (scrollTop >= sectionTop - 200 && sectionBottom > scrollBottom - 300) 
 			{
 				for (const nav of navLinks)
 				{
 					if (section.hasAttribute('id') && nav.getAttribute("href") == '#' + section.id)
 					{
-						// FOR SMALLER WINDOW WIDTH
-						navIndicator.style.top = `${nav.offsetTop + nav.offsetHeight - 8}px`;
-						// ─────────────────────────────────────────────────────────────────────────────
 						if (nav.matches(":hover"))
 						{
 							navIndicator.style.backgroundColor = 'white';
@@ -200,6 +264,37 @@ function navIndicator_windowScroll()
 							navIndicator.style.left = `${nav.offsetLeft + 12}px`;
 						}
 
+						if ("#" + section.id == "#skills")
+						{
+							// Animate the progress bar if the entry is a skill
+							skills.forEach((skill) => 
+							{
+								skillLevel = document.querySelector(`#${skill.name.toLowerCase()}_level`);
+								skillPerc = document.querySelector(`#${skill.name.toLowerCase()}_perc`);
+
+								skillPerc.style.transition = 'all 3s ease';
+								skillPerc.textContent = `${skill.level}%`;
+								skillPerc.style.left = `${skill.level + 2}%`;
+
+								skillLevel.style.transition = 'all 3s ease';
+								skillLevel.style.width = `${skill.level}%`;
+							});
+						}
+						else
+						{
+							skills.forEach((skill) => 
+							{
+								skillLevel = document.querySelector(`#${skill.name.toLowerCase()}_level`);
+								skillPerc = document.querySelector(`#${skill.name.toLowerCase()}_perc`);
+
+								skillPerc.style.transition = 'all 0.1s ease';
+								skillPerc.textContent = '';
+								skillPerc.style.left = '2%';
+
+								skillLevel.style.transition = 'all 0.1s ease';
+								skillLevel.style.width = `0%`;
+							});
+						}
 					}
 				}
 			}
