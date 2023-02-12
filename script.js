@@ -7,23 +7,14 @@ const logoLink = document.getElementsByTagName("a")[0];
 const nav = document.getElementsByClassName("navigation")[0];
 const navLinks = nav.querySelectorAll("ul a");
 
-const styleSheet = document.styleSheets[0];
+const sectionTitleRule = document.querySelectorAll(".container-title");
 
-const sectionTitleSelector = '.container-title::after';
-const AfterSectionTitleIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === sectionTitleSelector);
+const cardRule = document.querySelectorAll('.card');
 
-const cardSelector = '.card';
-const cardIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === cardSelector);
+const websiteSrcRule = document.querySelector('.websiteCode');
 
-const websiteSrcSelector = '.websiteCode';
-const websiteSrcIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === websiteSrcSelector);
-
-const skillBarSelector = '.skill-bar';
-const skillBarIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === skillBarSelector);
-
-const skillLevelSelector = '.skill-level';
-const skillLevelIndex = Array.from(styleSheet.cssRules).findIndex(rule => rule.selectorText === skillLevelSelector);
-
+const skillBarRule = document.querySelectorAll('.skill-bar');
+const skillLevelRule = document.querySelectorAll('.skill-level');
 var skillLevel;
 
 const navIndicator = document.querySelector(".indicator");
@@ -33,6 +24,8 @@ const bodyTag = document.getElementsByTagName('body')[0];
 const windowHeight = window.innerHeight;
 
 const containers = document.querySelectorAll('.container');
+var webSiteCodeSrc = document.head.appendChild(document.createElement("style"));
+var AfterSectionTitle = document.head.appendChild(document.createElement("style"));
 
 // ARRAY OF SKILLS AND THEIR LEVEL
 const skills = [
@@ -70,8 +63,6 @@ const observer = new IntersectionObserver((entries) =>
 
 const hidden_elements = document.querySelectorAll(".hidden");
 hidden_elements.forEach((element) => observer.observe(element));
-
-
 // ─────────────────────────────────────────────────────────────────────────────
 
 
@@ -91,8 +82,14 @@ function updateOnEvent()
 		navIndicator.style.transition = 'none';
 	});
 
-	logo.addEventListener("mouseover", updateColors);
-	logo.addEventListener("mouseout", updateColors);
+	logo.addEventListener("mouseover", (e) => 
+	{
+		updateColors();
+	});
+	logo.addEventListener("mouseout", (e) => 
+	{
+		updateColors();
+	});
 
 	for (const nav of navLinks)
 	{
@@ -133,15 +130,25 @@ function updateOnEvent()
 
 			logoLink.style.color = "black";
 
-			styleSheet.cssRules[AfterSectionTitleIndex].style.backgroundColor = 'aqua';
+			for (const card of cardRule)
+			{
+				card.style.border = '3px solid aqua';
+			}
 
-			styleSheet.cssRules[cardIndex].style.border = '3px solid aqua';
+			for (const skillBar of skillBarRule)
+			{
+				skillBar.style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
+			}
 
-			styleSheet.cssRules[websiteSrcIndex].style.transition = 'transform 0.2s ease, border-color 2s ease';
-			styleSheet.cssRules[websiteSrcIndex].style.border = '3px solid aqua';
+			for (const skillLevel of skillLevelRule)
+			{
+				skillLevel.style.backgroundColor = 'aqua';
+			}
 
-			styleSheet.cssRules[skillBarIndex].style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
-			styleSheet.cssRules[skillLevelIndex].style.backgroundColor = 'aqua';
+			webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;}';
+			webSiteCodeSrc.innerHTML = '.websiteCode:hover {border: 3px solid black;}';
+
+			AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
 
 
 			for (const nav of navLinks)
@@ -178,18 +185,27 @@ function updateOnEvent()
 					nav.style.color = 'yellow';
 				}
 
-				styleSheet.cssRules[AfterSectionTitleIndex].style.transition = 'background-color 2s ease';
-				styleSheet.cssRules[AfterSectionTitleIndex].style.backgroundColor = 'yellow';
+				for (const card of cardRule)
+				{
+					card.style.transition = 'transform 0.2s ease, border-color 2s ease';
+					card.style.border = '3px solid yellow';
+				}
 
-				styleSheet.cssRules[cardIndex].style.transition = 'transform 0.2s ease, border-color 2s ease';
-				styleSheet.cssRules[cardIndex].style.border = '3px solid yellow';
+				for (const skillBar of skillBarRule)
+				{
+					skillBar.style.backgroundColor = 'rgba(234, 255, 0, 0.2)';
+				}
 
-				styleSheet.cssRules[websiteSrcIndex].style.transition = 'border-color 2s ease';
-				styleSheet.cssRules[websiteSrcIndex].style.border = '3px solid yellow';
+				for (const skillLevel of skillLevelRule)
+				{
+					skillLevel.style.backgroundColor = 'yellow';
+				}
 
-				styleSheet.cssRules[skillBarIndex].style.backgroundColor = 'rgba(234, 255, 0, 0.2)';
-				styleSheet.cssRules[skillLevelIndex].style.backgroundColor = 'yellow';
+				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid yellow;}';
+
+				AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
 			}
+
 			logo.addEventListener("mouseout", () => 
 			{
 				navIndicator.style.backgroundColor = 'black';
@@ -219,7 +235,6 @@ var type = new Typed(".changing_text", {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /* ----------------------------------------------NAVIGATION INDICATOR----------------------------------------- */
-
 // TODO: NAVIGATION INDICATOR AUTO SCROLL BASED ON SECTION
 function navIndicator_windowScroll()
 {
