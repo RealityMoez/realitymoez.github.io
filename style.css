@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;1,100&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&display=swap');
-
 /* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:ital,wght@0,100;1,100&family=Lobster&family=Parisienne&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&display=swap'); */
+
 /*  padding: (top-bottom) (right-left);
     padding: (top) (right) (bottom) (left);  */
 
@@ -83,7 +83,6 @@ h3
     letter-spacing: 1px;
     text-shadow: black 4px 4px 20px;
 }
-
 /* GENERAL STYLES END*/
 
 /* SPECIFIC STYLES */
@@ -186,12 +185,10 @@ h3
 {
     background: linear-gradient(to bottom, black 0%, transparent 30%, transparent 90%, black 100%), transparent;
 }
-
 /* background-size: cover;
     background-position: center; */
 
 /* font-size: calc(15px - (1 - 15) * ((200vw - 300px) / (1200 - 300))); */
-
 .myname
 {
     font-family: 'Righteous', cursive;
@@ -236,7 +233,7 @@ h3
 {
     display: inline-block;
     color: white;
-    font-size: 1em;
+    font-size: 2em;
     padding-left: 5px;
     padding-right: 5px;
     margin-left: 10px;
@@ -437,7 +434,7 @@ header .shown
     letter-spacing: 1px;
     border: 3px solid aqua;
     border-radius: 10px;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, border-color 2s ease;
     height: 5em;
     width: 12em;
     margin-left: auto;
@@ -524,7 +521,6 @@ header .shown
     top: auto;
 }
 /* SPECIFIC STYLES END */
-
 
 /* PAGE RESPONSIVENESS */
 @media only screen and (max-width:935px)
