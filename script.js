@@ -50,13 +50,6 @@ const skills = [
 ];
 /* ----------------------------------------------VARIABLES END----------------------------------------- */
 
-function preloadImage(url)
-{
-	var img = new Image();
-	img.src = url;
-}
-preloadImage("images/bg6.jpg");
-
 // SCROLLING ANIMATION
 const observer = new IntersectionObserver((entries) =>
 {
@@ -85,9 +78,9 @@ hidden_elements.forEach((element) => observer.observe(element));
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
 {
-	window.addEventListener('scroll', updateColors);
 	window.addEventListener('scroll', () => 
 	{
+		updateColors();
 		navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.3s ease top, 1s ease background-color';
 		navIndicator_windowScroll();
 	});
@@ -110,7 +103,6 @@ function updateOnEvent()
 	function updateColors()
 	{
 		pageStart = (window.scrollY <= 120);
-
 		if (pageStart)
 		{
 			header.style.transition = 'background-color 0.5s ease';
@@ -123,7 +115,7 @@ function updateOnEvent()
 
 			for (const nav of navLinks)
 			{
-				nav.style.transition = '0.2s ease';
+				nav.style.transition = 'all 0.5s ease';
 				nav.style.color = "yellow";
 				nav.style.backgroundColor = "transparent";
 
@@ -140,8 +132,6 @@ function updateOnEvent()
 			header.style.backgroundColor = "aqua";
 
 			logoLink.style.color = "black";
-
-			navIndicator.style.backgroundColor = 'black';
 
 			styleSheet.cssRules[AfterSectionTitleIndex].style.backgroundColor = 'aqua';
 
@@ -163,7 +153,7 @@ function updateOnEvent()
 				});
 				nav.addEventListener("mouseover", navIndicator_windowScroll);
 
-				nav.style.transition = '0.2s ease';
+				nav.style.transition = 'all 0.5s ease';
 				nav.style.color = "black";
 				nav.style.backgroundColor = "transparent";
 
@@ -171,7 +161,6 @@ function updateOnEvent()
 				{
 					nav.style.backgroundColor = "black";
 					nav.style.color = "white";
-					nav.style.transition = 'background-color 0.4s ease, color 0.4s ease';
 				}
 			}
 
@@ -201,6 +190,10 @@ function updateOnEvent()
 				styleSheet.cssRules[skillBarIndex].style.backgroundColor = 'rgba(234, 255, 0, 0.2)';
 				styleSheet.cssRules[skillLevelIndex].style.backgroundColor = 'yellow';
 			}
+			logo.addEventListener("mouseout", () => 
+			{
+				navIndicator.style.backgroundColor = 'black';
+			});
 		}
 	}
 }
