@@ -82,13 +82,25 @@ function updateOnEvent()
 		navIndicatorUpdate();
 		navIndicator.style.transition = 'none';
 	});
-
+	let timeout;
 	logo.addEventListener("mouseover", (e) => 
 	{
-		updateColors();
+		timeout = setTimeout(() =>
+		{
+			if (!darkTheme)
+				darkTheme = true;
+			else
+				darkTheme = false;
+
+			nav.style.transition = '2s ease';
+			updateColors();
+
+		}, 500);
 	});
+
 	logo.addEventListener("mouseout", (e) => 
 	{
+		clearTimeout(timeout);
 		updateColors();
 	});
 
@@ -126,16 +138,6 @@ function updateOnEvent()
 		}
 		else
 		{
-			if (logo.matches(":hover"))
-			{
-				if (!darkTheme)
-					darkTheme = true;
-				else
-					darkTheme = false;
-
-				nav.style.transition = '2s ease';
-			}
-
 			if (darkTheme)
 			{
 				logoLink.style.color = "white";
@@ -149,14 +151,15 @@ function updateOnEvent()
 					nav.style.color = 'yellow';
 					nav.style.backgroundColor = "transparent";
 					navIndicator.style.border = 'none';
-					navIndicatorUpdate();
 
 					if (nav.matches(":hover"))
 					{
 						nav.style.transition = '0.5s ease';
 						nav.style.backgroundColor = "white";
 						nav.style.color = "black";
+						navIndicatorUpdate();
 					}
+					navIndicatorUpdate();
 				}
 
 				for (const card of cardRule)
@@ -208,18 +211,14 @@ function updateOnEvent()
 
 				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
 
-
 				for (const nav of navLinks)
 				{
+					navIndicatorUpdate();
+
 					nav.addEventListener("mouseout", () =>
 					{
 						nav.style.backgroundColor = 'transparent';
 						navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.3s ease top, 1s ease background-color';
-						navIndicatorUpdate();
-					});
-					nav.addEventListener("mouseover", () =>
-					{
-						navIndicatorUpdate();
 					});
 
 					nav.style.transition = 'all 0.5s ease';
