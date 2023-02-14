@@ -1,5 +1,6 @@
 /* ----------------------------------------------VARIABLES----------------------------------------- */
 let pageStart = true;
+let darkTheme = true;
 const header = document.getElementsByClassName("header")[0];
 const logo = document.getElementsByClassName("logo")[0];
 const logoLink = document.getElementsByTagName("a")[0];
@@ -73,12 +74,12 @@ function updateOnEvent()
 	{
 		updateColors();
 		navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.3s ease top, 1s ease background-color';
-		navIndicator_windowScroll();
+		navIndicatorUpdate();
 	});
 	window.addEventListener('resize', () => 
 	{
 		updateColors();
-		navIndicator_windowScroll();
+		navIndicatorUpdate();
 		navIndicator.style.transition = 'none';
 	});
 
@@ -125,53 +126,17 @@ function updateOnEvent()
 		}
 		else
 		{
-			header.style.transition = 'background-color 2s ease';
-			header.style.backgroundColor = "aqua";
-
-			logoLink.style.color = "black";
-
-			for (const card of cardRule)
-			{
-				card.style.border = '3px solid aqua';
-			}
-
-			for (const skillBar of skillBarRule)
-			{
-				skillBar.style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
-			}
-
-			for (const skillLevel of skillLevelRule)
-			{
-				skillLevel.style.backgroundColor = 'aqua';
-			}
-
-			webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;}';
-			webSiteCodeSrc.innerHTML = '.websiteCode:hover {border: 3px solid black;}';
-
-			AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
-
-
-			for (const nav of navLinks)
-			{
-				nav.addEventListener("mouseout", () =>
-				{
-					navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.3s ease top, 1s ease background-color';
-					navIndicator_windowScroll();
-				});
-				nav.addEventListener("mouseover", navIndicator_windowScroll);
-
-				nav.style.transition = 'all 0.5s ease';
-				nav.style.color = "black";
-				nav.style.backgroundColor = "transparent";
-
-				if (nav.matches(":hover"))
-				{
-					nav.style.backgroundColor = "black";
-					nav.style.color = "white";
-				}
-			}
-
 			if (logo.matches(":hover"))
+			{
+				if (!darkTheme)
+					darkTheme = true;
+				else
+					darkTheme = false;
+
+				nav.style.transition = '2s ease';
+			}
+
+			if (darkTheme)
 			{
 				logoLink.style.color = "white";
 				header.style.backgroundColor = "black";
@@ -181,8 +146,17 @@ function updateOnEvent()
 
 				for (const nav of navLinks)
 				{
-					nav.style.transition = '2s ease';
 					nav.style.color = 'yellow';
+					nav.style.backgroundColor = "transparent";
+					navIndicator.style.border = 'none';
+					navIndicatorUpdate();
+
+					if (nav.matches(":hover"))
+					{
+						nav.style.transition = '0.5s ease';
+						nav.style.backgroundColor = "white";
+						nav.style.color = "black";
+					}
 				}
 
 				for (const card of cardRule)
@@ -205,11 +179,60 @@ function updateOnEvent()
 
 				AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
 			}
-
-			logo.addEventListener("mouseout", () => 
+			else
 			{
+				header.style.transition = 'background-color 2s ease';
+				header.style.backgroundColor = "aqua";
+
+				logoLink.style.color = "black";
+
 				navIndicator.style.backgroundColor = 'black';
-			});
+
+				for (const card of cardRule)
+				{
+					card.style.border = '3px solid aqua';
+				}
+
+				for (const skillBar of skillBarRule)
+				{
+					skillBar.style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
+				}
+
+				for (const skillLevel of skillLevelRule)
+				{
+					skillLevel.style.backgroundColor = 'aqua';
+				}
+
+				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;}';
+				webSiteCodeSrc.innerHTML = '.websiteCode:hover {border: 3px solid black;}';
+
+				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
+
+
+				for (const nav of navLinks)
+				{
+					nav.addEventListener("mouseout", () =>
+					{
+						nav.style.backgroundColor = 'transparent';
+						navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.3s ease top, 1s ease background-color';
+						navIndicatorUpdate();
+					});
+					nav.addEventListener("mouseover", () =>
+					{
+						navIndicatorUpdate();
+					});
+
+					nav.style.transition = 'all 0.5s ease';
+					nav.style.color = "black";
+					nav.style.backgroundColor = "transparent";
+
+					if (nav.matches(":hover"))
+					{
+						nav.style.backgroundColor = "black";
+						nav.style.color = "white";
+					}
+				}
+			}
 		}
 	}
 }
@@ -236,7 +259,7 @@ var type = new Typed(".changing_text", {
 
 /* ----------------------------------------------NAVIGATION INDICATOR----------------------------------------- */
 // TODO: NAVIGATION INDICATOR AUTO SCROLL BASED ON SECTION
-function navIndicator_windowScroll()
+function navIndicatorUpdate()
 {
 	if (window.scrollY < 250)
 		navIndicator.style.width = '0';
@@ -259,15 +282,19 @@ function navIndicator_windowScroll()
 					{
 						if (nav.matches(":hover"))
 						{
-							navIndicator.style.backgroundColor = 'white';
+							if (darkTheme)
+							{
+								navIndicator.style.backgroundColor = 'black';
+								navIndicator.style.borderBottom = '0.5px solid white';
+							}
+							else
+								navIndicator.style.backgroundColor = 'white';
+
 							navIndicator.style.width = `${nav.offsetWidth}px`;
 							navIndicator.style.left = `${nav.offsetLeft}px`;
 						}
 						else if (!nav.matches(":hover"))
 						{
-							if (!logo.matches(":hover"))
-								navIndicator.style.backgroundColor = 'black';
-
 							navIndicator.style.width = `${nav.offsetWidth - 24}px`;
 							navIndicator.style.left = `${nav.offsetLeft + 12}px`;
 						}
