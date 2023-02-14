@@ -87,14 +87,11 @@ function updateOnEvent()
 	{
 		timeout = setTimeout(() =>
 		{
-			if (!darkTheme)
-				darkTheme = true;
-			else
-				darkTheme = false;
+			if (!darkTheme) darkTheme = true;
+			else darkTheme = false;
 
 			nav.style.transition = '2s ease';
 			updateColors();
-
 		}, 500);
 	});
 
