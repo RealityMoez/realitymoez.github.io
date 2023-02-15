@@ -385,7 +385,7 @@ header .shown
     position: relative;
     padding: 1rem 15rem;
     line-height: 1;
-    font-size: calc(20px + (2vw * 1))
+    font-size: calc(10px - (1 - 25) * ((200vw - 300px) / (1800 - 300))) /* calc(20px + (2vw * 1)) */;
     font-family: 'Josefin Sans', sans-serif;
     color: white;
 }
