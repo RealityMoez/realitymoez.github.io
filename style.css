@@ -678,7 +678,6 @@ footer .whatsapp
     margin: auto auto;
     margin-top: 8px;
 }
-
 /* SPECIFIC STYLES END */
 
 /* PAGE RESPONSIVENESS */
@@ -735,5 +734,4 @@ footer .whatsapp
         width: calc(80% - (1vw * 2));
     }
 }
-
 /* PAGE RESPONSIVENESS END */
