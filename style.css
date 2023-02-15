@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;1,100&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;1,100&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&family=Lobster&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:ital,wght@0,100;1,100&family=Lobster&family=Parisienne&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&display=swap'); */
 
 /*  padding: (top-bottom) (right-left);
     padding: (top) (right) (bottom) (left);  */
+
+/*  INVERSE CALCULATION (as something decreases, another increases):
+
+    calc([VALUE] - ([INVERSE VALUE] * [SENSITIVITY]))
+*/
 
 :root
 {
@@ -58,7 +63,6 @@ h1
     display: block;
     margin-bottom: 1vh;
     color: aqua;
-    font-size: 3em;
     font-weight: 800;
     text-transform: uppercase;
     font-size: calc(30px - (10 - 30) * ((100vw - 600px) / (1600 - 300)));
@@ -83,6 +87,83 @@ h3
     letter-spacing: 1px;
     text-shadow: black 4px 4px 20px;
 }
+
+form
+{
+    margin: 10% auto;
+    display: flex;
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(255, 255, 255, 0.2));
+    flex-direction: column;
+    padding: 1vw 2vw;
+    width: 60vw;
+    border-radius: 15px;
+}
+
+form input,
+form textarea
+{
+    font-size: 1em;
+    font-family: 'Questrial', sans-serif;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1% 2%;
+    margin: calc(10px - (1vw * 0.1)) 1%;
+    resize: none;
+}
+
+form input
+{
+    height: calc(40px - (1vw * 0.1));
+}
+
+form input::placeholder,
+form textarea::placeholder
+{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+form button
+{
+    font-weight: 700;
+    margin: 2% auto;
+    width: calc(300px - (2vw * 2));
+    height: 7vh;
+    color: white;
+    background: linear-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.4) 100%);
+    border: 2px solid yellow;
+    border-radius: 10px;
+    transition: transform 0.2s ease, border 2s ease, background 1s ease, color 0.6s ease;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+form button:hover
+{
+    color: black;
+    background: white;
+    border: 2px solid black;
+    transform: scale(1.1);
+}
+
+footer
+{
+    display: flex;
+    height: 10vh;
+    width: 100%;
+    justify-content: space-between;
+    background: black;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);;
+    overflow: hidden;
+}
+
+footer h5
+{
+    font-size: calc(12px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
+    margin: auto 5%;
+    color: white;
+}
+
 /* GENERAL STYLES END*/
 
 /* SPECIFIC STYLES */
@@ -181,7 +262,7 @@ h3
 
 .contact
 {
-    background: linear-gradient(to bottom, black 0%, transparent 30%, transparent 90%, black 100%), transparent;
+    background: linear-gradient(to bottom, black 0%, transparent 30%, transparent 100%, black 100%), transparent;
 }
 
 /* font-size: calc(15px - (1 - 15) * ((200vw - 300px) / (1200 - 300))); */
@@ -209,7 +290,7 @@ h3
     display: inline-block;
     padding: 0.9375em 2.1875em;
     letter-spacing: 1px;
-    border: 3px solid aqua;
+    border: 2px solid aqua;
     border-radius: 10px;
     margin-bottom: 25px;
     margin-left: 3px;
@@ -229,9 +310,7 @@ h3
     display: inline-block;
     color: white;
     font-size: 2em;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left: 10px;
+    margin: auto 10px;
     transition: 0.2s ease;
     text-shadow: black 0px 0px 10px;
 }
@@ -286,7 +365,6 @@ header .shown
     opacity: 0;
     filter: blur(15px);
     transform: translateY(50%);
-    /* max-height: 20vh; */
     transition: all 0.6s;
 }
 
@@ -305,7 +383,7 @@ header .shown
     position: relative;
     padding: 1rem 15rem;
     line-height: 1;
-    font-size: 2.8rem;
+    font-size: calc(20px + (2vw * 1))/* calc(10px - (1 - 25) * ((200vw - 300px) / (1800 - 300))) */;
     font-family: 'Josefin Sans', sans-serif;
     color: white;
 }
@@ -315,7 +393,7 @@ header .shown
     display: flex;
     justify-content: center;
     content: "";
-    width: 90px;
+    width: calc(35px + (3vw * 2));
     height: 5px;
     border-radius: 3px;
     background-color: aqua;
@@ -339,34 +417,39 @@ header .shown
 
 .card
 {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 255, 0.7));
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(0, 0, 255, 0.5));
     width: 21.25em;
-    /* width: 21.25em; */
     box-shadow: 5px 5px 25px rgba(1 1 1 / 50%);
     border-radius: 15px;
     padding: 25px;
-    margin: 15px;
+    margin: 25px;
     height: 500px;
     text-align: center;
     position: relative;
     cursor: pointer;
     border: 3px solid aqua;
+    transition: all 1s ease;
+}
+
+.card:hover .cardLayer
+{
+    height: 100%;
+    opacity: 1;
 }
 
 .cardLayer
 {
-    background: linear-gradient(rgba(0, 0, 255, 0.1), rgba(255, 0, 0, 0.5));
+    background: linear-gradient(to bottom, transparent, rgba(125, 0, 0, 0.8));
     position: absolute;
     border-radius: 14px;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.75);
     overflow: hidden;
     width: 100%;
-    height: 0;
+    height: 80%;
     opacity: 0;
-    transition: all 0.4s;
+    transition: all 0.6s;
 }
 
 .projects .content .card h5
@@ -380,20 +463,15 @@ header .shown
     position: absolute;
     top: 50%;
     left: 50%;
-    transition: 0.2s ease;
+    transition: 0.6s ease;
     transform: translate(-50%, -50%);
 }
 
 .projects .content .card:hover h5
 {
+    opacity: 0;
     color: yellow;
     transform: scale(1.4) translate(-35%, -40%);
-}
-
-.card:hover .cardLayer
-{
-    height: 100%;
-    opacity: 1;
 }
 
 .cardLayer p
@@ -429,7 +507,7 @@ header .shown
     letter-spacing: 1px;
     border: 3px solid aqua;
     border-radius: 10px;
-    transition: transform 0.2s ease, border-color 2s ease;
+    transition: transform 0.2s ease, border-color 2.5s ease;
     height: 5em;
     width: 12em;
     margin-left: auto;
@@ -438,6 +516,7 @@ header .shown
 
 .websiteCode:hover
 {
+    box-shadow: rgb(255, 255, 255, 0.5) 0px 0px 30px;
     background: white;
     border: 3px solid black;
     color: black;
@@ -469,8 +548,8 @@ header .shown
 
 .skill
 {
-    width: 40vw;
-    margin: 15px 0;
+    width: 50vw;
+    margin: 10px 0;
     text-align: left;
 }
 
@@ -513,6 +592,43 @@ header .shown
     left: 0;
     top: -5px;
 }
+
+.contact .content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact .content p
+{
+    margin: auto auto;
+    font-size: calc(20px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
+    font-family: 'Righteous', sans-serif;
+    color: yellow;
+}
+
+footer .social_icons
+{
+    display: flex;
+    padding: 1% 5%;
+}
+
+footer .social_icons a
+{
+    display: inline-block;
+    font-size: 1.4em;
+    margin: 8% 5px;
+    transition: 0.4s ease;
+    width: 30px;
+    height: 20px;
+}
+
+footer .social_icons a:hover
+{
+    transform: scale(1.1);
+}
+
 /* SPECIFIC STYLES END */
 
 /* PAGE RESPONSIVENESS */
@@ -532,6 +648,20 @@ header .shown
     {
         display: none;
     }
-
 }
+
+@media only screen and (max-width:550px)
+{
+    form
+    {
+        font-size: 4vw;
+        width: 80vw;
+    }
+
+    form button
+    {
+        width: calc(80% - (1vw * 2));
+    }
+}
+
 /* PAGE RESPONSIVENESS END */
