@@ -29,6 +29,11 @@ var webSiteCodeSrc = document.head.appendChild(document.createElement("style"));
 var AfterSectionTitle = document.head.appendChild(document.createElement("style"));
 var contactFormBtn = document.head.appendChild(document.createElement("style"));
 
+const contactForm = document.getElementById('contact-form');
+const form_name = document.getElementById('uName');
+const form_email = document.getElementById('uEmail');;
+const form_message = document.getElementById('uMessage');
+
 // ARRAY OF SKILLS AND THEIR LEVEL
 const skills = [
 	{ name: "Android", level: 90 },
@@ -340,15 +345,32 @@ function navIndicatorUpdate()
 /* ----------------------------------------------NAVIGATION INDICATOR END----------------------------------------- */
 
 /* ----------------------------------------------CONTACT FORM EMAIL RECIEVE--------------------------------------- */
-/* Email.send({
-	Host: "smtp.elasticemail.com",
-	Username: "username",
-	Password: "password",
-	To: 'them@website.com',
-	From: "you@isp.com",
-	Subject: "This is the subject",
-	Body: "And this is the body"
-}).then(
-	message => alert(message)
-); */
+emailjs.init("xtwhY4kGdw0CXW4Xk");
+
+contactForm.addEventListener("submit", contactMsgSend);
+
+function contactMsgSend(e)
+{
+	e.preventDefault();
+
+	const serviceID = "service_8dd77nd";
+	const templateID = "template_njen0la";
+
+	var parameters = {
+		name: form_name.value,
+		email: form_email.value,
+		message: form_message.value,
+	};
+
+	if (form_email.value == "")
+		parameters.email = "empty@mail.com";
+
+	emailjs
+		.send(serviceID, templateID, parameters)
+		.then((response) =>
+		{
+			alert("Message Sent");
+		})
+		.catch((error) => console.log(error));
+}
 /* ----------------------------------------------CONTACT FORM EMAIL RECIEVE END----------------------------------- */
