@@ -250,10 +250,10 @@
             <div class="container-object">
                 <h4 class="container-title hidden">CONTACT</h4>
                 <div class="content">
-                    <form>
-                        <input type="text" id="name" placeholder="Name" required>
-                        <input type="email" id="email" placeholder="Email address (optional)">
-                        <textarea id="message" rows="6" placeholder="Message" required></textarea>
+                    <form id="contact-form">
+                        <input type="text" id="uName" placeholder="Name" required>
+                        <input type="email" id="uEmail" placeholder="Email address (optional)">
+                        <textarea id="uMessage" rows="6" placeholder="Message" required></textarea>
                         <button type="submit">SEND</button>
                     </form>
                     
@@ -278,7 +278,7 @@
         </footer>
 
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-        <script defer src="https://smtpjs.com/v3/smtp.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
         <script defer src="script.js"></script>
     </body>
 
