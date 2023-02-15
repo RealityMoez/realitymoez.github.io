@@ -619,7 +619,7 @@ header .shown
     margin-top: -50px;
 }
 
-.contact .content p
+.contact .content .hint
 {
     margin: 30px auto;
     font-size: calc(20px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
