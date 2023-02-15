@@ -366,6 +366,7 @@ header .shown
     filter: blur(15px);
     transform: translateY(50%);
     transition: all 0.6s;
+    max-height: 5vh;
 }
 
 .shown
@@ -611,10 +612,10 @@ header .shown
 
 .contact .content .email-icon
 {
-    font-size: 3em;
+    font-size: 4vw;
     color: darkgray;
     margin: 10px auto;
-    margin-top: -60px;
+    margin-top: -50px;
 }
 
 .contact .content .myEmail
@@ -654,6 +655,27 @@ footer .social_icons a:hover
     transform: scale(1);
 }
 
+.fa-whatsapp
+{
+    display: block;
+    font-size: 1.6em;
+    letter-spacing: 1px;
+    color: rgb(68, 255, 0);
+    margin: auto;
+    margin-left: 20vw;
+    margin-right: auto;
+    text-align: center;
+
+}
+
+footer .whatsapp
+{
+    display: block;
+    font-size: calc(12px - (1 - 20) * ((100vw - 700px) / (1600 - 300)));
+    color: white;
+    margin: auto auto;
+    margin-top: 8px;
+}
 /* SPECIFIC STYLES END */
 
 /* PAGE RESPONSIVENESS */
