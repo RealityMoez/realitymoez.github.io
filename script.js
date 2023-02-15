@@ -24,10 +24,10 @@ const sections = document.querySelectorAll('section');
 const bodyTag = document.getElementsByTagName('body')[0];
 const windowHeight = window.innerHeight;
 
-const containers = document.querySelectorAll('.container');
 var webSiteCodeSrc = document.head.appendChild(document.createElement("style"));
 var AfterSectionTitle = document.head.appendChild(document.createElement("style"));
 var contactFormBtn = document.head.appendChild(document.createElement("style"));
+var pageHint = document.head.appendChild(document.createElement("style"));
 
 const contactForm = document.getElementById('contact-form');
 const form_name = document.getElementById('uName');
@@ -146,8 +146,11 @@ function updateOnEvent()
 				logoLink.style.color = "white";
 				header.style.backgroundColor = "black";
 				header.style.transition = 'background-color 2s ease';
-
 				navIndicator.style.backgroundColor = 'white';
+				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid yellow;}';
+				AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
+				contactFormBtn.innerHTML = 'form button {border: 2px solid yellow;}';
+				pageHint.innerHTML = '.contact .content .hint {color: yellow;}';
 
 				for (const nav of navLinks)
 				{
@@ -180,21 +183,18 @@ function updateOnEvent()
 				{
 					skillLevel.style.backgroundColor = 'yellow';
 				}
-
-				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid yellow;}';
-
-				AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
-
-				contactFormBtn.innerHTML = 'form button {border: 2px solid yellow;}';
 			}
 			else
 			{
+				logoLink.style.color = "black";
 				header.style.transition = 'background-color 2s ease';
 				header.style.backgroundColor = "aqua";
-
-				logoLink.style.color = "black";
-
 				navIndicator.style.backgroundColor = 'black';
+				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;}';
+				webSiteCodeSrc.innerHTML = '.websiteCode:hover {border: 3px solid black;}';
+				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
+				contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
+				pageHint.innerHTML = '.contact .content .hint {color: aqua;}';
 
 				for (const card of cardRule)
 				{
@@ -210,12 +210,6 @@ function updateOnEvent()
 				{
 					skillLevel.style.backgroundColor = 'aqua';
 				}
-
-				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;}';
-				webSiteCodeSrc.innerHTML = '.websiteCode:hover {border: 3px solid black;}';
-
-				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
-				contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
 
 				for (const nav of navLinks)
 				{
