@@ -153,7 +153,8 @@ footer
     width: 100%;
     justify-content: space-between;
     background: black;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    ;
     overflow: hidden;
 }
 
@@ -384,7 +385,7 @@ header .shown
     position: relative;
     padding: 1rem 15rem;
     line-height: 1;
-    font-size: calc(20px + (2vw * 1))/* calc(10px - (1 - 25) * ((200vw - 300px) / (1800 - 300))) */;
+    font-size: calc(20px + (2vw * 1))
     font-family: 'Josefin Sans', sans-serif;
     color: white;
 }
@@ -618,20 +619,21 @@ header .shown
     margin-top: -50px;
 }
 
-.contact .content .myEmail
-{
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 700;
-    color: white;
-    margin: auto auto;
-}
-
 .contact .content p
 {
     margin: 30px auto;
     font-size: calc(20px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
     font-family: 'Righteous', sans-serif;
     color: yellow;
+}
+
+.contact .content .myEmail
+{
+    font-size: calc(20px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    color: white;
+    margin: 30px auto;
 }
 
 footer .social_icons
@@ -676,6 +678,7 @@ footer .whatsapp
     margin: auto auto;
     margin-top: 8px;
 }
+
 /* SPECIFIC STYLES END */
 
 /* PAGE RESPONSIVENESS */
@@ -699,6 +702,29 @@ footer .whatsapp
 
 @media only screen and (max-width:550px)
 {
+    .projects .content
+    {
+        margin-top: unset;
+        padding-bottom: unset;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .card
+    {
+        width: 80vw;
+        margin: 25px auto;
+        flex-direction: column;
+        height: calc(105vh - (1vw * 1));
+    }
+
+    .contact .content p, .contact .content .myEmail 
+    {
+        width: 70vw !important;
+    }
+
     form
     {
         font-size: 4vw;
