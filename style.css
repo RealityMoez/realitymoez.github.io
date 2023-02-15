@@ -456,7 +456,7 @@ header .shown
 {
     color: white;
     font-size: 1.5em;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -465,6 +465,15 @@ header .shown
     left: 50%;
     transition: 0.6s ease;
     transform: translate(-50%, -50%);
+}
+
+.clickHint
+{
+    display: block;
+    font-size: 0.6em;
+    font-weight: 200;
+    color: aqua;
+    transition: 0.2s ease color;
 }
 
 .projects .content .card:hover h5
@@ -600,9 +609,25 @@ header .shown
     align-items: center;
 }
 
+.contact .content .email-icon
+{
+    font-size: 3em;
+    color: darkgray;
+    margin: 10px auto;
+    margin-top: -60px;
+}
+
+.contact .content .myEmail
+{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    color: white;
+    margin: auto auto;
+}
+
 .contact .content p
 {
-    margin: auto auto;
+    margin: 30px auto;
     font-size: calc(20px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
     font-family: 'Righteous', sans-serif;
     color: yellow;
@@ -626,7 +651,7 @@ footer .social_icons a
 
 footer .social_icons a:hover
 {
-    transform: scale(1.1);
+    transform: scale(1);
 }
 
 /* SPECIFIC STYLES END */
