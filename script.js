@@ -27,6 +27,7 @@ const windowHeight = window.innerHeight;
 const containers = document.querySelectorAll('.container');
 var webSiteCodeSrc = document.head.appendChild(document.createElement("style"));
 var AfterSectionTitle = document.head.appendChild(document.createElement("style"));
+var contactFormBtn = document.head.appendChild(document.createElement("style"));
 
 // ARRAY OF SKILLS AND THEIR LEVEL
 const skills = [
@@ -178,6 +179,8 @@ function updateOnEvent()
 				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid yellow;}';
 
 				AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
+
+				contactFormBtn.innerHTML = 'form button {border: 2px solid yellow;}';
 			}
 			else
 			{
@@ -207,6 +210,7 @@ function updateOnEvent()
 				webSiteCodeSrc.innerHTML = '.websiteCode:hover {border: 3px solid black;}';
 
 				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
+				contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
 
 				for (const nav of navLinks)
 				{
@@ -334,3 +338,17 @@ function navIndicatorUpdate()
 }
 // ─────────────────────────────────────────────────────────────────────────────
 /* ----------------------------------------------NAVIGATION INDICATOR END----------------------------------------- */
+
+/* ----------------------------------------------CONTACT FORM EMAIL RECIEVE--------------------------------------- */
+/* Email.send({
+	Host: "smtp.elasticemail.com",
+	Username: "username",
+	Password: "password",
+	To: 'them@website.com',
+	From: "you@isp.com",
+	Subject: "This is the subject",
+	Body: "And this is the body"
+}).then(
+	message => alert(message)
+); */
+/* ----------------------------------------------CONTACT FORM EMAIL RECIEVE END----------------------------------- */
