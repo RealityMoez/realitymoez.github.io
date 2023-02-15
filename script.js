@@ -238,7 +238,6 @@ function updateOnEvent()
 updateOnEvent();
 // ─────────────────────────────────────────────────────────────────────────────
 
-
 // TYPING TEXT 
 var type = new Typed(".changing_text", {
 	strings: [
@@ -338,7 +337,8 @@ function navIndicatorUpdate()
 // ─────────────────────────────────────────────────────────────────────────────
 /* ----------------------------------------------NAVIGATION INDICATOR END----------------------------------------- */
 
-/* ----------------------------------------------CONTACT FORM EMAIL RECIEVE--------------------------------------- */
+
+/* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL--------------------------------------- */
 emailjs.init("xtwhY4kGdw0CXW4Xk");
 
 contactForm.addEventListener("submit", contactMsgSend);
@@ -367,4 +367,4 @@ function contactMsgSend(e)
 		})
 		.catch((error) => console.log(error));
 }
-/* ----------------------------------------------CONTACT FORM EMAIL RECIEVE END----------------------------------- */
+/* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL END----------------------------------- */
