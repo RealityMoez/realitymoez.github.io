@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;1,100&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:ital,wght@0,100;1,100&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&family=Lobster&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:ital,wght@0,100;1,100&family=Lobster&family=Parisienne&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&display=swap'); */
 
 /*  padding: (top-bottom) (right-left);
@@ -677,6 +677,11 @@ footer .whatsapp
     color: white;
     margin: auto auto;
     margin-top: 8px;
+}
+
+footer h5 span
+{
+    font-family: 'Cinzel' , sans-serif;
 }
 /* SPECIFIC STYLES END */
 
