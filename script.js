@@ -34,6 +34,8 @@ const form_name = document.getElementById('uName');
 const form_email = document.getElementById('uEmail');;
 const form_message = document.getElementById('uMessage');
 
+const clickHint = document.getElementsByClassName(".clickHint");
+
 // ARRAY OF SKILLS AND THEIR LEVEL
 const skills = [
 	{ name: "Android", level: 90 },
@@ -87,6 +89,15 @@ function updateOnEvent()
 		updateColors();
 		navIndicatorUpdate();
 		navIndicator.style.transition = 'none';
+
+		if (window.innerWidth <= 768)
+		{
+			clickHint.innerHTML = "click me";
+		}
+		else
+		{
+			clickHint.innerHTML = "hover me";
+		}
 	});
 	let timeout;
 	logo.addEventListener("mouseover", (e) => 
@@ -368,3 +379,4 @@ function contactMsgSend(e)
 		.catch((error) => console.log(error));
 }
 /* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL END----------------------------------- */
+
