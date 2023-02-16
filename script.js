@@ -162,6 +162,7 @@ function updateOnEvent()
 				AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
 				contactFormBtn.innerHTML = 'form button {border: 2px solid yellow;}';
 				pageHint.innerHTML = '.contact .content .hint {color: yellow;}';
+				/* scrollTrackerStyle.innerHTML = '.scroll-tracker {background: white; height: 0.2rem;}'; */
 
 				for (const nav of navLinks)
 				{
@@ -206,6 +207,7 @@ function updateOnEvent()
 				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
 				contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
 				pageHint.innerHTML = '.contact .content .hint {color: aqua;}';
+				/* scrollTrackerStyle.innerHTML = '.scroll-tracker {background: black; height: 0.2rem;}'; */
 
 				for (const card of cardRule)
 				{
@@ -380,3 +382,6 @@ function contactMsgSend(e)
 }
 /* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL END----------------------------------- */
 
+/* ----------------------------------------------CREATING SCROLL TRACKER ANIMATION---------------------------------- */
+
+/* ----------------------------------------------CREATING SCROLL TRACKER ANIMATION END------------------------------ */
