@@ -118,18 +118,15 @@ function updateOnEvent()
 		nav.addEventListener("mouseout", updateColors);
 	}
 
-
-	let cardClicked = false;
+	/* let cardClicked = false;
 	for (let i = 0; i < cardRule.length; i += 1)
 	{
-		cardRule[i].addEventListener('click', () =>
+		cardRule[i].onclick = () =>
 		{
 			if (!cardClicked)
 			{
 				cardClicked = true;
-				cardLayers[i].style.height = `${100}%`;
-				cardLayers[i].style.opacity = '1';
-				cardHeaders[i].style.opacity = '0';
+				cardAction.innerHTML = '.card:hover.cardLayer{height: 100%;opacity: 1;}.projects .content .card:hover h5{opacity: 0;color: yellow;transform: scale(1.4) translate(-35%, -40%);}';
 			}
 			else
 			{
@@ -138,8 +135,8 @@ function updateOnEvent()
 				cardLayers[i].style.opacity = '0';
 				cardHeaders[i].style.opacity = '1';
 			}
-		});
-	}
+		};
+	} */
 
 
 	function updateColors()
