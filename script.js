@@ -11,6 +11,8 @@ const navLinks = nav.querySelectorAll("ul a");
 const sectionTitleRule = document.querySelectorAll(".container-title");
 
 const cardRule = document.querySelectorAll('.card');
+const cardLayers = document.querySelectorAll('.cardLayer');
+const cardHeaders = document.querySelectorAll('.projects .content .card h5');
 
 const websiteSrcRule = document.querySelector('.websiteCode');
 
@@ -28,6 +30,7 @@ var webSiteCodeSrc = document.head.appendChild(document.createElement("style"));
 var AfterSectionTitle = document.head.appendChild(document.createElement("style"));
 var contactFormBtn = document.head.appendChild(document.createElement("style"));
 var pageHint = document.head.appendChild(document.createElement("style"));
+var cardAction = document.head.appendChild(document.createElement("style"));
 
 const contactForm = document.getElementById('contact-form');
 const form_name = document.getElementById('uName');
@@ -89,15 +92,6 @@ function updateOnEvent()
 		updateColors();
 		navIndicatorUpdate();
 		navIndicator.style.transition = 'none';
-
-		if (window.innerWidth <= 768)
-		{
-			clickHint.innerHTML = "click me";
-		}
-		else
-		{
-			clickHint.innerHTML = "hover me";
-		}
 	});
 	let timeout;
 	logo.addEventListener("mouseover", (e) => 
@@ -123,6 +117,30 @@ function updateOnEvent()
 		nav.addEventListener("mouseover", updateColors);
 		nav.addEventListener("mouseout", updateColors);
 	}
+
+
+	let cardClicked = false;
+	for (let i = 0; i < cardRule.length; i += 1)
+	{
+		cardRule[i].addEventListener('click', () =>
+		{
+			if (!cardClicked)
+			{
+				cardClicked = true;
+				cardLayers[i].style.height = `${100}%`;
+				cardLayers[i].style.opacity = '1';
+				cardHeaders[i].style.opacity = '0';
+			}
+			else
+			{
+				cardClicked = false;
+				cardLayers[i].style.height = `${80}%`;
+				cardLayers[i].style.opacity = '0';
+				cardHeaders[i].style.opacity = '1';
+			}
+		});
+	}
+
 
 	function updateColors()
 	{

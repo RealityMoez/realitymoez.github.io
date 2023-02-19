@@ -433,11 +433,11 @@ header .shown
     transition: all 1s ease;
 }
 
-.card:hover .cardLayer
+/* .card:hover .cardLayer
 {
     height: 100%;
     opacity: 1;
-}
+} */
 
 .cardLayer
 {
@@ -469,6 +469,13 @@ header .shown
     transform: translate(-50%, -50%);
 }
 
+.projects .content .card:hover h5
+{
+    opacity: 0.5;
+    color: yellow;
+    transform: scale(1.4) translate(-35%, -40%);
+}
+
 .projects .content .clickHint
 {
     display: block;
@@ -476,13 +483,6 @@ header .shown
     font-weight: 200;
     color: aqua;
     transition: 0.2s ease color;
-}
-
-.projects .content .card:hover h5
-{
-    opacity: 0;
-    color: yellow;
-    transform: scale(1.4) translate(-35%, -40%);
 }
 
 .cardLayer p
@@ -518,7 +518,7 @@ header .shown
     letter-spacing: 1px;
     border: 3px solid aqua;
     border-radius: 10px;
-    transition: transform 0.2s ease, border-color 2.5s ease;
+    transition: transform 0.2s ease, border 2s ease, background 1s ease, color 0.6s ease;
     height: 5em;
     width: 12em;
     margin-left: auto;
@@ -680,8 +680,9 @@ footer .whatsapp
 
 footer h5 span
 {
-    font-family: 'Cinzel' , sans-serif;
+    font-family: 'Cinzel', sans-serif;
 }
+
 /* SPECIFIC STYLES END */
 
 /* PAGE RESPONSIVENESS */
@@ -722,7 +723,8 @@ footer h5 span
         height: calc(105vh - (1vw * 1));
     }
 
-    .contact .content p, .contact .content .myEmail 
+    .contact .content p,
+    .contact .content .myEmail
     {
         width: 70vw;
     }
@@ -738,4 +740,5 @@ footer h5 span
         width: calc(80% - (1vw * 2));
     }
 }
+
 /* PAGE RESPONSIVENESS END */
