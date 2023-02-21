@@ -704,7 +704,7 @@ footer h5 span
     }
 }
 
-@media only screen and (max-width:550px)
+@media only screen and (max-width:430px)
 {
     .projects .content
     {
@@ -720,7 +720,7 @@ footer h5 span
     {
         width: 80vw;
         margin: 25px auto;
-        height: calc(105vh - (1vw * 1));
+        height: calc(80vh - (1vw * 1)); /*105vh*/
     }
 
     .contact .content p,
