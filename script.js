@@ -93,6 +93,7 @@ function updateOnEvent()
 		navIndicatorUpdate();
 		navIndicator.style.transition = 'none';
 	});
+
 	let timeout;
 	logo.addEventListener("mouseover", (e) => 
 	{
@@ -101,7 +102,7 @@ function updateOnEvent()
 			if (!darkTheme) darkTheme = true;
 			else darkTheme = false;
 
-			nav.style.transition = '2s ease';
+			navIndicator.style.transition = '1s ease';
 			updateColors();
 		}, 500);
 	});
