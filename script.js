@@ -84,7 +84,7 @@ function updateOnEvent()
 	window.addEventListener('scroll', () => 
 	{
 		updateColors();
-		navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.3s ease top, 1s ease background-color';
+		navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.5s ease background-color';
 		navIndicatorUpdate();
 	});
 	window.addEventListener('resize', () => 
@@ -102,7 +102,6 @@ function updateOnEvent()
 			if (!darkTheme) darkTheme = true;
 			else darkTheme = false;
 
-			navIndicator.style.transition = '1s ease';
 			updateColors();
 		}, 500);
 	});
@@ -247,7 +246,7 @@ function updateOnEvent()
 					nav.addEventListener("mouseout", () =>
 					{
 						nav.style.backgroundColor = 'transparent';
-						navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.3s ease top, 1s ease background-color';
+						navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 1s ease background-color';
 					});
 
 					nav.style.transition = 'all 0.5s ease';
