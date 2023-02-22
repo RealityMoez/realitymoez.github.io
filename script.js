@@ -316,6 +316,7 @@ function navIndicatorUpdate()
 							else
 								navIndicator.style.backgroundColor = 'white';
 
+							navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.2s ease background-color';
 							navIndicator.style.width = `${nav.offsetWidth}px`;
 							navIndicator.style.left = `${nav.offsetLeft}px`;
 						}
