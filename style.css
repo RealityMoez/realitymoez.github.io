@@ -301,7 +301,7 @@ footer h5
 .my_work_btn a:hover
 {
     background-color: yellow;
-    border: 3px solid black;
+    border: 2px solid black;
     color: blue;
     transform: scale(1.1);
 }
@@ -320,6 +320,11 @@ footer h5
 {
     color: var(--light-blue-color);
     transform: scale(1.1);
+}
+
+.main h1
+{
+    width: 60vw;
 }
 
 .container h1 .changing_text
@@ -422,15 +427,19 @@ header .shown
     width: 21.25em;
     max-width: 21.25em;
     box-shadow: 5px 5px 25px rgba(1 1 1 / 50%);
-    border-radius: 15px;
+    border-radius: 20px;
     padding: 25px;
     margin: 25px;
     height: 500px;
     text-align: center;
     position: relative;
     cursor: pointer;
-    border: 3px solid aqua;
-    transition: all 1s ease;
+    transition: 1s ease;
+}
+
+.card:hover
+{
+    transform: scale(1.05);
 }
 
 .card:hover .cardLayer
@@ -449,7 +458,7 @@ header .shown
     right: 0;
     overflow: hidden;
     width: 100%;
-    height: 80%;
+    height: 90%;
     opacity: 0;
     transition: all 0.6s;
 }
@@ -528,7 +537,7 @@ header .shown
 .websiteCode:hover
 {
     box-shadow: rgb(255, 255, 255, 0.5) 0px 0px 30px;
-    background: white;
+    background: lightgray;
     border: 3px solid black;
     color: black;
     transform: scale(1.1);
