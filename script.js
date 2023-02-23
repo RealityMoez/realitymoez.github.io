@@ -78,6 +78,39 @@ hidden_elements.forEach((element) => observer.observe(element));
 // ─────────────────────────────────────────────────────────────────────────────
 
 
+/* document.querySelectorAll(".card").forEach(card =>
+{
+	this.querySelector(".cardLayer").addEventListener("click", function ()
+	{
+		if (window.innerWidth <= 768 && this.querySelector(".cardLayer").style.opacity === '1' && this.querySelector(".cardLayer").style.height === '100')
+		{
+			this.querySelector(".cardLayer").style.opacity = '0';
+			this.querySelector(".cardLayer").style.height = '90';
+		}
+	});
+}); */
+
+
+let temp = cardAction.innerHTML;
+for (let i = 0; i < cardLayers.length; i += 1)
+{
+
+	cardLayers[i].addEventListener("click", function ()
+	{
+		if (window.innerWidth <= 768 && getComputedStyle(cardLayers[i]).opacity === '1')
+		{
+			console.log("clicked");
+			const mouseOutEvent = new MouseEvent('mouseout', {
+				bubbles: true,
+				cancelable: true,
+				view: window
+			});
+			cardLayers[i].dispatchEvent(mouseOutEvent);
+			cardRule[i].dispatchEvent(mouseOutEvent);
+		}
+	});
+}
+
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
 {
@@ -109,16 +142,16 @@ function updateOnEvent()
 			{
 				if (darkTheme)
 				{
-					card.style.transition = '1s ease, transform 0.2s ease, border-color 1s ease';
+					card.style.transition = '1s ease, transform 1s ease, border-color 1.2s ease';
 					card.style.border = '3px solid yellow';
 				}
 				else
 				{
-					card.style.transition = '1s ease, transform 0.2s ease, border-color 1s ease';
+					card.style.transition = '1s ease, transform 1s ease, border-color 1.2s ease';
 					card.style.border = '3px solid aqua';
 				}
 			}
-			
+
 		}, 500);
 	});
 
@@ -138,12 +171,12 @@ function updateOnEvent()
 	{
 		if (darkTheme)
 		{
-			card.style.transition = '1s ease, transform 0.2s ease, border-color 1s ease';
+			card.style.transition = '1s ease, transform 1s ease, border-color 1.2s ease';
 			card.style.border = '3px solid yellow';
 		}
 		else
 		{
-			card.style.transition = '1s ease, transform 0.2s ease, border-color 1s ease';
+			card.style.transition = '1s ease, transform 1s ease, border-color 1.2s ease';
 			card.style.border = '3px solid aqua';
 		}
 
