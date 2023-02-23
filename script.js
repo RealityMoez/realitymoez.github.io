@@ -384,8 +384,8 @@ function navIndicatorUpdate()
 								navIndicator.style.backgroundColor = 'white';
 
 							navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.2s ease background-color';
-							navIndicator.style.width = `${nav.offsetWidth}px`;
-							navIndicator.style.left = `${nav.offsetLeft}px`;
+							navIndicator.style.width = `${nav.offsetWidth + 0.5}px`;
+							navIndicator.style.left = `${nav.offsetLeft - 0.5}px`;
 						}
 						else if (!nav.matches(":hover"))
 						{
