@@ -81,6 +81,7 @@ hidden_elements.forEach((element) => observer.observe(element));
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
 {
+
 	window.addEventListener('scroll', () => 
 	{
 		updateColors();
@@ -103,6 +104,21 @@ function updateOnEvent()
 			else darkTheme = false;
 
 			updateColors();
+
+			for (const card of cardRule)
+			{
+				if (darkTheme)
+				{
+					card.style.transition = '1s ease, transform 0.2s ease, border-color 1s ease';
+					card.style.border = '3px solid yellow';
+				}
+				else
+				{
+					card.style.transition = '1s ease, transform 0.2s ease, border-color 1s ease';
+					card.style.border = '3px solid aqua';
+				}
+			}
+			
 		}, 500);
 	});
 
@@ -116,6 +132,37 @@ function updateOnEvent()
 	{
 		nav.addEventListener("mouseover", updateColors);
 		nav.addEventListener("mouseout", updateColors);
+	}
+
+	for (const card of cardRule)
+	{
+		if (darkTheme)
+		{
+			card.style.transition = '1s ease, transform 0.2s ease, border-color 1s ease';
+			card.style.border = '3px solid yellow';
+		}
+		else
+		{
+			card.style.transition = '1s ease, transform 0.2s ease, border-color 1s ease';
+			card.style.border = '3px solid aqua';
+		}
+
+		card.addEventListener("mouseover", () => 
+		{
+			card.style.border = '3px solid black';
+		});
+
+		card.addEventListener("mouseout", () => 
+		{
+			if (darkTheme)
+			{
+				card.style.border = '3px solid yellow';
+			}
+			else
+			{
+				card.style.border = '3px solid aqua';
+			}
+		});
 	}
 
 	/* let cardClicked = false;
@@ -177,7 +224,6 @@ function updateOnEvent()
 				AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
 				contactFormBtn.innerHTML = 'form button {border: 2px solid yellow;}';
 				pageHint.innerHTML = '.contact .content .hint {color: yellow;}';
-				/* scrollTrackerStyle.innerHTML = '.scroll-tracker {background: white; height: 0.2rem;}'; */
 
 				for (const nav of navLinks)
 				{
@@ -193,12 +239,6 @@ function updateOnEvent()
 						navIndicatorUpdate();
 					}
 					navIndicatorUpdate();
-				}
-
-				for (const card of cardRule)
-				{
-					card.style.transition = 'transform 0.2s ease, border-color 2s ease';
-					card.style.border = '3px solid yellow';
 				}
 
 				for (const skillBar of skillBarRule)
@@ -222,12 +262,6 @@ function updateOnEvent()
 				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
 				contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
 				pageHint.innerHTML = '.contact .content .hint {color: aqua;}';
-				/* scrollTrackerStyle.innerHTML = '.scroll-tracker {background: black; height: 0.2rem;}'; */
-
-				for (const card of cardRule)
-				{
-					card.style.border = '3px solid aqua';
-				}
 
 				for (const skillBar of skillBarRule)
 				{
@@ -328,13 +362,13 @@ function navIndicatorUpdate()
 
 						if ("#" + section.id == "#skills")
 						{
-							// Animate the progress bar if the entry is a skill
+							// Animate the skill bar if the viewport is the `skills` section
 							skills.forEach((skill) => 
 							{
 								skillLevel = document.querySelector(`#${skill.name.toLowerCase()}_level`);
 								skillPerc = document.querySelector(`#${skill.name.toLowerCase()}_perc`);
 
-								skillPerc.style.transition = 'all 3s ease';
+								skillPerc.style.transition = 'all 2s ease';
 								skillPerc.textContent = `${skill.level}%`;
 								skillPerc.style.left = `${skill.level + 2}%`;
 
@@ -397,7 +431,3 @@ function contactMsgSend(e)
 		.catch((error) => console.log(error));
 }
 /* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL END----------------------------------- */
-
-/* ----------------------------------------------CREATING SCROLL TRACKER ANIMATION---------------------------------- */
-
-/* ----------------------------------------------CREATING SCROLL TRACKER ANIMATION END------------------------------ */
