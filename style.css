@@ -6,7 +6,7 @@
 
 /*  INVERSE CALCULATION (as something decreases, another increases):
 
-    calc([VALUE] - ([INVERSE VALUE] * [SENSITIVITY]))
+    calc(100vh - [VALUE]vw)   OR   calc(100vw - [VALUE]vh)
 */
 
 :root
@@ -618,7 +618,7 @@ header .shown
 
 .skill
 {
-    width: 50vw;
+    width: 60vw;
     margin: 10px 0;
     text-align: left;
 }
@@ -634,7 +634,7 @@ header .shown
 .skill-bar
 {
     width: 100%;
-    height: 10px;
+    height: 7px;
     transition: background-color 2s ease;
     position: relative;
     border-radius: 10px;
@@ -678,17 +678,18 @@ header .shown
     margin-top: -50px;
 }
 
-.contact .content .hint
+.content .hint
 {
     margin: 30px auto;
-    font-size: calc(20px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
+    font-size: calc(18px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
     font-family: 'Righteous', sans-serif;
     color: yellow;
+    margin: auto;
 }
 
 .contact .content .myEmail
 {
-    font-size: calc(20px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
+    font-size: calc(18px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;
     color: white;
@@ -698,17 +699,14 @@ header .shown
 footer .social_icons
 {
     display: flex;
-    padding: 1% 5%;
+    margin: auto 5vw auto 0vw;
 }
 
 footer .social_icons a
 {
-    display: inline-block;
     font-size: 1.4em;
-    margin: 8% 5px;
+    margin: auto 8px;
     transition: 0.4s ease;
-    width: 30px;
-    height: 20px;
 }
 
 footer .social_icons a:hover
@@ -716,25 +714,22 @@ footer .social_icons a:hover
     transform: scale(1);
 }
 
-.fa-whatsapp
+footer .fa-whatsapp
 {
-    display: block;
-    font-size: 1.6em;
+    margin: 4px 5px;
+    font-size: /* calc(10px - (1 - 15) * ((100vw - 110px) / (1600 - 300))) */ 1.4em;
+    width: 30px;
+    height: 18px;
     letter-spacing: 1px;
     color: rgb(68, 255, 0);
-    margin: auto;
-    margin-left: 20vw;
-    margin-right: auto;
-    text-align: center;
+    /* text-align: center; */
 }
 
 footer .whatsapp
 {
-    display: block;
-    font-size: calc(12px - (1 - 20) * ((100vw - 700px) / (1600 - 300)));
+    margin: 3px 5px;
+    font-size: /* calc(5px - (1 - 15) * ((100vw - 110px) / (1600 - 300))) */ 1.1em;
     color: white;
-    margin: auto auto;
-    margin-top: 8px;
 }
 
 footer h5 span
@@ -763,7 +758,7 @@ footer h5 span
     }
 }
 
-@media only screen and (max-width:430px)
+@media only screen and (max-width:520px)
 {
     .projects .content
     {
@@ -775,18 +770,32 @@ footer h5 span
         height: auto;
     }
 
+    .container-title
+    {
+        margin-bottom: 15px;
+    }
+
     .card
     {
         width: 80vw;
         margin: 25px auto;
-        height: calc(87vh - (1vw * 1));
+        height: calc(120vh - 35vw);
+        min-height: 500px;
+        /* max-height: calc(105vh - (5vw * 1)); */
         /*105vh*/
     }
 
-    .contact .content p,
+    .websiteCode
+    {
+        margin-top: 30px;
+    }
+
+    .content .hint,
     .contact .content .myEmail
     {
-        width: 70vw;
+        /* width: 70vw; */
+        word-wrap: break-word;
+        max-width: 70vw;
     }
 
     form
@@ -799,6 +808,26 @@ footer h5 span
     {
         width: calc(80% - (1vw * 2));
     }
+
+    footer .social_icons
+    {
+        font-size: calc(10px - (1 - 15) * ((100vw - 110px) / (1600 - 300)));
+        margin: auto 5vw auto 0vw;
+    }
 }
 
+@media only screen and (max-width:376px)
+{
+    footer .fa-whatsapp
+    {
+        margin: 6px 5px;
+        margin-right: -10px;
+    }
+
+    footer .whatsapp
+    {
+        margin: 8px 5px;
+        font-size: calc(7px - (1 - 15) * ((100vw - 110px) / (1600 - 300)));
+    }
+}
 /* PAGE RESPONSIVENESS END */
