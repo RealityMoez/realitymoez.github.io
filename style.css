@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:ital,wght@0,100;1,100&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:wght@100;200;400;700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&family=Lobster&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:ital,wght@0,100;1,100&family=Lobster&family=Parisienne&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&display=swap'); */
 
 /*  padding: (top-bottom) (right-left);
@@ -83,7 +83,7 @@ scrollbar-thumb:hover
 
 html
 {
-    background: url(images/bg6.webp);
+    background: url(images/bg.webp);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -204,7 +204,6 @@ footer
     justify-content: space-between;
     background: black;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
-    ;
     overflow: hidden;
 }
 
@@ -722,7 +721,13 @@ footer .fa-whatsapp
     height: 18px;
     letter-spacing: 1px;
     color: rgb(68, 255, 0);
-    /* text-align: center; */
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+footer .fa-whatsapp:hover
+{
+    color: var(--light-blue-color);
 }
 
 footer .whatsapp
@@ -734,7 +739,9 @@ footer .whatsapp
 
 footer h5 span
 {
-    font-family: 'Cinzel', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 
 /* SPECIFIC STYLES END */
@@ -818,10 +825,15 @@ footer h5 span
 
 @media only screen and (max-width:376px)
 {
+    footer .social_icons
+    {
+        margin-left: -10px;
+    }
+
     footer .fa-whatsapp
     {
         margin: 6px 5px;
-        margin-right: -10px;
+        margin-right: -8px;
     }
 
     footer .whatsapp
