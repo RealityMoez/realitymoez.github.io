@@ -142,12 +142,12 @@ function updateOnEvent()
 			{
 				if (darkTheme)
 				{
-					card.style.transition = '1s ease, transform 1s ease, border-color 1.2s ease';
+					card.style.transition = 'transform 1s ease, border-color 1.2s ease, background 3s ease';
 					card.style.border = '3px solid yellow';
 				}
 				else
 				{
-					card.style.transition = '1s ease, transform 1s ease, border-color 1.2s ease';
+					card.style.transition = 'transform 1s ease, border-color 1.2s ease, background 3s ease';
 					card.style.border = '3px solid aqua';
 				}
 			}
@@ -171,12 +171,12 @@ function updateOnEvent()
 	{
 		if (darkTheme)
 		{
-			card.style.transition = '1s ease, transform 1s ease, border-color 1.2s ease';
+			card.style.transition = 'transform 1s ease, border-color 1.2s ease, background 3s ease';
 			card.style.border = '3px solid yellow';
 		}
 		else
 		{
-			card.style.transition = '1s ease, transform 1s ease, border-color 1.2s ease';
+			card.style.transition = 'transform 1s ease, border-color 1.2s ease, background 3s ease';
 			card.style.border = '3px solid aqua';
 		}
 
@@ -197,27 +197,6 @@ function updateOnEvent()
 			}
 		});
 	}
-
-	/* let cardClicked = false;
-	for (let i = 0; i < cardRule.length; i += 1)
-	{
-		cardRule[i].onclick = () =>
-		{
-			if (!cardClicked)
-			{
-				cardClicked = true;
-				cardAction.innerHTML = '.card:hover.cardLayer{height: 100%;opacity: 1;}.projects .content .card:hover h5{opacity: 0;color: yellow;transform: scale(1.4) translate(-35%, -40%);}';
-			}
-			else
-			{
-				cardClicked = false;
-				cardLayers[i].style.height = `${80}%`;
-				cardLayers[i].style.opacity = '0';
-				cardHeaders[i].style.opacity = '1';
-			}
-		};
-	} */
-
 
 	function updateColors()
 	{
