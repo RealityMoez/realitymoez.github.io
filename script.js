@@ -342,7 +342,7 @@ var type = new Typed(".changing_text", {
 		"Computer Science Passionate",
 	],
 	startDelay: 1000,
-	typeSpeed: 75,
+	typeSpeed: 60,
 	backSpeed: 20,
 	backDelay: 1400,
 	loop: true,
