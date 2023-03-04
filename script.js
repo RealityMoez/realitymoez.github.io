@@ -76,6 +76,18 @@ const observer = new IntersectionObserver((entries) =>
 const hidden_elements = document.querySelectorAll(".hidden");
 hidden_elements.forEach((element) => observer.observe(element));
 // ─────────────────────────────────────────────────────────────────────────────
+skills.forEach((skill) => 
+{
+	skillLevel = document.querySelector(`#${skill.name.toLowerCase()}_level`);
+	skillPerc = document.querySelector(`#${skill.name.toLowerCase()}_perc`);
+
+	skillPerc.style.transition = 'all 0.1s ease';
+	skillPerc.textContent = '';
+	skillPerc.style.left = '2%';
+
+	skillLevel.style.transition = 'all 0.1s ease';
+	skillLevel.style.width = `0%`;
+});
 
 
 /* document.querySelectorAll(".card").forEach(card =>
