@@ -581,6 +581,7 @@ header .shown
     width: 12em;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 }
 
 .websiteCode:hover
