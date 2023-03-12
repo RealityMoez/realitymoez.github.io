@@ -498,7 +498,7 @@ header .shown
 
 .card:hover
 {
-    transform: scale(1.07);
+    transform: scale(1.05);
 }
 
 .card:hover .cardLayer
