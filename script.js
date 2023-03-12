@@ -126,7 +126,6 @@ for (let i = 0; i < cardLayers.length; i += 1)
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
 {
-
 	window.addEventListener('scroll', () => 
 	{
 		updateColors();
@@ -154,16 +153,15 @@ function updateOnEvent()
 			{
 				if (darkTheme)
 				{
-					card.style.transition = 'transform 1s ease, border-color 1.2s ease, background 3s ease';
+					card.style.transition = 'transform 0.6s ease, border-color 1.2s ease, background 3s ease';
 					card.style.border = '3px solid yellow';
 				}
 				else
 				{
-					card.style.transition = 'transform 1s ease, border-color 1.2s ease, background 3s ease';
+					card.style.transition = 'transform 0.6s ease, border-color 1.2s ease, background 3s ease';
 					card.style.border = '3px solid aqua';
 				}
 			}
-
 		}, 500);
 	});
 
@@ -183,12 +181,12 @@ function updateOnEvent()
 	{
 		if (darkTheme)
 		{
-			card.style.transition = 'transform 1s ease, border-color 1.2s ease, background 3s ease';
+			card.style.transition = 'transform 0.6s ease, border-color 1.2s ease, background 3s ease';
 			card.style.border = '3px solid yellow';
 		}
 		else
 		{
-			card.style.transition = 'transform 1s ease, border-color 1.2s ease, background 3s ease';
+			card.style.transition = 'transform 0.6s ease, border-color 1.2s ease, background 3s ease';
 			card.style.border = '3px solid aqua';
 		}
 
