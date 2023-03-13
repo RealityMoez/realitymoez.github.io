@@ -103,7 +103,7 @@ skills.forEach((skill) =>
 }); */
 
 
-let temp = cardAction.innerHTML;
+/* let temp = cardAction.innerHTML;
 for (let i = 0; i < cardLayers.length; i += 1)
 {
 
@@ -121,7 +121,7 @@ for (let i = 0; i < cardLayers.length; i += 1)
 			cardRule[i].dispatchEvent(mouseOutEvent);
 		}
 	});
-}
+} */
 
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
@@ -422,11 +422,47 @@ function navIndicatorUpdate()
 // ─────────────────────────────────────────────────────────────────────────────
 /* ----------------------------------------------NAVIGATION INDICATOR END----------------------------------------- */
 
+var divElement = document.createElement('div');
+var loadingElement = document.createElement('div');
+const formContainer = document.getElementsByTagName('form')[0];
+
+function animateLoading()
+{
+	divElement = document.createElement('div');
+
+	loadingElement = document.createElement('div');
+	loadingElement.classList.add('loading-dots');
+
+	const loadingDot1 = document.createElement('span');
+	const loadingDot2 = document.createElement('span');
+	const loadingDot3 = document.createElement('span');
+
+	loadingElement.appendChild(loadingDot1);
+	loadingElement.appendChild(loadingDot2);
+	loadingElement.appendChild(loadingDot3);
+
+	divElement.appendChild(loadingElement);
+	formContainer.appendChild(divElement);
+}
 
 /* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL--------------------------------------- */
 emailjs.init("xtwhY4kGdw0CXW4Xk");
 
-contactForm.addEventListener("submit", contactMsgSend);
+var sendBtn = document.getElementsByClassName("contactSend")[0];
+var animateTimeOut;
+
+contactForm.addEventListener("submit", (e) => 
+{
+	if (formContainer.childElementCount == 4)
+	{
+		animateLoading();
+		animateTimeOut = setTimeout(() => 
+		{
+			formContainer.removeChild(divElement);
+		}, 800);
+	}
+	contactMsgSend(e);
+});
 
 function contactMsgSend(e)
 {
@@ -451,5 +487,6 @@ function contactMsgSend(e)
 			alert("Message Sent");
 		})
 		.catch((error) => console.log(error));
+		
 }
 /* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL END----------------------------------- */
