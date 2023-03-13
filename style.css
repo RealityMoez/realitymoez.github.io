@@ -257,12 +257,12 @@ footer h5
     transition: 0.2s ease;
 }
 
-.navigation ul:hover > a
+.navigation ul:hover>a
 {
     opacity: 0.4;
 }
 
-.navigation ul:hover > a:hover
+.navigation ul:hover>a:hover
 {
     opacity: 1;
 }
@@ -727,7 +727,9 @@ footer .social_icons a:hover
 footer .fa-whatsapp
 {
     margin: 4px 5px;
-    font-size: /* calc(10px - (1 - 15) * ((100vw - 110px) / (1600 - 300))) */ 1.4em;
+    font-size:
+        /* calc(10px - (1 - 15) * ((100vw - 110px) / (1600 - 300))) */
+        1.4em;
     width: 30px;
     height: 18px;
     letter-spacing: 1px;
@@ -744,7 +746,9 @@ footer .fa-whatsapp:hover
 footer .whatsapp
 {
     margin: 3px 5px;
-    font-size: /* calc(5px - (1 - 15) * ((100vw - 110px) / (1600 - 300))) */ 1.1em;
+    font-size:
+        /* calc(5px - (1 - 15) * ((100vw - 110px) / (1600 - 300))) */
+        1.1em;
     color: white;
 }
 
@@ -753,6 +757,57 @@ footer h5 span
     font-family: 'Josefin Sans', sans-serif;
     letter-spacing: 1px;
     font-weight: 700;
+}
+
+.loading-dots
+{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-right: 10px;
+}
+
+.loading-dots span
+{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0;
+}
+
+.loading-dots span:nth-child(1)
+{
+    animation: loading-anim 1s infinite;
+}
+
+.loading-dots span:nth-child(2)
+{
+    animation: loading-anim 1s infinite 0.33s;
+}
+
+.loading-dots span:nth-child(3)
+{
+    animation: loading-anim 1s infinite 0.66s;
+}
+
+@keyframes loading-anim
+{
+    from
+    {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    to
+    {
+        opacity: 1;
+        transform: translateY(-6px);
+    }
 }
 
 /* SPECIFIC STYLES END */
@@ -853,4 +908,5 @@ footer h5 span
         font-size: calc(7px - (1 - 15) * ((100vw - 110px) / (1600 - 300)));
     }
 }
+
 /* PAGE RESPONSIVENESS END */
