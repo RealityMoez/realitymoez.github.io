@@ -606,7 +606,7 @@ header .shown
 .websiteCode .src_code
 {
     display: block;
-    font-size: 0.8em;
+    font-size: 0.6em;
     font-weight: 200;
     color: red;
     transition: 0.2s ease color;
