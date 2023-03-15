@@ -459,7 +459,7 @@ contactForm.addEventListener("submit", (e) =>
 		animateTimeOut = setTimeout(() => 
 		{
 			formContainer.removeChild(divElement);
-		}, 800);
+		}, 850);
 	}
 	contactMsgSend(e);
 });
