@@ -153,12 +153,12 @@ function updateOnEvent()
 			{
 				if (darkTheme)
 				{
-					card.style.transition = 'transform 0.6s ease, border-color 1.2s ease, background 3s ease';
+					card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
 					card.style.border = '3px solid yellow';
 				}
 				else
 				{
-					card.style.transition = 'transform 0.6s ease, border-color 1.2s ease, background 3s ease';
+					card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
 					card.style.border = '3px solid aqua';
 				}
 			}
@@ -181,12 +181,12 @@ function updateOnEvent()
 	{
 		if (darkTheme)
 		{
-			card.style.transition = 'transform 0.6s ease, border-color 1.2s ease, background 3s ease';
+			card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
 			card.style.border = '3px solid yellow';
 		}
 		else
 		{
-			card.style.transition = 'transform 0.6s ease, border-color 1.2s ease, background 3s ease';
+			card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
 			card.style.border = '3px solid aqua';
 		}
 
