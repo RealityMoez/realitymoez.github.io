@@ -89,40 +89,6 @@ skills.forEach((skill) =>
 	skillLevel.style.width = `0%`;
 });
 
-
-/* document.querySelectorAll(".card").forEach(card =>
-{
-	this.querySelector(".cardLayer").addEventListener("click", function ()
-	{
-		if (window.innerWidth <= 768 && this.querySelector(".cardLayer").style.opacity === '1' && this.querySelector(".cardLayer").style.height === '100')
-		{
-			this.querySelector(".cardLayer").style.opacity = '0';
-			this.querySelector(".cardLayer").style.height = '90';
-		}
-	});
-}); */
-
-
-/* let temp = cardAction.innerHTML;
-for (let i = 0; i < cardLayers.length; i += 1)
-{
-
-	cardLayers[i].addEventListener("click", function ()
-	{
-		if (window.innerWidth <= 768 && getComputedStyle(cardLayers[i]).opacity === '1')
-		{
-			console.log("clicked");
-			const mouseOutEvent = new MouseEvent('mouseout', {
-				bubbles: true,
-				cancelable: true,
-				view: window
-			});
-			cardLayers[i].dispatchEvent(mouseOutEvent);
-			cardRule[i].dispatchEvent(mouseOutEvent);
-		}
-	});
-} */
-
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
 {
