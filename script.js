@@ -60,7 +60,7 @@ const observer = new IntersectionObserver((entries) =>
 {
 	entries.forEach((entry) =>
 	{
-		if (entry.isIntersecting)
+		if(entry.isIntersecting)
 		{
 			entry.target.classList.remove("hidden");
 			entry.target.classList.add("shown");
@@ -89,40 +89,6 @@ skills.forEach((skill) =>
 	skillLevel.style.width = `0%`;
 });
 
-
-/* document.querySelectorAll(".card").forEach(card =>
-{
-	this.querySelector(".cardLayer").addEventListener("click", function ()
-	{
-		if (window.innerWidth <= 768 && this.querySelector(".cardLayer").style.opacity === '1' && this.querySelector(".cardLayer").style.height === '100')
-		{
-			this.querySelector(".cardLayer").style.opacity = '0';
-			this.querySelector(".cardLayer").style.height = '90';
-		}
-	});
-}); */
-
-
-/* let temp = cardAction.innerHTML;
-for (let i = 0; i < cardLayers.length; i += 1)
-{
-
-	cardLayers[i].addEventListener("click", function ()
-	{
-		if (window.innerWidth <= 768 && getComputedStyle(cardLayers[i]).opacity === '1')
-		{
-			console.log("clicked");
-			const mouseOutEvent = new MouseEvent('mouseout', {
-				bubbles: true,
-				cancelable: true,
-				view: window
-			});
-			cardLayers[i].dispatchEvent(mouseOutEvent);
-			cardRule[i].dispatchEvent(mouseOutEvent);
-		}
-	});
-} */
-
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
 {
@@ -144,14 +110,14 @@ function updateOnEvent()
 	{
 		timeout = setTimeout(() =>
 		{
-			if (!darkTheme) darkTheme = true;
+			if(!darkTheme) darkTheme = true;
 			else darkTheme = false;
 
 			updateColors();
 
-			for (const card of cardRule)
+			for(const card of cardRule)
 			{
-				if (darkTheme)
+				if(darkTheme)
 				{
 					card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
 					card.style.border = '3px solid yellow';
@@ -171,15 +137,15 @@ function updateOnEvent()
 		updateColors();
 	});
 
-	for (const nav of navLinks)
+	for(const nav of navLinks)
 	{
 		nav.addEventListener("mouseover", updateColors);
 		nav.addEventListener("mouseout", updateColors);
 	}
 
-	for (const card of cardRule)
+	for(const card of cardRule)
 	{
-		if (darkTheme)
+		if(darkTheme)
 		{
 			card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
 			card.style.border = '3px solid yellow';
@@ -197,7 +163,7 @@ function updateOnEvent()
 
 		card.addEventListener("mouseout", () => 
 		{
-			if (darkTheme)
+			if(darkTheme)
 			{
 				card.style.border = '3px solid yellow';
 			}
@@ -211,23 +177,23 @@ function updateOnEvent()
 	function updateColors()
 	{
 		pageStart = (window.scrollY <= 120);
-		if (pageStart)
+		if(pageStart)
 		{
 			header.style.transition = 'background-color 0.5s ease';
 			header.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
 
-			if (logo.matches(":hover"))
+			if(logo.matches(":hover"))
 				logoLink.style.color = "aqua";
 			else
 				logoLink.style.color = "white";
 
-			for (const nav of navLinks)
+			for(const nav of navLinks)
 			{
 				nav.style.transition = 'all 0.5s ease';
 				nav.style.color = "yellow";
 				nav.style.backgroundColor = "transparent";
 
-				if (nav.matches(":hover"))
+				if(nav.matches(":hover"))
 				{
 					nav.style.backgroundColor = "white";
 					nav.style.color = "blue";
@@ -236,7 +202,7 @@ function updateOnEvent()
 		}
 		else
 		{
-			if (darkTheme)
+			if(darkTheme)
 			{
 				logoLink.style.color = "white";
 				header.style.backgroundColor = "black";
@@ -247,13 +213,13 @@ function updateOnEvent()
 				contactFormBtn.innerHTML = 'form button {border: 2px solid yellow;}';
 				pageHint.innerHTML = '.contact .content .hint {color: yellow;}';
 
-				for (const nav of navLinks)
+				for(const nav of navLinks)
 				{
 					nav.style.color = 'yellow';
 					nav.style.backgroundColor = "transparent";
 					navIndicator.style.border = 'none';
 
-					if (nav.matches(":hover"))
+					if(nav.matches(":hover"))
 					{
 						nav.style.transition = '0.5s ease';
 						nav.style.backgroundColor = "white";
@@ -263,12 +229,12 @@ function updateOnEvent()
 					navIndicatorUpdate();
 				}
 
-				for (const skillBar of skillBarRule)
+				for(const skillBar of skillBarRule)
 				{
 					skillBar.style.backgroundColor = 'rgba(234, 255, 0, 0.2)';
 				}
 
-				for (const skillLevel of skillLevelRule)
+				for(const skillLevel of skillLevelRule)
 				{
 					skillLevel.style.backgroundColor = 'yellow';
 				}
@@ -285,17 +251,17 @@ function updateOnEvent()
 				contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
 				pageHint.innerHTML = '.contact .content .hint {color: aqua;}';
 
-				for (const skillBar of skillBarRule)
+				for(const skillBar of skillBarRule)
 				{
 					skillBar.style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
 				}
 
-				for (const skillLevel of skillLevelRule)
+				for(const skillLevel of skillLevelRule)
 				{
 					skillLevel.style.backgroundColor = 'aqua';
 				}
 
-				for (const nav of navLinks)
+				for(const nav of navLinks)
 				{
 					navIndicatorUpdate();
 
@@ -309,7 +275,7 @@ function updateOnEvent()
 					nav.style.color = "black";
 					nav.style.backgroundColor = "transparent";
 
-					if (nav.matches(":hover"))
+					if(nav.matches(":hover"))
 					{
 						nav.style.backgroundColor = "black";
 						nav.style.color = "white";
@@ -343,7 +309,7 @@ var type = new Typed(".changing_text", {
 // TODO: NAVIGATION INDICATOR AUTO SCROLL BASED ON SECTION
 function navIndicatorUpdate()
 {
-	if (window.scrollY < 250)
+	if(window.scrollY < 250)
 		navIndicator.style.width = '0';
 
 	const scrollTop = document.documentElement.scrollTop;
@@ -351,20 +317,20 @@ function navIndicatorUpdate()
 
 	sections.forEach(function (section, i)
 	{
-		if (i > 0)
+		if(i > 0)
 		{
 			const sectionTop = section.offsetTop;
 			const sectionBottom = section.offsetTop + section.offsetHeight;
 
-			if (scrollTop >= sectionTop - 200 && sectionBottom > scrollBottom - 300) 
+			if(scrollTop >= sectionTop - 200 && sectionBottom > scrollBottom - 300) 
 			{
-				for (const nav of navLinks)
+				for(const nav of navLinks)
 				{
-					if (section.hasAttribute('id') && nav.getAttribute("href") == '#' + section.id)
+					if(section.hasAttribute('id') && nav.getAttribute("href") == '#' + section.id)
 					{
-						if (nav.matches(":hover"))
+						if(nav.matches(":hover"))
 						{
-							if (darkTheme)
+							if(darkTheme)
 							{
 								navIndicator.style.backgroundColor = 'black';
 								navIndicator.style.borderBottom = '0.5px solid white';
@@ -376,13 +342,13 @@ function navIndicatorUpdate()
 							navIndicator.style.width = `${nav.offsetWidth + 0.5}px`;
 							navIndicator.style.left = `${nav.offsetLeft - 0.5}px`;
 						}
-						else if (!nav.matches(":hover"))
+						else if(!nav.matches(":hover"))
 						{
 							navIndicator.style.width = `${nav.offsetWidth - 24}px`;
 							navIndicator.style.left = `${nav.offsetLeft + 12}px`;
 						}
 
-						if ("#" + section.id == "#skills")
+						if("#" + section.id == "#skills")
 						{
 							// Animate the skill bar if the viewport is the `skills` section
 							skills.forEach((skill) => 
@@ -453,7 +419,7 @@ var animateTimeOut;
 
 contactForm.addEventListener("submit", (e) => 
 {
-	if (formContainer.childElementCount == 4)
+	if(formContainer.childElementCount == 4)
 	{
 		animateLoading();
 		animateTimeOut = setTimeout(() => 
@@ -477,7 +443,7 @@ function contactMsgSend(e)
 		message: form_message.value,
 	};
 
-	if (form_email.value == "")
+	if(form_email.value == "")
 		parameters.email = "empty@mail.com";
 
 	emailjs
@@ -487,6 +453,5 @@ function contactMsgSend(e)
 			alert("Message Sent");
 		})
 		.catch((error) => console.log(error));
-		
 }
 /* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL END----------------------------------- */
