@@ -32,6 +32,12 @@
 }
 
 /*------------------CUSTOM SCROLL BAR SUPPORTING CHROME - EDGE - OPERA BROWSERS--------------*/
+/* Style the scrollbar */
+::-webkit-scrollbar
+{
+    width: 10px;
+}
+
 /* Style the scrollbar track */
 ::-webkit-scrollbar-track
 {
@@ -49,13 +55,6 @@
 {
     background-color: white;
 }
-
-/* Style the scrollbar */
-::-webkit-scrollbar
-{
-    width: 10px;
-}
-
 /* ────────────────────────────────────────────────────────────────────────── */
 
 /*------------------CUSTOM SCROLL BAR SUPPORTING FIREFOX BROWSER--------------*/
@@ -78,7 +77,6 @@ scrollbar-thumb:hover
 {
     background-color: #333;
 }
-
 /* ────────────────────────────────────────────────────────────────────────── */
 
 html
@@ -183,7 +181,7 @@ form button
     background: linear-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.4) 100%);
     border: 2px solid yellow;
     border-radius: 10px;
-    transition: transform 0.2s ease, border 2s ease, background 1s ease, color 0.6s ease;
+    transition: transform 0.1s ease, border 1s ease, background 1s ease, color 0.4s ease;
     cursor: pointer;
     letter-spacing: 2px;
 }
@@ -193,7 +191,7 @@ form button:hover
     color: black;
     background: white;
     border: 2px solid black;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 footer
@@ -586,7 +584,7 @@ header .shown
     letter-spacing: 1px;
     border: 3px solid aqua;
     border-radius: 10px;
-    transition: transform 0.2s ease, border 2s ease, background 0.4s ease, color 0.6s ease;
+    transition: transform 0.15s ease, border 1s ease, background 1.3s ease, color 1s ease;
     height: 5em;
     width: 12em;
     margin-left: auto;
@@ -600,7 +598,7 @@ header .shown
     background: rgb(234, 234, 234);
     border: 3px solid black;
     color: black;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .websiteCode .src_code
