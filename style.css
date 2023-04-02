@@ -233,7 +233,7 @@ footer h5
 
 .logo a:hover
 {
-    transform: scale(1.351, 1.2);
+    transform: scale(1.42, 1.2);
 }
 
 .navigation
@@ -360,7 +360,7 @@ footer h5
     background-color: yellow;
     border: 2px solid black;
     color: blue;
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .social_icons a
@@ -420,7 +420,7 @@ header .shown
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
-    transition: all 1s;
+    transition: all 1.3s;
 }
 
 .hidden
@@ -428,7 +428,7 @@ header .shown
     opacity: 0;
     filter: blur(15px);
     transform: translateY(50%);
-    transition: all 0.6s;
+    transition: all 1s;
 }
 
 .shown
@@ -436,7 +436,7 @@ header .shown
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
-    transition: all 0.6s;
+    transition: all 1s;
 }
 
 .container-title
