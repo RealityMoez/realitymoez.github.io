@@ -494,11 +494,6 @@ header .shown
     transition: 1s ease;
 }
 
-.card:hover
-{
-    transform: scale(1.05);
-}
-
 .card:hover .cardLayer
 {
     height: 100%;
