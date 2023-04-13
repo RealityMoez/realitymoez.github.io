@@ -240,7 +240,7 @@ function updateOnEvent()
                     nav.addEventListener("mouseout", () =>
                     {
                         nav.style.backgroundColor = 'transparent';
-                        navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 1s ease background-color';
+                        navIndicator.style.transition = '0.3s ease width, 0.3s ease left, 1s ease background-color';
                     });
 
                     nav.style.transition = 'all 0.5s ease';
@@ -310,7 +310,7 @@ function navIndicatorUpdate()
 							else
 								navIndicator.style.backgroundColor = 'white';
 
-							navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.2s ease background-color';
+							navIndicator.style.transition = '0.3s ease width, 0.3s ease left, 0.2s ease background-color';
 							navIndicator.style.width = `${nav.offsetWidth + 0.5}px`;
 							navIndicator.style.left = `${nav.offsetLeft - 0.5}px`;
 						}
