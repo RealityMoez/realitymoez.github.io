@@ -274,7 +274,7 @@ footer h5
     width: 0;
     height: 8px;
     background-color: black;
-    transition: 0.3s ease-in-out width, 0.3s ease left, 0.3s ease top, 1s ease background-color;
+    transition: 0.3s ease width, 0.3s ease left, 0.3s ease top, 1s ease background-color;
 }
 
 .container
