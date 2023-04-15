@@ -282,6 +282,7 @@ footer h5
     background-color: transparent;
     transition: 0.3s ease width, 0.3s ease left, 0.3s ease top, 1s ease background-color;
     border-bottom: 1px solid white;
+    border-radius: 25px;
 }
 
 .navHoverBackground
