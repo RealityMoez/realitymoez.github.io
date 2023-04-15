@@ -92,170 +92,198 @@ skills.forEach((skill) =>
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
 {
-    window.addEventListener('scroll', () =>
-    {
-        updateColors();
-        navIndicator.style.transition = '0.3s ease-in-out width, 0.3s ease left, 0.5s ease background-color';
-        navIndicatorUpdate();
-    });
-    window.addEventListener('resize', () =>
-    {
-        updateColors();
-        navIndicatorUpdate();
-        navIndicator.style.transition = 'none';
-    });
+	window.addEventListener('scroll', () => 
+	{
+		updateColors();
+		navIndicator.style.transition = '0.2s ease width, 0.2s ease left';
+		sectionPositionUpdate();
+	});
+	window.addEventListener('resize', () => 
+	{
+		updateColors();
+		sectionPositionUpdate();
+		navIndicator.style.transition = 'none';
+	});
 
-    let timeout;
-    logo.addEventListener("mouseover", (e) =>
-    {
-        timeout = setTimeout(() =>
-        {
-            darkTheme = !darkTheme;
-            updateColors();
-            for(const card of cardRule)
-            {
-                card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
-                card.style.border = darkTheme ? '3px solid yellow' : '3px solid aqua';
-            }
-        }, 500);
-    });
+	let timeout;
+	logo.addEventListener("mouseover", (e) => 
+	{
+		timeout = setTimeout(() =>
+		{
+			if(!darkTheme) darkTheme = true;
+			else darkTheme = false;
 
-    logo.addEventListener("mouseout", (e) =>
-    {
-        clearTimeout(timeout);
-        updateColors();
-    });
+			updateColors();
 
-    for(const nav of navLinks)
-    {
-        nav.addEventListener("mouseover", updateColors);
-        nav.addEventListener("mouseout", updateColors);
-    }
+			for(const card of cardRule)
+			{
+				if(darkTheme)
+				{
+					card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
+					card.style.border = '3px solid yellow';
+				}
+				else
+				{
+					card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
+					card.style.border = '3px solid aqua';
+				}
+			}
+		}, 500);
+	});
 
-    for(const card of cardRule)
-    {
-        card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
-        card.style.border = darkTheme ? '3px solid yellow' : '3px solid aqua';
+	logo.addEventListener("mouseout", (e) => 
+	{
+		clearTimeout(timeout);
+		updateColors();
+	});
 
-        card.addEventListener("mouseover", () =>
-        {
-            card.style.border = '3px solid black';
-        });
+	for(const nav of navLinks)
+	{
+		nav.addEventListener("mouseover", () => 
+		{
+			updateColors();
+			//sectionPositionUpdate();
+		});
+		nav.addEventListener("mouseout", () =>
+		{
+			updateColors();
+			//sectionPositionUpdate();
+		});
+	}
 
-        card.addEventListener("mouseout", () =>
-        {
-            card.style.border = darkTheme ? '3px solid yellow' : '3px solid aqua';
-        });
-    }
+	for(let i = 0;i < cardRule.length;i++)
+	{
+		if(darkTheme)
+		{
+			cardRule[i].style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
+			cardRule[i].style.border = '3px solid yellow';
+		}
+		else
+		{
+			cardRule[i].style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
+			cardRule[i].style.border = '3px solid aqua';
+		}
 
-    function updateColors()
-    {
-        pageStart = (window.scrollY <= 120);
-        if(pageStart)
-        {
-            header.style.transition = 'background-color 0.5s ease';
-            header.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
+		cardRule[i].addEventListener("mouseover", () => 
+		{
+			cardRule[i].style.border = '3px solid black';
+		});
 
-            if(logo.matches(":hover"))
-                logoLink.style.color = "aqua";
-            else
-                logoLink.style.color = "white";
+		cardRule[i].addEventListener("mouseout", () => 
+		{
+			if(darkTheme)
+			{
+				cardRule[i].style.border = '3px solid yellow';
+			}
+			else
+			{
+				cardRule[i].style.border = '3px solid aqua';
+			}
+		});
+	}
 
-            for(const nav of navLinks)
-            {
-                nav.style.transition = 'all 0.5s ease';
-                nav.style.color = "yellow";
-                nav.style.backgroundColor = "transparent";
+	function updateColors()
+	{
+		pageStart = (window.scrollY <= 120);
+		if(pageStart)
+		{
+			header.style.transition = 'background-color 0.5s ease';
+			header.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
 
-                if(nav.matches(":hover"))
-                {
-                    nav.style.backgroundColor = "white";
-                    nav.style.color = "blue";
-                }
-            }
-        } else
-        {
-            if(darkTheme)
-            {
-                logoLink.style.color = "white";
-                header.style.backgroundColor = "black";
-                header.style.transition = 'background-color 2s ease';
-                navIndicator.style.backgroundColor = 'white';
-                webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid yellow;}';
-                AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
-                contactFormBtn.innerHTML = 'form button {border: 2px solid yellow;}';
-                pageHint.innerHTML = '.contact .content .hint {color: yellow;}';
+			if(logo.matches(":hover"))
+				logoLink.style.color = "aqua";
+			else
+				logoLink.style.color = "white";
 
-                for(const nav of navLinks)
-                {
-                    nav.style.color = 'yellow';
-                    nav.style.backgroundColor = "transparent";
-                    navIndicator.style.border = 'none';
+			for(const nav of navLinks)
+			{
+				nav.style.color = "yellow";
+				nav.style.backgroundColor = "transparent";
+			}
+		}
+		else
+		{
+			if(darkTheme)
+			{
+				logoLink.style.color = "white";
+				header.style.backgroundColor = "black";
+				header.style.transition = 'background-color 2s ease';
+				navIndicator.style.backgroundColor = 'white';
+				navIndicator.style.borderBottom = '1px solid transparent';
+				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid yellow;}';
+				AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
+				contactFormBtn.innerHTML = 'form button {border: 2px solid yellow;}';
+				pageHint.innerHTML = '.contact .content .hint {color: yellow;}';
 
-                    if(nav.matches(":hover"))
-                    {
-                        nav.style.transition = '0.5s ease';
-                        nav.style.backgroundColor = "white";
-                        nav.style.color = "black";
-                        navIndicatorUpdate();
-                    }
-                    navIndicatorUpdate();
-                }
+				for(const skillBar of skillBarRule)
+				{
+					skillBar.style.backgroundColor = 'rgba(234, 255, 0, 0.2)';
+				}
 
-                for(const skillBar of skillBarRule)
-                {
-                    skillBar.style.backgroundColor = 'rgba(234, 255, 0, 0.2)';
-                }
+				for(const skillLevel of skillLevelRule)
+				{
+					skillLevel.style.backgroundColor = 'yellow';
+				}
 
-                for(const skillLevel of skillLevelRule)
-                {
-                    skillLevel.style.backgroundColor = 'yellow';
-                }
-            } else
-            {
-                logoLink.style.color = "black";
-                header.style.transition = 'background-color 2s ease';
-                header.style.backgroundColor = "aqua";
-                navIndicator.style.backgroundColor = 'black';
-                webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;}';
-                webSiteCodeSrc.innerHTML = '.websiteCode:hover {border: 3px solid black;}';
-                AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
-                contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
-                pageHint.innerHTML = '.contact .content .hint {color: aqua;}';
+				for(const nav of navLinks)
+				{
+					nav.addEventListener("mouseout", () =>
+					{
+						nav.style.backgroundColor = 'transparent';
+						navIndicator.style.transition = '0.2s ease width, 0.2s ease left';
+					});
 
-                for(const skillBar of skillBarRule)
-                {
-                    skillBar.style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
-                }
+					nav.style.color = 'yellow';
 
-                for(const skillLevel of skillLevelRule)
-                {
-                    skillLevel.style.backgroundColor = 'aqua';
-                }
+					if(nav.matches(":hover"))
+					{
+						sectionPositionUpdate();
+					}
+					sectionPositionUpdate();
+				}
+			}
+			else
+			{
+				logoLink.style.color = "black";
+				header.style.transition = 'background-color 2s ease';
+				header.style.backgroundColor = "aqua";
+				navIndicator.style.backgroundColor = 'black';
+				navIndicator.style.borderBottom = '1px solid white';
+				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;}';
+				webSiteCodeSrc.innerHTML = '.websiteCode:hover {border: 3px solid black;}';
+				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
+				contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
+				pageHint.innerHTML = '.contact .content .hint {color: aqua;}';
 
-                for(const nav of navLinks)
-                {
-                    navIndicatorUpdate();
+				for(const skillBar of skillBarRule)
+				{
+					skillBar.style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
+				}
 
-                    nav.addEventListener("mouseout", () =>
-                    {
-                        nav.style.backgroundColor = 'transparent';
-                        navIndicator.style.transition = '0.3s ease width, 0.3s ease left, 1s ease background-color';
-                    });
+				for(const skillLevel of skillLevelRule)
+				{
+					skillLevel.style.backgroundColor = 'aqua';
+				}
 
-                    nav.style.transition = 'all 0.5s ease';
-                    nav.style.color = "black";
-                    nav.style.backgroundColor = "transparent";
+				for(const nav of navLinks)
+				{
+					nav.addEventListener("mouseout", () =>
+					{
+						nav.style.backgroundColor = 'transparent';
+						navIndicator.style.transition = '0.2s ease width, 0.2s ease left';
+					});
 
-                    if(nav.matches(":hover"))
-                    {
-                        nav.style.backgroundColor = "black";
-                        nav.style.color = "white";
-                    }
-                }
-            }
-        }
-    }
+					nav.style.color = "black";
+
+					if(nav.matches(":hover"))
+					{
+						sectionPositionUpdate();
+					}
+					sectionPositionUpdate();
+				}
+			}
+		}
+	}
 }
 updateOnEvent();
 // ─────────────────────────────────────────────────────────────────────────────
@@ -279,10 +307,13 @@ var type = new Typed(".changing_text", {
 
 /* ----------------------------------------------NAVIGATION INDICATOR----------------------------------------- */
 // TODO: NAVIGATION INDICATOR AUTO SCROLL BASED ON SECTION
-function navIndicatorUpdate()
+function sectionPositionUpdate()
 {
 	if(window.scrollY < 250)
+	{
 		navIndicator.style.width = '0';
+		navIndicator.style.left = '0';
+	}
 
 	const scrollTop = document.documentElement.scrollTop;
 	const scrollBottom = document.documentElement.scrollTop + windowHeight;
@@ -304,20 +335,23 @@ function navIndicatorUpdate()
 						{
 							if(darkTheme)
 							{
-								navIndicator.style.backgroundColor = 'black';
-								navIndicator.style.borderBottom = '0.5px solid white';
+								navIndicator.style.backgroundColor = 'white';
+								navIndicator.style.borderBottom = '1px solid transparent';
 							}
 							else
-								navIndicator.style.backgroundColor = 'white';
+							{
+								navIndicator.style.backgroundColor = 'black';
+								navIndicator.style.borderBottom = '1px solid white';
+							}
 
-							navIndicator.style.transition = '0.3s ease width, 0.3s ease left, 0.2s ease background-color';
-							navIndicator.style.width = `${nav.offsetWidth + 0.5}px`;
-							navIndicator.style.left = `${nav.offsetLeft - 0.5}px`;
+							navIndicator.style.transition = '0.2s ease width, 0.2s ease left';
+							navIndicator.style.width = `${nav.offsetWidth - 3}px`;
+							navIndicator.style.left = `${nav.offsetLeft + 2}px`;
 						}
-						else if(!nav.matches(":hover"))
+						if(!nav.matches(":hover"))
 						{
-							navIndicator.style.width = `${nav.offsetWidth - 24}px`;
-							navIndicator.style.left = `${nav.offsetLeft + 12}px`;
+							navIndicator.style.width = `${(nav.offsetWidth - 60)}px`;
+							navIndicator.style.left = `${(nav.offsetLeft + 30)}px`;
 						}
 
 						if("#" + section.id == "#skills")
@@ -427,3 +461,36 @@ function contactMsgSend(e)
 		.catch((error) => console.log(error));
 }
 /* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL END----------------------------------- */
+
+/* ----------------------------------------------NAVIGATION HOVER EFFECT--------------------------------------------- */
+var navHoverBackground = document.getElementsByClassName('navHoverBackground')[0];
+navLinks.forEach((navLink) => 
+{
+	navLink.addEventListener('mouseover', (e) => 
+	{
+		if(darkTheme)
+		{
+			navHoverBackground.style.opacity = '1';
+			navHoverBackground.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+			navHoverBackground.style.width = `${navLink.offsetWidth + 0.5}px`;
+			navHoverBackground.style.left = `${navLink.offsetLeft - 0.5}px`;
+		}
+		else
+		{
+			navHoverBackground.style.opacity = '1';
+			if(pageStart)
+				navHoverBackground.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+			else
+				navHoverBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+			navHoverBackground.style.width = `${navLink.offsetWidth + 0.5}px`;
+			navHoverBackground.style.left = `${navLink.offsetLeft - 0.5}px`;
+		}
+	});
+
+	navLink.addEventListener('mouseout', (e) => 
+	{
+		navHoverBackground.style.opacity = '0';
+	});
+});
+
+/* ----------------------------------------------NAVIGATION HOVER EFFECT END----------------------------------------- */

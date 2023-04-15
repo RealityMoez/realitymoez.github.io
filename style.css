@@ -241,8 +241,11 @@ footer h5
     margin-right: 10%;
 }
 
+/* For the above code, create a background with opacity 0.2, and that background shows when hovering over the navLinks and moves with the hover position. */
+
 .navigation ul a
 {
+    position: relative;
     display: inline-block;
     color: yellow;
     text-transform: uppercase;
@@ -252,7 +255,10 @@ footer h5
     margin-right: -4px;
     margin-bottom: -10px;
     margin-top: -10px;
-    transition: 0.2s ease;
+    transition: 0.2s ease, opacity 0.5s ease, background 0s ease;
+    /* border-radius: 10px;
+    height: 40px;
+    padding: 8px 15px 0px 15px; */
 }
 
 .navigation ul:hover>a
@@ -270,11 +276,26 @@ footer h5
     display: flex;
     position: absolute;
     bottom: -10px;
-    left: 50px;
+    left: 0;
     width: 0;
-    height: 8px;
-    background-color: black;
+    height: 4px;
+    background-color: transparent;
     transition: 0.3s ease width, 0.3s ease left, 0.3s ease top, 1s ease background-color;
+    border-bottom: 1px solid white;
+}
+
+.navHoverBackground
+{
+    z-index: -1;
+    display: flex;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 40px;
+    transition: 0.2s ease width, 0.2s ease left, 0.3s ease opacity;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .container
@@ -350,7 +371,7 @@ footer h5
     letter-spacing: 1px;
     border: 2px solid aqua;
     border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     margin-left: 3px;
     transition: 0.2s ease;
 }
@@ -361,6 +382,25 @@ footer h5
     border: 2px solid black;
     color: blue;
     transform: scale(1.08);
+}
+
+.my_resume a
+{
+    opacity: 0.5;
+    font-size: 0.8em;
+    color: cyan;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    transition: 0.3s opacity ease, 0.3s color ease;
+}
+
+.my_resume a:hover
+{
+    opacity: 1;
+    color: white;
 }
 
 .social_icons a
@@ -478,6 +518,8 @@ header .shown
     height: auto;
 }
 
+/* How to fix cardLayer <p> scaling lag relative to the card scale(1.05) */
+
 .card
 {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(0, 0, 255, 0.5));
@@ -492,6 +534,11 @@ header .shown
     position: relative;
     cursor: pointer;
     transition: 1s ease;
+}
+
+.card:hover
+{
+    transform: scale(1);
 }
 
 .card:hover .cardLayer
@@ -548,6 +595,7 @@ header .shown
 
 .cardLayer p
 {
+
     color: white;
     letter-spacing: 1px;
     padding: 25px 25px;
@@ -709,7 +757,7 @@ footer .social_icons a
 {
     font-size: 1.4em;
     margin: auto 8px;
-    transition: 0.2s ease;
+    transition: 0.4s ease;
 }
 
 footer .social_icons a:hover
