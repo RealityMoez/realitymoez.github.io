@@ -371,17 +371,17 @@ footer h5
     letter-spacing: 1px;
     border: 2px solid aqua;
     border-radius: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     margin-left: 3px;
-    transition: 0.2s ease;
+    transition: 0.5s ease, background-color 0.5s ease, transform 0.2s ease;
 }
 
 .my_work_btn a:hover
 {
-    background-color: yellow;
+    background-color: rgba(255, 255, 0, 0.8);
     border: 2px solid black;
     color: blue;
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 .my_resume a
@@ -392,15 +392,20 @@ footer h5
     letter-spacing: 2px;
     margin-top: 5px;
     margin-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
     display: inline-block;
-    transition: 0.3s opacity ease, 0.3s color ease;
+    border-radius: 5px;
+    transition: 0.2s opacity ease, 0.2s color ease, 0.2s background-color ease;
 }
 
 .my_resume a:hover
 {
     opacity: 1;
-    color: white;
+    color: rgb(255, 255, 255);
+    background-color: rgba(193, 0, 0, 0.3);
+    text-decoration: underline;
 }
 
 .social_icons a
