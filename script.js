@@ -2,8 +2,7 @@
 let pageStart = true;
 let darkTheme = true;
 const header = document.getElementsByClassName("header")[0];
-const logo = document.getElementsByClassName("logo")[0];
-const logoLink = document.getElementsByTagName("a")[0];
+const logoSrc = document.getElementById("logoSrc");
 
 const nav = document.getElementsByClassName("navigation")[0];
 const navLinks = nav.querySelectorAll("ul a");
@@ -37,7 +36,8 @@ const form_name = document.getElementById('uName');
 const form_email = document.getElementById('uEmail');;
 const form_message = document.getElementById('uMessage');
 
-const clickHint = document.getElementsByClassName(".clickHint");
+var navHoverBackground = document.getElementsByClassName('navHoverBackground')[0];
+/* -------------------------------------------VARIABLES END----------------------------------------- */
 
 // ARRAY OF SKILLS AND THEIR LEVEL
 const skills = [
@@ -105,49 +105,64 @@ function updateOnEvent()
 		navIndicator.style.transition = 'none';
 	});
 
-	let timeout;
-	logo.addEventListener("mouseover", (e) => 
+	function changeTheme()
 	{
-		timeout = setTimeout(() =>
+		let timeout;
+		logoSrc.addEventListener("mouseover", (e) => 
 		{
-			if(!darkTheme) darkTheme = true;
-			else darkTheme = false;
-
-			updateColors();
-
-			for(const card of cardRule)
+			if(pageStart)
 			{
-				if(darkTheme)
-				{
-					card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
-					card.style.border = '3px solid yellow';
-				}
-				else
-				{
-					card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
-					card.style.border = '3px solid aqua';
-				}
+				logoSrc.style.filter = 'sepia(1) hue-rotate(300deg) saturate(15) brightness(1) invert(1)';
 			}
-		}, 500);
-	});
+			else if(darkTheme)
+			{
+				logoSrc.style.filter = 'sepia(1) hue-rotate(300deg) saturate(15) brightness(1) invert(1)';
+			}
+			else
+			{
+				logoSrc.style.filter = 'sepia(0) hue-rotate(300deg) saturate(1) brightness(1) contrast(2)';
+			}
 
-	logo.addEventListener("mouseout", (e) => 
-	{
-		clearTimeout(timeout);
-		updateColors();
-	});
+			timeout = setTimeout(() =>
+			{
+				if(!darkTheme) darkTheme = true;
+				else darkTheme = false;
+
+				updateColors();
+
+				for(const card of cardRule)
+				{
+					if(darkTheme)
+					{
+						card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
+						card.style.border = '3px solid yellow';
+					}
+					else
+					{
+						card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
+						card.style.border = '3px solid aqua';
+					}
+				}
+			}, 500);
+		});
+
+		logoSrc.addEventListener("mouseout", (e) => 
+		{
+			clearTimeout(timeout);
+			updateColors();
+		});
+	}
+	changeTheme();
 
 	for(const nav of navLinks)
 	{
 		nav.addEventListener("mouseover", () => 
 		{
 			updateColors();
-			//sectionPositionUpdate();
 		});
 		nav.addEventListener("mouseout", () =>
 		{
 			updateColors();
-			//sectionPositionUpdate();
 		});
 	}
 
@@ -190,10 +205,12 @@ function updateOnEvent()
 			header.style.transition = 'background-color 0.5s ease';
 			header.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
 
-			if(logo.matches(":hover"))
-				logoLink.style.color = "aqua";
+			if(logoSrc.matches(':hover'))
+			{
+				logoSrc.style.filter = 'sepia(1) hue-rotate(300deg) saturate(15) brightness(1) invert(1)';
+			}
 			else
-				logoLink.style.color = "white";
+				logoSrc.style.filter = 'none';
 
 			for(const nav of navLinks)
 			{
@@ -205,7 +222,7 @@ function updateOnEvent()
 		{
 			if(darkTheme)
 			{
-				logoLink.style.color = "white";
+				logoSrc.style.filter = 'sepia(0) hue-rotate(300deg) saturate(1) brightness(1) contrast(2)';
 				header.style.backgroundColor = "black";
 				header.style.transition = 'background-color 2s ease';
 				navIndicator.style.backgroundColor = 'white';
@@ -244,7 +261,7 @@ function updateOnEvent()
 			}
 			else
 			{
-				logoLink.style.color = "black";
+				logoSrc.style.filter = 'sepia(1) hue-rotate(300deg) saturate(15) brightness(1) invert(1)';
 				header.style.transition = 'background-color 2s ease';
 				header.style.backgroundColor = "aqua";
 				navIndicator.style.backgroundColor = 'black';
@@ -306,7 +323,7 @@ var type = new Typed(".changing_text", {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /* ----------------------------------------------NAVIGATION INDICATOR----------------------------------------- */
-// TODO: NAVIGATION INDICATOR AUTO SCROLL BASED ON SECTION
+// TODO: NAVIGATION INDICATOR AUTO MOVE BASED ON SECTION
 function sectionPositionUpdate()
 {
 	if(window.scrollY < 250)
@@ -463,7 +480,6 @@ function contactMsgSend(e)
 /* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL END----------------------------------- */
 
 /* ----------------------------------------------NAVIGATION HOVER EFFECT--------------------------------------------- */
-var navHoverBackground = document.getElementsByClassName('navHoverBackground')[0];
 navLinks.forEach((navLink) => 
 {
 	navLink.addEventListener('mouseover', (e) => 
@@ -478,10 +494,12 @@ navLinks.forEach((navLink) =>
 		else
 		{
 			navHoverBackground.style.opacity = '1';
+
 			if(pageStart)
 				navHoverBackground.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
 			else
 				navHoverBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+
 			navHoverBackground.style.width = `${navLink.offsetWidth + 0.5}px`;
 			navHoverBackground.style.left = `${navLink.offsetLeft - 0.5}px`;
 		}
@@ -492,5 +510,4 @@ navLinks.forEach((navLink) =>
 		navHoverBackground.style.opacity = '0';
 	});
 });
-
 /* ----------------------------------------------NAVIGATION HOVER EFFECT END----------------------------------------- */
