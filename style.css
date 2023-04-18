@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:wght@100;200;400;700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&family=Lobster&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:wght@100;200;400;700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&family=Lobster&display=swap");
 /* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:ital,wght@0,100;1,100&family=Lobster&family=Parisienne&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&display=swap'); */
 
 /*  padding: (top-bottom) (right-left);
@@ -23,7 +23,7 @@
 /* GENERAL STYLES */
 *
 {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
     border: 0;
@@ -55,6 +55,7 @@
 {
     background-color: white;
 }
+
 /* ────────────────────────────────────────────────────────────────────────── */
 
 /*------------------CUSTOM SCROLL BAR SUPPORTING FIREFOX BROWSER--------------*/
@@ -77,6 +78,7 @@ scrollbar-thumb:hover
 {
     background-color: #333;
 }
+
 /* ────────────────────────────────────────────────────────────────────────── */
 
 html
@@ -92,6 +94,7 @@ header
     display: flex;
     background-color: rgba(255, 255, 255, 0.1);
     width: 100%;
+    height: 57px;
     position: fixed;
     z-index: 2;
     justify-content: space-between;
@@ -127,7 +130,7 @@ h2
 
 h3
 {
-    font-family: 'Questrial', sans-serif;
+    font-family: "Questrial", sans-serif;
     margin-bottom: 15px;
     color: var(--light-gray-color);
     font-size: calc(14px - (10 - 14) * ((100vw - 600px) / (1600 - 300)));
@@ -151,7 +154,7 @@ form input,
 form textarea
 {
     font-size: 1em;
-    font-family: 'Questrial', sans-serif;
+    font-family: "Questrial", sans-serif;
     color: white;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -178,10 +181,12 @@ form button
     width: calc(300px - (2vw * 2));
     height: 7vh;
     color: white;
-    background: linear-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(rgba(255, 255, 255, 0.3) 0%,
+            rgba(0, 0, 0, 0.4) 100%);
     border: 2px solid yellow;
     border-radius: 10px;
-    transition: transform 0.1s ease, border 1s ease, background 1s ease, color 0.4s ease;
+    transition: transform 0.1s ease, border 1s ease, background 1s ease,
+        color 0.4s ease;
     cursor: pointer;
     letter-spacing: 2px;
 }
@@ -231,9 +236,23 @@ footer h5
     transition: all 1s ease;
 }
 
+.logo img
+{
+    height: 50px;
+    width: 55px;
+    border-radius: 50%;
+    transition: filter 0.1s ease;
+    object-fit: cover;
+}
+
+.logo img:hover
+{
+    filter: none;
+}
+
 .logo a:hover
 {
-    transform: scale(1.42, 1.2);
+    transform: scale(1);
 }
 
 .navigation
@@ -280,7 +299,8 @@ footer h5
     width: 0;
     height: 4px;
     background-color: transparent;
-    transition: 0.3s ease width, 0.3s ease left, 0.3s ease top, 1s ease background-color;
+    transition: 0.3s ease width, 0.3s ease left, 0.3s ease top,
+        1s ease background-color;
     border-bottom: 1px solid white;
     border-radius: 25px;
 }
@@ -327,28 +347,48 @@ footer h5
 {
     align-items: center;
     padding: 10% 20% 10% 20%;
-    background: linear-gradient(to bottom, black 0%, transparent 0%, transparent 80%, black 100%), transparent;
+    background: linear-gradient(to bottom,
+            black 0%,
+            transparent 0%,
+            transparent 80%,
+            black 100%),
+        transparent;
 }
 
 .projects
 {
-    background: linear-gradient(to bottom, black 0%, transparent 10%, transparent 80%, black 100%), transparent;
+    background: linear-gradient(to bottom,
+            black 0%,
+            transparent 10%,
+            transparent 80%,
+            black 100%),
+        transparent;
 }
 
 .skills
 {
-    background: linear-gradient(to bottom, black 0%, transparent 30%, transparent 80%, black 100%), transparent;
+    background: linear-gradient(to bottom,
+            black 0%,
+            transparent 30%,
+            transparent 80%,
+            black 100%),
+        transparent;
 }
 
 .contact
 {
-    background: linear-gradient(to bottom, black 0%, transparent 30%, transparent 100%, black 100%), transparent;
+    background: linear-gradient(to bottom,
+            black 0%,
+            transparent 30%,
+            transparent 100%,
+            black 100%),
+        transparent;
 }
 
 /* font-size: calc(15px - (1 - 15) * ((200vw - 300px) / (1200 - 300))); */
 .myname
 {
-    font-family: 'Righteous', cursive;
+    font-family: "Righteous", cursive;
     color: yellow;
     text-shadow: red 2px 1px 1px;
     font-size: 1.3em;
@@ -374,7 +414,8 @@ footer h5
     border-radius: 10px;
     margin-bottom: 1px;
     margin-left: 3px;
-    transition: 0.3s ease, background-color 0.3s ease, transform 0.2s ease, border 0.1s ease;
+    transition: 0.3s ease, background-color 0.3s ease, transform 0.15s ease,
+        border 0.1s ease;
 }
 
 .my_work_btn a:hover
@@ -398,14 +439,15 @@ footer h5
     padding-right: 4px;
     display: inline-block;
     border-radius: 5px;
-    transition: 0.2s opacity ease, 0.2s color ease, 0.2s background-color ease;
+    transition: 0.15s ease;
 }
 
 .my_resume a:hover
 {
     opacity: 1;
     color: rgb(255, 255, 255);
-    background-color: rgba(255, 255, 0, 0.5);
+    background-color: rgba(255, 255, 0, 0.2);
+    text-decoration: underline;
 }
 
 .social_icons a
@@ -414,7 +456,7 @@ footer h5
     color: white;
     font-size: 2em;
     margin: auto 10px;
-    transition: 0.2s ease;
+    transition: 0.1s ease;
     text-shadow: black 0px 0px 10px;
 }
 
@@ -431,7 +473,7 @@ footer h5
 
 .container h1 .changing_text
 {
-    font-family: 'Righteous', cursive;
+    font-family: "Righteous", cursive;
     letter-spacing: 4px;
     text-shadow: blue 8px 0px 2px;
 }
@@ -492,7 +534,7 @@ header .shown
     padding: 1rem 15rem;
     line-height: 1;
     font-size: calc(20px + (2vw * 1));
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     color: white;
 }
 
@@ -589,7 +631,7 @@ header .shown
     transform: scale(1.4) translate(-35%, -40%);
 }
 
-.projects .content .clickHint
+.projects .content .cardHint
 {
     display: block;
     font-size: 0.6em;
@@ -600,7 +642,6 @@ header .shown
 
 .cardLayer p
 {
-
     color: white;
     letter-spacing: 1px;
     padding: 25px 25px;
@@ -632,7 +673,8 @@ header .shown
     letter-spacing: 1px;
     border: 3px solid aqua;
     border-radius: 10px;
-    transition: transform 0.15s ease, border 1s ease, background 1.3s ease, color 1s ease, box-shadow 0.5s ease;
+    transition: transform 0.15s ease, border 1s ease, background 1.3s ease,
+        color 1s ease, box-shadow 0.5s ease;
     height: 5em;
     width: 12em;
     margin-left: auto;
@@ -738,7 +780,7 @@ header .shown
 {
     margin: 30px auto;
     font-size: calc(18px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
-    font-family: 'Righteous', sans-serif;
+    font-family: "Righteous", sans-serif;
     color: yellow;
     margin: auto;
 }
@@ -746,7 +788,7 @@ header .shown
 .contact .content .myEmail
 {
     font-size: calc(18px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     font-weight: 700;
     color: white;
     margin: 30px auto;
@@ -762,7 +804,7 @@ footer .social_icons a
 {
     font-size: 1.4em;
     margin: auto 8px;
-    transition: 0.4s ease;
+    transition: 0.2s ease;
 }
 
 footer .social_icons a:hover
@@ -800,7 +842,7 @@ footer .whatsapp
 
 footer h5 span
 {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     letter-spacing: 1px;
     font-weight: 700;
 }
@@ -859,7 +901,7 @@ footer h5 span
 /* SPECIFIC STYLES END */
 
 /* PAGE RESPONSIVENESS */
-@media only screen and (max-width:935px)
+@media only screen and (max-width: 935px)
 {
     .logo
     {
@@ -877,7 +919,7 @@ footer h5 span
     }
 }
 
-@media only screen and (max-width:520px)
+@media only screen and (max-width: 520px)
 {
     .projects .content
     {
@@ -935,7 +977,7 @@ footer h5 span
     }
 }
 
-@media only screen and (max-width:376px)
+@media only screen and (max-width: 376px)
 {
     footer .social_icons
     {
