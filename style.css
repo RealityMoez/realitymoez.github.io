@@ -679,7 +679,7 @@ header .shown
     width: 12em;
     margin-left: auto;
     margin-right: auto;
-    cursor: pointer;
+    cursor: default;
 }
 
 .websiteCode:hover
@@ -823,7 +823,7 @@ footer .fa-whatsapp
     letter-spacing: 1px;
     color: rgb(68, 255, 0);
     transition: 0.2s ease;
-    cursor: pointer;
+    cursor: default;
 }
 
 footer .fa-whatsapp:hover
