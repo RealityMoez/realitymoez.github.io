@@ -665,7 +665,7 @@ header .shown
 {
     display: block;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 12px;
     color: white;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(0, 0, 255, 0.5));
     font-size: 1.2em;
@@ -673,10 +673,10 @@ header .shown
     letter-spacing: 1px;
     border: 3px solid aqua;
     border-radius: 10px;
-    transition: transform 0.15s ease, border 1s ease, background 1.3s ease,
-        color 1s ease, box-shadow 0.5s ease;
-    height: 5em;
-    width: 12em;
+    transition: transform 0.12s ease, border 0.8s ease, background 0.6s ease,
+        color 0.6s ease, box-shadow 0.3s ease;
+    height: 4em;
+    width: 11em;
     margin-left: auto;
     margin-right: auto;
     cursor: default;
@@ -688,7 +688,8 @@ header .shown
     background: rgb(234, 234, 234);
     border: 3px solid black;
     color: black;
-    transform: scale(1.05);
+    transform: scale(1.03);
+    cursor: pointer;
 }
 
 .websiteCode .src_code
@@ -704,6 +705,12 @@ header .shown
 {
     display: block;
     color: blue;
+}
+
+.websiteCode:hover span
+{
+    text-decoration: underline;
+    text-underline-offset: 1px;
 }
 
 .skills .content
