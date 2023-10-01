@@ -48,7 +48,7 @@
 ::-webkit-scrollbar-thumb
 {
     background-color: var(--dark-gray-color);
-    border-radius: 5px;
+    border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover
@@ -70,7 +70,7 @@ scrollbar
 scrollbar-thumb
 {
     background-color: #000;
-    border-radius: 5px;
+    border-radius: 0px;
 }
 
 /* On hover, change scrollbar thumb */
@@ -147,7 +147,7 @@ form
     flex-direction: column;
     padding: 1vw 2vw;
     width: 60vw;
-    border-radius: 15px;
+    border-radius: 0px;
 }
 
 form input,
@@ -157,7 +157,7 @@ form textarea
     font-family: "Questrial", sans-serif;
     color: white;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border-radius: 0px;
     padding: 1% 2%;
     margin: calc(10px - (1vw * 0.1)) 1%;
     resize: none;
@@ -184,7 +184,7 @@ form button
     background: linear-gradient(rgba(255, 255, 255, 0.3) 0%,
             rgba(0, 0, 0, 0.4) 100%);
     border: 2px solid yellow;
-    border-radius: 10px;
+    border-radius: 0px;
     transition: transform 0.1s ease, border 0.6s ease, background 0.6s ease,
         color 0.6s ease;
     cursor: pointer;
@@ -275,9 +275,6 @@ footer h5
     margin-bottom: -10px;
     margin-top: -10px;
     transition: 0.2s ease, opacity 0.5s ease, background 0s ease;
-    /* border-radius: 10px;
-    height: 40px;
-    padding: 8px 15px 0px 15px; */
 }
 
 .navigation ul:hover>a
@@ -302,7 +299,7 @@ footer h5
     transition: 0.3s ease width, 0.3s ease left, 0.3s ease top,
         1s ease background-color;
     border-bottom: 1px solid white;
-    border-radius: 25px;
+    border-radius: 0px;
 }
 
 .navHoverBackground
@@ -315,7 +312,7 @@ footer h5
     width: 0;
     height: 40px;
     transition: 0.2s ease width, 0.2s ease left, 0.3s ease opacity;
-    border-radius: 5px;
+    border-radius: 0px;
     background: rgba(255, 255, 255, 0.2);
 }
 
@@ -411,18 +408,21 @@ footer h5
     padding: 0.9375em 2.1875em;
     letter-spacing: 1px;
     border: 2px solid aqua;
-    border-radius: 10px;
+    border-radius: 0px;
     margin-bottom: 1px;
     margin-left: 3px;
-    transition: 0.3s ease, background-color 0.3s ease, transform 0.15s ease,
-        border 0.1s ease;
+    background: linear-gradient(rgba(255, 255, 255, 0.3) 0%,
+    rgba(0, 0, 0, 0.4) 100%);
+    border: 2px solid yellow;
+    transition: transform 0.2s ease, border 0.2s ease, background 0.3s ease,
+        color 0.3s ease;
 }
 
 .my_work_btn a:hover
 {
     background-color: rgba(255, 255, 0, 0.8);
-    border: 2px solid rgba(255, 255, 0, 1);
-    color: blue;
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
     transform: scale(1.05);
 }
 
@@ -438,7 +438,7 @@ footer h5
     padding-left: 4px;
     padding-right: 4px;
     display: inline-block;
-    border-radius: 5px;
+    border-radius: 0px;
     transition: 0.15s ease;
 }
 
@@ -456,14 +456,13 @@ footer h5
     color: white;
     font-size: 2em;
     margin: auto 10px;
-    transition: 0.1s ease;
+    transition: 0.2s ease;
     text-shadow: black 0px 0px 10px;
 }
 
 .social_icons a:hover
 {
     color: var(--light-blue-color);
-    transform: scale(1.1);
 }
 
 .main h1
@@ -545,7 +544,7 @@ header .shown
     content: "";
     width: calc(35px + (3vw * 2));
     height: 5px;
-    border-radius: 3px;
+    border-radius: 0px;
     background-color: aqua;
     bottom: 0;
     left: 50%;
@@ -573,7 +572,7 @@ header .shown
     width: 21.25em;
     max-width: 21.25em;
     box-shadow: 5px 5px 25px rgba(1 1 1 / 50%);
-    border-radius: 20px;
+    border-radius: 0px;
     padding: 25px;
     margin: 25px;
     height: 500px;
@@ -598,7 +597,7 @@ header .shown
 {
     background: linear-gradient(to bottom, transparent, rgba(125, 0, 0, 0.8));
     position: absolute;
-    border-radius: 14px;
+    border-radius: 0px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -672,7 +671,7 @@ header .shown
     font-weight: 600;
     letter-spacing: 1px;
     border: 3px solid aqua;
-    border-radius: 10px;
+    border-radius: 0px;
     transition: transform 0.12s ease, border 0.8s ease, background 0.6s ease,
         color 0.6s ease, box-shadow 0.3s ease;
     height: 4em;
@@ -685,10 +684,10 @@ header .shown
 .websiteCode:hover
 {
     box-shadow: rgb(255, 255, 255, 0.5) 0px 0px 30px;
-    background: rgb(234, 234, 234);
+    background: rgb(205, 205, 205);
     border: 3px solid black;
     color: black;
-    transform: scale(1.03);
+    transform: scale(1.01);
     cursor: pointer;
 }
 
@@ -707,11 +706,6 @@ header .shown
     color: blue;
 }
 
-.websiteCode:hover span
-{
-    text-decoration: underline;
-    text-underline-offset: 1px;
-}
 
 .skills .content
 {
@@ -742,13 +736,13 @@ header .shown
     height: 7px;
     transition: background-color 2s ease;
     position: relative;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 
 .skill-level
 {
     transition: width 3s ease;
-    border-radius: 10px;
+    border-radius: 0px;
     height: 100%;
     transition: background-color 2s ease;
     position: absolute;
@@ -926,7 +920,7 @@ footer h5 span
     }
 }
 
-@media only screen and (max-width: 520px)
+@media (max-width: 520px)
 {
     .projects .content
     {
@@ -947,10 +941,8 @@ footer h5 span
     {
         width: 80vw;
         margin: 25px auto;
-        height: calc(120vh - 35vw);
-        min-height: 500px;
-        /* max-height: calc(105vh - (5vw * 1)); */
-        /*105vh*/
+        height: calc(75vh - 30px);
+        min-height: max-content;
     }
 
     .websiteCode
@@ -968,7 +960,7 @@ footer h5 span
 
     form
     {
-        font-size: 4vw;
+        font-size: 3vw;
         width: 80vw;
     }
 
@@ -982,9 +974,34 @@ footer h5 span
         font-size: calc(10px - (1 - 15) * ((100vw - 110px) / (1600 - 300)));
         margin: auto 5vw auto 0vw;
     }
+
+
 }
 
-@media only screen and (max-width: 376px)
+@media (min-width: 424px) and (max-width: 520px)
+{
+    footer .whatsapp
+    {
+        margin: 8px 5px;
+        font-size: calc(7px - (1 - 15) * ((100vw - 100px) / (1300)));
+    }
+}
+
+@media (max-width: 423px)
+{
+    .card
+    {
+        height: calc(80vh - 30px);
+        min-height: max-content;
+    }
+    footer .whatsapp
+    {
+        margin: 8px 5px;
+        font-size: calc(7px - (1 - 15) * ((100vw - 110px) / (1300)));
+    }
+}
+
+@media (max-width: 395px)
 {
     footer .social_icons
     {
@@ -996,12 +1013,5 @@ footer h5 span
         margin: 6px 5px;
         margin-right: -8px;
     }
-
-    footer .whatsapp
-    {
-        margin: 8px 5px;
-        font-size: calc(7px - (1 - 15) * ((100vw - 110px) / (1600 - 300)));
-    }
 }
-
 /* PAGE RESPONSIVENESS END */
