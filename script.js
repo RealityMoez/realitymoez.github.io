@@ -1,6 +1,6 @@
 /* ----------------------------------------------VARIABLES----------------------------------------- */
 let pageStart = true;
-let darkTheme = true;
+let yellowTheme = true;
 const header = document.getElementsByClassName("header")[0];
 const logoSrc = document.getElementById("logoSrc");
 
@@ -40,13 +40,13 @@ var navHoverBackground = document.getElementsByClassName('navHoverBackground')[0
 /* -------------------------------------------VARIABLES END----------------------------------------- */
 
 // ARRAY OF SKILLS AND THEIR LEVEL
-const skills = [
-	{ name: "Android", level: 90 },
+const skills = [	
+	{ name: "JavaScript", level: 90 },
 	{ name: "Java", level: 85 },
 	{ name: "Cpp", level: 80 },
 	{ name: "CSharp", level: 75 },
 	{ name: "C", level: 70 },
-	{ name: "JavaScript", level: 70 },
+	{ name: "Android", level: 70 },
 	{ name: "Python", level: 65 },
 	{ name: "HTML", level: 60 },
 	{ name: "CSS", level: 60 },
@@ -79,12 +79,6 @@ hidden_elements.forEach((element) => observer.observe(element));
 skills.forEach((skill) => 
 {
 	skillLevel = document.querySelector(`#${skill.name.toLowerCase()}_level`);
-	skillPerc = document.querySelector(`#${skill.name.toLowerCase()}_perc`);
-
-	skillPerc.style.transition = 'all 0.1s ease';
-	skillPerc.textContent = '';
-	skillPerc.style.left = '2%';
-
 	skillLevel.style.transition = 'all 0.1s ease';
 	skillLevel.style.width = `0%`;
 });
@@ -105,7 +99,7 @@ function updateOnEvent()
 		navIndicator.style.transition = 'none';
 	});
 
-	function changeTheme()
+	function updateTheme()
 	{
 		let timeout;
 		logoSrc.addEventListener("mouseover", (e) => 
@@ -114,7 +108,7 @@ function updateOnEvent()
 			{
 				logoSrc.style.filter = 'sepia(1) hue-rotate(300deg) saturate(15) brightness(1) invert(1)';
 			}
-			else if(darkTheme)
+			else if(yellowTheme)
 			{
 				logoSrc.style.filter = 'sepia(1) hue-rotate(300deg) saturate(15) brightness(1) invert(1)';
 			}
@@ -125,14 +119,14 @@ function updateOnEvent()
 
 			timeout = setTimeout(() =>
 			{
-				if(!darkTheme) darkTheme = true;
-				else darkTheme = false;
+				if(!yellowTheme) yellowTheme = true;
+				else yellowTheme = false;
 
 				updateColors();
 
 				for(const card of cardRule)
 				{
-					if(darkTheme)
+					if(yellowTheme)
 					{
 						card.style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
 						card.style.border = '3px solid yellow';
@@ -152,7 +146,7 @@ function updateOnEvent()
 			updateColors();
 		});
 	}
-	changeTheme();
+	updateTheme();
 
 	for(const nav of navLinks)
 	{
@@ -168,7 +162,7 @@ function updateOnEvent()
 
 	for(let i = 0;i < cardRule.length;i++)
 	{
-		if(darkTheme)
+		if(yellowTheme)
 		{
 			cardRule[i].style.transition = 'transform 0.6s ease, border-color 1s ease, background 3s ease';
 			cardRule[i].style.border = '3px solid yellow';
@@ -186,7 +180,7 @@ function updateOnEvent()
 
 		cardRule[i].addEventListener("mouseout", () => 
 		{
-			if(darkTheme)
+			if(yellowTheme)
 			{
 				cardRule[i].style.border = '3px solid yellow';
 			}
@@ -216,11 +210,12 @@ function updateOnEvent()
 			{
 				nav.style.color = "yellow";
 				nav.style.backgroundColor = "transparent";
+				if(nav.matches(":hover")) navHoverBgYellow(nav);
 			}
 		}
 		else
 		{
-			if(darkTheme)
+			if(yellowTheme)
 			{
 				logoSrc.style.filter = 'sepia(0) hue-rotate(300deg) saturate(1) brightness(1) contrast(2)';
 				header.style.backgroundColor = "black";
@@ -257,6 +252,7 @@ function updateOnEvent()
 						sectionPositionUpdate();
 					}
 					sectionPositionUpdate();
+					if(nav.matches(":hover")) navHoverBgYellow(nav);
 				}
 			}
 			else
@@ -297,6 +293,7 @@ function updateOnEvent()
 						sectionPositionUpdate();
 					}
 					sectionPositionUpdate();
+					if(nav.matches(":hover")) navHoverBgCyan(nav);
 				}
 			}
 		}
@@ -342,7 +339,7 @@ function sectionPositionUpdate()
 			const sectionTop = section.offsetTop;
 			const sectionBottom = section.offsetTop + section.offsetHeight;
 
-			if(scrollTop >= sectionTop - 200 && sectionBottom > scrollBottom - 300) 
+			if(scrollTop >= (sectionTop - 200) && (scrollBottom - 300) < sectionBottom) 
 			{
 				for(const nav of navLinks)
 				{
@@ -350,7 +347,7 @@ function sectionPositionUpdate()
 					{
 						if(nav.matches(":hover"))
 						{
-							if(darkTheme)
+							if(yellowTheme)
 							{
 								navIndicator.style.backgroundColor = 'white';
 								navIndicator.style.borderBottom = '1px solid transparent';
@@ -371,19 +368,13 @@ function sectionPositionUpdate()
 							navIndicator.style.left = `${(nav.offsetLeft + 30)}px`;
 						}
 
-						if("#" + section.id == "#skills")
+						if(section.id == "skills")
 						{
 							// Animate the skill bar if the viewport is the `skills` section
 							skills.forEach((skill) => 
 							{
 								skillLevel = document.querySelector(`#${skill.name.toLowerCase()}_level`);
-								skillPerc = document.querySelector(`#${skill.name.toLowerCase()}_perc`);
-
-								skillPerc.style.transition = 'all 2s ease';
-								skillPerc.textContent = `${skill.level}%`;
-								skillPerc.style.left = `${skill.level + 2}%`;
-
-								skillLevel.style.transition = 'all 3s ease';
+								skillLevel.style.transition = 'all 2s ease';
 								skillLevel.style.width = `${skill.level}%`;
 							});
 						}
@@ -392,12 +383,6 @@ function sectionPositionUpdate()
 							skills.forEach((skill) => 
 							{
 								skillLevel = document.querySelector(`#${skill.name.toLowerCase()}_level`);
-								skillPerc = document.querySelector(`#${skill.name.toLowerCase()}_perc`);
-
-								skillPerc.style.transition = 'all 0.1s ease';
-								skillPerc.textContent = '';
-								skillPerc.style.left = '2%';
-
 								skillLevel.style.transition = 'all 0.1s ease';
 								skillLevel.style.width = `0%`;
 							});
@@ -484,24 +469,13 @@ navLinks.forEach((navLink) =>
 {
 	navLink.addEventListener('mouseover', (e) => 
 	{
-		if(darkTheme)
+		if(yellowTheme)
 		{
-			navHoverBackground.style.opacity = '1';
-			navHoverBackground.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-			navHoverBackground.style.width = `${navLink.offsetWidth + 0.5}px`;
-			navHoverBackground.style.left = `${navLink.offsetLeft - 0.5}px`;
+			navHoverBgYellow(navLink);
 		}
 		else
 		{
-			navHoverBackground.style.opacity = '1';
-
-			if(pageStart)
-				navHoverBackground.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-			else
-				navHoverBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
-
-			navHoverBackground.style.width = `${navLink.offsetWidth + 0.5}px`;
-			navHoverBackground.style.left = `${navLink.offsetLeft - 0.5}px`;
+			navHoverBgCyan(navLink);
 		}
 	});
 
@@ -510,4 +484,24 @@ navLinks.forEach((navLink) =>
 		navHoverBackground.style.opacity = '0';
 	});
 });
+
+function navHoverBgYellow(navLink)
+{
+	navHoverBackground.style.opacity = '1';
+	navHoverBackground.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+	navHoverBackground.style.width = `${navLink.offsetWidth + 0.5}px`;
+	navHoverBackground.style.left = `${navLink.offsetLeft - 0.5}px`;
+}
+function navHoverBgCyan(navLink)
+{
+	navHoverBackground.style.opacity = '1';
+
+	if(pageStart)
+		navHoverBackground.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+	else
+		navHoverBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+
+	navHoverBackground.style.width = `${navLink.offsetWidth + 0.5}px`;
+	navHoverBackground.style.left = `${navLink.offsetLeft - 0.5}px`;
+}
 /* ----------------------------------------------NAVIGATION HOVER EFFECT END----------------------------------------- */
