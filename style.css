@@ -176,16 +176,18 @@ form textarea::placeholder
 
 form button
 {
+    display: grid;
     font-weight: 700;
+    place-items: center;
+    padding: calc(1.5rem - 1vh) 10px;
     margin: 2% auto;
-    width: calc(300px - (2vw * 2));
-    height: 7vh;
+    width: calc(250px - 6vw);
     color: white;
     background: linear-gradient(rgba(255, 255, 255, 0.3) 0%,
             rgba(0, 0, 0, 0.4) 100%);
     border: 2px solid yellow;
     border-radius: 0px;
-    transition: transform 0.1s ease, border 0.6s ease, background 0.6s ease,
+    transition: border 0.6s ease, background 0.6s ease,
         color 0.6s ease;
     cursor: pointer;
     letter-spacing: 2px;
@@ -196,7 +198,6 @@ form button:hover
     color: black;
     background: white;
     border: 2px solid black;
-    transform: scale(1.02);
 }
 
 footer
@@ -401,21 +402,36 @@ footer h5
 .my_work_btn a
 {
     color: yellow;
-    background-color: black;
     font-size: 1.1em;
     font-weight: 600;
     display: inline-block;
-    padding: 0.9375em 2.1875em;
+    padding: 0.93em 2.15em;
     letter-spacing: 1px;
-    border: 2px solid aqua;
     border-radius: 0px;
     margin-bottom: 1px;
     margin-left: 3px;
     background: linear-gradient(rgba(255, 255, 255, 0.3) 0%,
-    rgba(0, 0, 0, 0.4) 100%);
+            rgba(0, 0, 0, 0.4) 100%);
     border: 2px solid yellow;
-    transition: transform 0.2s ease, border 0.2s ease, background 0.3s ease,
-        color 0.3s ease;
+    transition: transform 0.2s ease, border 0.2s ease, background 0.2s ease,
+        color 0.2s ease;
+}
+
+.my_work_btn a::after
+{
+    display: inline-block;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='0.9em' viewBox='0 0 384 512'%3E%3Cpath d='M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z'/%3E%3C/svg%3E");
+    opacity: 0;
+    margin-right: -12px;
+    margin-left: 2px;
+    transition: 0.2s ease;
+}
+
+.my_work_btn a:hover::after
+{
+    opacity: 1;
+    margin-right: -18px;
+    margin-left: 20px;
 }
 
 .my_work_btn a:hover
@@ -423,13 +439,14 @@ footer h5
     background-color: rgba(255, 255, 0, 0.8);
     border: 2px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
-    transform: scale(1.05);
 }
 
 .my_resume a
-{
+{    
+    display: inline-block;
+    position: relative;
     opacity: 0.6;
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: cyan;
     letter-spacing: 2px;
     margin-top: 10px;
@@ -437,17 +454,33 @@ footer h5
     margin-left: 5px;
     padding-left: 4px;
     padding-right: 4px;
-    display: inline-block;
-    border-radius: 0px;
-    transition: 0.15s ease;
+    border-radius: 3px;
+    transition: 0.1s ease;
+    text-transform: uppercase;
 }
 
 .my_resume a:hover
 {
     opacity: 1;
     color: rgb(255, 255, 255);
-    background-color: rgba(255, 255, 0, 0.2);
-    text-decoration: underline;
+    background: rgba(0, 255, 255, 0.1);
+}
+
+.my_resume a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -1px;
+    left: 4px;
+    background: white;
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.my_resume a:hover::after {
+    visibility: visible;
+    width: 93%;
 }
 
 .social_icons a
@@ -564,33 +597,26 @@ header .shown
     height: auto;
 }
 
-/* How to fix cardLayer <p> scaling lag relative to the card scale(1.05) */
-
 .card
 {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(0, 0, 255, 0.5));
     width: 21.25em;
-    max-width: 21.25em;
+    max-width: 21.25em;    
+    height: 500px;
     box-shadow: 5px 5px 25px rgba(1 1 1 / 50%);
+    border: 3px solid yellow;
     border-radius: 0px;
     padding: 25px;
     margin: 25px;
-    height: 500px;
     text-align: center;
     position: relative;
     cursor: default;
-    transition: 1s ease;
+    transition: border-color 0.6s ease, background 0.6s ease;
 }
 
 .card:hover
 {
-    transform: scale(1);
-}
-
-.card:hover .cardLayer
-{
-    height: 100%;
-    opacity: 1;
+    border-color: black;
 }
 
 .cardLayer
@@ -603,9 +629,66 @@ header .shown
     right: 0;
     overflow: hidden;
     width: 100%;
-    height: 90%;
+    height: 97%;
     opacity: 0;
-    transition: all 0.3s;
+    visibility: hidden;
+    transition: all 0.3s, background 0s ease;
+}
+
+.card:hover .cardLayer
+{
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+}
+
+.cardLayer p
+{
+    color: white;
+    letter-spacing: 1px;
+    padding: 25px 25px;
+}
+
+.cardLayer .src
+{
+    font-size: 0.8rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 0px;
+    padding: 0.2rem 0.3rem;
+    color: black;
+    transition: 0.2s ease;
+}
+
+.cardLayer .src[href]:hover
+{
+    background: white;
+}
+
+.cardLayer .src
+{
+    text-transform: uppercase;
+}
+
+.cardLayer .src[href]::after
+{
+    display: inline-block;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='0.7em' viewBox='0 0 512 512'%3E%3Cpath d='M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z'/%3E%3C/svg%3E");
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    opacity: 0;
+    transition: all 0.2s ease;
+    margin-left: -11px;
+}
+
+.cardLayer .src[href]:hover::after
+{
+    opacity: 1;
+    margin-left: 6px;
+    padding-right: 2px;
 }
 
 .projects .content .card h5
@@ -613,9 +696,6 @@ header .shown
     color: white;
     font-size: 1.5em;
     display: block;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -626,8 +706,6 @@ header .shown
 .projects .content .card:hover h5
 {
     opacity: 0;
-    color: yellow;
-    transform: scale(1.4) translate(-35%, -40%);
 }
 
 .projects .content .cardHint
@@ -639,21 +717,11 @@ header .shown
     transition: 0.2s ease color;
 }
 
-.cardLayer p
-{
-    color: white;
-    letter-spacing: 1px;
-    padding: 25px 25px;
-}
-
 .projects .content .card h6
 {
     color: red;
     font-size: 1em;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     position: absolute;
     top: 95%;
     left: 50%;
@@ -670,7 +738,7 @@ header .shown
     font-size: 1.2em;
     font-weight: 600;
     letter-spacing: 1px;
-    border: 3px solid aqua;
+    border: 3px solid yellow;
     border-radius: 0px;
     transition: transform 0.12s ease, border 0.8s ease, background 0.6s ease,
         color 0.6s ease, box-shadow 0.3s ease;
@@ -691,7 +759,7 @@ header .shown
     cursor: pointer;
 }
 
-.websiteCode .src_code
+.websiteCode .this_src
 {
     display: block;
     font-size: 0.6em;
@@ -700,7 +768,7 @@ header .shown
     transition: 0.2s ease color;
 }
 
-.websiteCode:hover .src_code
+.websiteCode:hover .this_src
 {
     display: block;
     color: blue;
@@ -939,10 +1007,10 @@ footer h5 span
 
     .card
     {
-        width: 80vw;
         margin: 25px auto;
-        height: calc(75vh - 30px);
-        min-height: max-content;
+        width: 80vw;
+        /* height: calc(75vh - 30px);
+        min-height: max-content; */
     }
 
     .websiteCode
@@ -962,11 +1030,6 @@ footer h5 span
     {
         font-size: 3vw;
         width: 80vw;
-    }
-
-    form button
-    {
-        width: calc(80% - (1vw * 2));
     }
 
     footer .social_icons
@@ -991,9 +1054,10 @@ footer h5 span
 {
     .card
     {
-        height: calc(80vh - 30px);
+        height: calc((1300px - 185vw));
         min-height: max-content;
     }
+
     footer .whatsapp
     {
         margin: 8px 5px;
@@ -1012,6 +1076,14 @@ footer h5 span
     {
         margin: 6px 5px;
         margin-right: -8px;
+    }
+}
+
+@media (max-width: 319px)
+{
+    form button
+    {
+        width: 70vw;
     }
 }
 /* PAGE RESPONSIVENESS END */
