@@ -513,9 +513,8 @@ footer h5
 header .hidden
 {
     opacity: 0;
-    filter: blur(5px);
-    transform: translateY(100%);
-    transition: all 0.6s;
+    filter: blur(30px);
+    transform: translateY(50%);
 }
 
 header .shown
@@ -529,9 +528,8 @@ header .shown
 .main .hidden
 {
     opacity: 0;
-    filter: blur(5px);
-    transform: translateY(100%);
-    transition: all 1s;
+    filter: blur(30px);
+    transform: translateY(50%);
 }
 
 .main .shown
@@ -539,15 +537,14 @@ header .shown
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
-    transition: all 1.3s;
+    transition: all 0.8s;
 }
 
 .hidden
 {
     opacity: 0;
-    filter: blur(15px);
-    transform: translateY(50%);
-    transition: all 1s;
+    filter: blur(30px);
+    transform: translateY(30%);
 }
 
 .shown
@@ -555,7 +552,7 @@ header .shown
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
-    transition: all 1s;
+    transition: all 0.8s;
 }
 
 .container-title
@@ -566,7 +563,7 @@ header .shown
     padding: 1rem 15rem;
     line-height: 1;
     font-size: calc(20px + (2vw * 1));
-    font-family: "Josefin Sans", sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     color: white;
 }
 
@@ -574,7 +571,7 @@ header .shown
 {
     display: flex;
     justify-content: center;
-    content: "";
+    content: '';
     width: calc(35px + (3vw * 2));
     height: 5px;
     border-radius: 0px;
@@ -611,7 +608,7 @@ header .shown
     text-align: center;
     position: relative;
     cursor: default;
-    transition: border-color 0.6s ease, background 0.6s ease;
+    transition: border-color 0.6s ease;
 }
 
 .card:hover
@@ -632,7 +629,7 @@ header .shown
     height: 97%;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s, background 0s ease;
+    transition: 0.3s ease;
 }
 
 .card:hover .cardLayer
@@ -884,9 +881,7 @@ footer .social_icons a:hover
 footer .fa-whatsapp
 {
     margin: 4px 5px;
-    font-size:
-        /* calc(10px - (1 - 15) * ((100vw - 110px) / (1600 - 300))) */
-        1.4em;
+    font-size: 1.4em;
     width: 30px;
     height: 18px;
     letter-spacing: 1px;
@@ -903,9 +898,7 @@ footer .fa-whatsapp:hover
 footer .whatsapp
 {
     margin: 3px 5px;
-    font-size:
-        /* calc(5px - (1 - 15) * ((100vw - 110px) / (1600 - 300))) */
-        1.1em;
+    font-size: 1.1em;
     color: white;
 }
 
@@ -1009,8 +1002,6 @@ footer h5 span
     {
         margin: 25px auto;
         width: 80vw;
-        /* height: calc(75vh - 30px);
-        min-height: max-content; */
     }
 
     .websiteCode
@@ -1021,7 +1012,6 @@ footer h5 span
     .content .hint,
     .contact .content .myEmail
     {
-        /* width: 70vw; */
         word-wrap: break-word;
         max-width: 70vw;
     }

@@ -9,8 +9,7 @@ const navLinks = nav.querySelectorAll("ul a");
 
 const sectionTitleRule = document.querySelectorAll(".container-title");
 
-const cardRule = document.querySelectorAll('.card');
-const cardLayers = document.querySelectorAll('.cardLayer');
+const cards = document.querySelectorAll('.card');
 const cardHeaders = document.querySelectorAll('.projects .content .card h5');
 
 const websiteSrcRule = document.querySelector('.websiteCode');
@@ -113,7 +112,7 @@ function updateOnEvent()
 				if(!yellowTheme) yellowTheme = true;
 				else yellowTheme = false;
 
-				cardRule.forEach((card) =>
+				cards.forEach((card) =>
 				{
 					if(yellowTheme) card.style.border = '3px solid yellow';
 					else card.style.border = '3px solid aqua';
@@ -147,7 +146,7 @@ function updateOnEvent()
 		});
 	});
 
-	cardRule.forEach((card) =>
+	cards.forEach((card) =>
 	{
 		card.addEventListener("mouseover", () => 
 		{
@@ -225,7 +224,6 @@ function updateOnEvent()
 				{
 					skillBar.style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
 				});
-
 				skillLevelRule.forEach((skillLevel) =>
 				{
 					skillLevel.style.backgroundColor = 'aqua';
@@ -312,21 +310,12 @@ function sectionPositionUpdate()
 
 						if(section.id == "skills")
 						{
-							// Animate the skill bar if the viewport is the `skills` section
+							// Animate the skill bars once if the viewport is the `skills` section
 							skills.forEach((skill) => 
 							{
 								skillLevel = document.querySelector(`#${skill.name.toLowerCase()}_level`);
 								skillLevel.style.transition = 'all 2s ease';
 								skillLevel.style.width = `${skill.level}%`;
-							});
-						}
-						else
-						{
-							skills.forEach((skill) => 
-							{
-								skillLevel = document.querySelector(`#${skill.name.toLowerCase()}_level`);
-								skillLevel.style.transition = 'all 0.1s ease';
-								skillLevel.style.width = `0%`;
 							});
 						}
 					}
