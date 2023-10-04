@@ -652,7 +652,7 @@ header .shown
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 10%;
+    bottom: 55px;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 0px;
     padding: 0.2rem 0.3rem;
