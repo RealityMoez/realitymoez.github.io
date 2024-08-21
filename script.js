@@ -36,7 +36,7 @@ const form_email = document.getElementById('uEmail');;
 const form_message = document.getElementById('uMessage');
 
 var navHoverBackground = document.getElementsByClassName('navHoverBackground')[0];
-/* -------------------------------------------VARIABLES END----------------------------------------- */
+/* -------------------------------------------VARIABLES----------------------------------------- */
 
 // ARRAY OF SKILLS AND THEIR LEVELS
 const skills = [	
