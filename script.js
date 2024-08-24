@@ -36,6 +36,10 @@ const form_email = document.getElementById('uEmail');;
 const form_message = document.getElementById('uMessage');
 
 var navHoverBackground = document.getElementsByClassName('navHoverBackground')[0];
+
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const mobileNavigation = document.querySelector('.mobile-navigation');
+const mobileNavLinks = mobileNavigation.querySelectorAll('a');
 /* -------------------------------------------VARIABLES----------------------------------------- */
 
 // ARRAY OF SKILLS AND THEIR LEVELS
@@ -237,7 +241,14 @@ function updateOnEvent()
 				});
 			}
 		}
+		updateMobileNavColors();
 	}
+
+	mobileMenuToggle.addEventListener('click', () => {
+		updateColors();
+		mobileMenuToggle.classList.toggle('open');
+		mobileNavigation.classList.toggle('open');
+	});
 }
 updateOnEvent();
 // ─────────────────────────────────────────────────────────────────────────────
@@ -417,3 +428,28 @@ function navHoverBgCyan(navLink)
 }
 /* ----------------------------------------------NAVIGATION HOVER EFFECT END----------------------------------------- */
 
+
+function updateMobileNavColors() {
+	if(pageStart)
+	{
+		mobileNavigation.style.background = 'rgb(0, 0, 0, 0.3)';
+        mobileNavLinks.forEach(link => {
+            link.style.color = 'yellow';
+        });
+	}
+	else
+	{
+		if (yellowTheme) {
+			mobileNavigation.style.background = 'rgb(0, 0, 0, 0.75)';
+			mobileNavLinks.forEach(link => {
+				link.style.color = 'yellow';
+			});
+		} else {
+			mobileNavigation.style.background = 'rgb(0, 255, 255, 0.75)';
+			mobileNavLinks.forEach(link => {
+				link.style.color = 'black';
+			});
+		}
+	}
+
+}
