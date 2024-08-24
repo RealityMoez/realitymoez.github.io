@@ -36,7 +36,7 @@ const form_email = document.getElementById('uEmail');;
 const form_message = document.getElementById('uMessage');
 
 var navHoverBackground = document.getElementsByClassName('navHoverBackground')[0];
-
+const mobileMenuToggleSpan = document.querySelectorAll('.mobile-menu-toggle span');
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const mobileNavigation = document.querySelector('.mobile-navigation');
 const mobileNavLinks = mobileNavigation.querySelectorAll('a');
@@ -100,6 +100,16 @@ function updateOnEvent()
 		updateColors();
 		sectionPositionUpdate();
 		navIndicator.style.transition = 'none';
+	});
+
+	// Add this new event listener
+	document.addEventListener('click', (event) =>
+	{
+		if(!mobileNavigation.contains(event.target) && !mobileMenuToggle.contains(event.target))
+		{
+			mobileMenuToggle.classList.remove('open');
+			mobileNavigation.classList.remove('open');
+		}
 	});
 
 	function updateTheme()
@@ -433,6 +443,9 @@ function updateMobileNavColors() {
 	if(pageStart)
 	{
 		mobileNavigation.style.background = 'rgb(0, 0, 0, 0.3)';
+		mobileMenuToggleSpan[0].style.background = 'white';
+		mobileMenuToggleSpan[1].style.background = 'white';
+		mobileMenuToggleSpan[2].style.background = 'white';
         mobileNavLinks.forEach(link => {
             link.style.color = 'yellow';
         });
@@ -441,11 +454,17 @@ function updateMobileNavColors() {
 	{
 		if (yellowTheme) {
 			mobileNavigation.style.background = 'rgb(0, 0, 0, 0.75)';
+			mobileMenuToggleSpan[0].style.background = 'white';
+			mobileMenuToggleSpan[1].style.background = 'white';
+			mobileMenuToggleSpan[2].style.background = 'white';
 			mobileNavLinks.forEach(link => {
 				link.style.color = 'yellow';
 			});
 		} else {
 			mobileNavigation.style.background = 'rgb(0, 255, 255, 0.75)';
+			mobileMenuToggleSpan[0].style.background = 'black';
+			mobileMenuToggleSpan[1].style.background = 'black';
+			mobileMenuToggleSpan[2].style.background = 'black';
 			mobileNavLinks.forEach(link => {
 				link.style.color = 'black';
 			});
