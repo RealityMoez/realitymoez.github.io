@@ -969,7 +969,6 @@ footer h5 span
 }
 
 .mobile-navigation {
-    opacity: 0;
     position: fixed;
     top: 57px;
     right: 0;
@@ -977,8 +976,7 @@ footer h5 span
     width: 100%;
     background: rgb(0, 0, 0, 0.75);
     transition: all 0.5s ease-in-out, opacity 0.2s ease-in-out;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .mobile-navigation ul {
@@ -1049,8 +1047,7 @@ footer h5 span
     }
 
     .mobile-navigation.open {
-        opacity: 1;
-        height: 22vh;
+        height: 180px;
         display: block;
     }
 
