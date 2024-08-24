@@ -100,6 +100,16 @@ function updateOnEvent()
 		updateColors();
 		sectionPositionUpdate();
 		navIndicator.style.transition = 'none';
+		if(window.innerWidth < 935)
+		{
+			mobileMenuToggle.classList.remove('hidden');
+			mobileMenuToggle.classList.add('shown');
+		}
+		else
+		{
+			mobileMenuToggle.classList.add('hidden');
+			mobileMenuToggle.classList.remove('shown');
+		}
 	});
 
 	// Add this new event listener
@@ -442,7 +452,7 @@ function navHoverBgCyan(navLink)
 function updateMobileNavColors() {
 	if(pageStart)
 	{
-		mobileNavigation.style.background = 'rgb(0, 0, 0, 0.3)';
+		mobileNavigation.style.background = 'rgb(0, 0, 0, 0.75)';
 		mobileMenuToggleSpan[0].style.background = 'white';
 		mobileMenuToggleSpan[1].style.background = 'white';
 		mobileMenuToggleSpan[2].style.background = 'white';
