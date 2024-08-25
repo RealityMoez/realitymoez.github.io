@@ -658,16 +658,17 @@ header .shown
     padding: 0.2rem 0.3rem;
     color: black;
     transition: 0.2s ease;
+    text-transform: uppercase;
+}
+
+.cardLayer .src[href]
+{
+    font-weight: bold;
 }
 
 .cardLayer .src[href]:hover
 {
     background: white;
-}
-
-.cardLayer .src
-{
-    text-transform: uppercase;
 }
 
 .cardLayer .src[href]::after
@@ -679,6 +680,43 @@ header .shown
     opacity: 0;
     transition: all 0.2s ease;
     margin-left: -11px;
+}
+@keyframes glowingBorder {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 300% 0%;
+    }
+}
+
+.cardLayer .src:not([href]) {
+    border: 1px solid rgb(255, 255, 255, 0.5);
+}
+
+.cardLayer .src:not([href])::before,
+.cardLayer .src:not([href])::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(300deg, transparent, rgb(255, 255, 255, 0.3), transparent);
+    background-size: 300% 100%;
+    z-index: -1;
+    opacity: 1;
+    animation: glowingBorder 3s linear infinite;
+    transition: all 0.2s ease-in-out, opacity 0.3s ease;
+}
+
+.cardLayer .src:not([href])::after {
+    filter: blur(0px);
+}
+
+.cardLayer .src:not([href]):hover::after {
+   /*  filter: blur(20px); */
+    background-color: rgb(255, 255, 255, 0.3);
 }
 
 .cardLayer .src[href]:hover::after
