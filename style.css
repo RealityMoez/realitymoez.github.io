@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:wght@100;200;400;700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&family=Lobster&display=swap");
-/* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:ital,wght@0,100;1,100&family=Lobster&family=Parisienne&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&family=Righteous&display=swap'); */
 
 /*  padding: (top-bottom) (right-left);
     padding: (top) (right) (bottom) (left);  */
@@ -687,17 +686,15 @@ header .shown
     transition: all 0.2s ease;
     margin-left: -11px;
 }
-@keyframes glowingBorder {
-    0% {
-        background-position: 0% 0%;
-    }
-    100% {
-        background-position: 300% 0%;
-    }
+
+/* Add this new class for the glowing effect */
+.glowing-border {
+    position: relative;
+    overflow: hidden;
 }
 
-.cardLayer .src:not([href])::before,
-.cardLayer .src:not([href])::after {
+.glowing-border::before,
+.glowing-border::after {
     content: '';
     position: absolute;
     top: -2px;
@@ -712,13 +709,26 @@ header .shown
     transition: all 0.2s ease-in-out, opacity 0.3s ease;
 }
 
-.cardLayer .src:not([href])::after {
+.glowing-border::after {
     filter: blur(0px);
 }
 
-.cardLayer .src:not([href]):hover::after {
-   /*  filter: blur(20px); */
+.glowing-border:hover::after {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes glowingBorder {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 300% 0%;
+    }
+}
+
+.cardLayer .src:not([href]) {
+    position: absolute;
+    overflow: hidden;
 }
 
 .cardLayer .src[href]:hover::after
