@@ -929,14 +929,8 @@ footer .social_icons a:hover
 
 footer .fa-whatsapp
 {
-    margin: 4px 5px;
-    font-size: 1.4em;
-    width: 30px;
-    height: 18px;
-    letter-spacing: 1px;
     color: rgb(68, 255, 0);
     transition: 0.2s ease;
-    cursor: default;
 }
 
 footer .fa-whatsapp:hover
