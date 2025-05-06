@@ -240,7 +240,7 @@ function updateOnEvent()
 				header.style.backgroundColor = "aqua";
 				navIndicator.style.backgroundColor = 'black';
 				navIndicator.style.borderBottom = '1px solid white';
-				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;} .websiteCode:hover {border: 3px solid black;}';
+				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;}';
 				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
 				contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
 				pageHint.innerHTML = '.contact .content .hint {color: aqua;}';
