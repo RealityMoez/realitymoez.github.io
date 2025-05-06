@@ -864,18 +864,6 @@ header .shown
     top: 0;
 }
 
-.skill-perc
-{
-    font-size: calc(50% + 0.5vw);
-    font-weight: 200;
-    color: white;
-    height: 100%;
-    background-color: transparent;
-    position: absolute;
-    left: 0;
-    top: -5px;
-}
-
 .contact .content
 {
     display: flex;
