@@ -44,15 +44,15 @@ const mobileNavLinks = mobileNavigation.querySelectorAll('a');
 
 // ARRAY OF SKILLS AND THEIR LEVELS
 const skills = [	
-	{ name: "JavaScript", level: 90 },
-	{ name: "Java", level: 85 },
-	{ name: "Cpp", level: 80 },
-	{ name: "CSharp", level: 75 },
-	{ name: "C", level: 70 },
-	{ name: "Android", level: 70 },
-	{ name: "Python", level: 65 },
-	{ name: "HTML", level: 60 },
-	{ name: "CSS", level: 60 },
+	{ name: "JavaScript", level: 95 },
+	{ name: "CSS", level: 90 },
+	{ name: "Python", level: 85 },
+	{ name: "Android", level: 80 },
+	{ name: "HTML", level: 80 },
+	{ name: "Java", level: 80 },
+	{ name: "Cpp", level: 75 },
+	{ name: "CSharp", level: 70 },
+	{ name: "C", level: 60 },
 	{ name: "Firebase", level: 55 },
 	{ name: "SQL", level: 50 }
 ];
@@ -278,8 +278,8 @@ var type = new Typed(".changing_text", {
 	strings: [
 		"Front End Developer",
 		"Software Developer",
-		"Android Developer",
-		"Computer Science Passionate",
+		"AI Engineer",
+		"CS Passionate",
 	],
 	startDelay: 1000,
 	typeSpeed: 60,
