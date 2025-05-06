@@ -56,6 +56,7 @@ const skills = [
 	{ name: "Firebase", level: 55 },
 	{ name: "SQL", level: 50 }
 ];
+console.log(skills)
 /* ----------------------------------------------VARIABLES END----------------------------------------- */
 
 // SCROLLING ANIMATION
