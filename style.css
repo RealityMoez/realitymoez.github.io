@@ -330,13 +330,21 @@ footer h5
 
 .main,
 .projects,
-.skills,
-.contact
+.skills
 {
     display: flex;
     min-height: 100vh;
     padding: 7%;
     margin: auto auto auto auto;
+    justify-content: center;
+}
+
+.contact.container
+{
+    display: flex;
+    min-height: 80vh;
+    padding-bottom: 2%;
+    margin: 0;
     justify-content: center;
 }
 
@@ -607,7 +615,7 @@ header .shown
     text-align: center;
     position: relative;
     cursor: default;
-    transition: border-color 0.6s ease;
+    transition: border-color 0.8s ease;
 }
 
 .card:hover
@@ -628,7 +636,7 @@ header .shown
     height: 99%;
     opacity: 0;
     visibility: hidden;
-    transition: 0.5s ease;
+    transition: 0.4s ease;
 }
 
 .card:hover .cardLayer
@@ -879,22 +887,15 @@ header .shown
     margin-top: -50px;
 }
 
-.content .hint
-{
-    margin: 30px auto;
-    font-size: calc(18px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
-    font-family: "Righteous", sans-serif;
-    color: yellow;
-    margin: auto;
-}
-
 .contact .content .myEmail
 {
     font-size: calc(18px - (10 - 20) * ((100vw - 700px) / (1600 - 300)));
     font-family: "Josefin Sans", sans-serif;
     font-weight: 700;
     color: white;
-    margin: 30px auto;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 footer .social_icons
@@ -1124,7 +1125,6 @@ footer h5 span
         margin-top: 30px;
     }
 
-    .content .hint,
     .contact .content .myEmail
     {
         word-wrap: break-word;
