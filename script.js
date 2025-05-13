@@ -23,13 +23,9 @@ const navIndicator = document.querySelector(".indicator");
 const sections = document.querySelectorAll('section');
 const bodyTag = document.getElementsByTagName('body')[0];
 const windowHeight = window.innerHeight;
+const rootElement = document.documentElement;
 
-var webSiteCodeSrc = document.head.appendChild(document.createElement("style"));
-var AfterSectionTitle = document.head.appendChild(document.createElement("style"));
-var contactFormBtn = document.head.appendChild(document.createElement("style"));
-var pageHint = document.head.appendChild(document.createElement("style"));
-var cardAction = document.head.appendChild(document.createElement("style"));
-
+const formButtons = document.querySelectorAll('form button');
 const contactForm = document.getElementById('contact-form');
 const form_name = document.getElementById('uName');
 const form_email = document.getElementById('uEmail');;
@@ -100,7 +96,6 @@ function updateOnEvent()
 	{
 		updateColors();
 		sectionPositionUpdate();
-		navIndicator.style.transition = 'none';
 		if(window.innerWidth < 935)
 		{
 			mobileMenuToggle.classList.remove('hidden');
@@ -110,16 +105,6 @@ function updateOnEvent()
 		{
 			mobileMenuToggle.classList.add('hidden');
 			mobileMenuToggle.classList.remove('shown');
-		}
-	});
-
-	// Add this new event listener
-	document.addEventListener('click', (event) =>
-	{
-		if(!mobileNavigation.contains(event.target) && !mobileMenuToggle.contains(event.target))
-		{
-			mobileMenuToggle.classList.remove('open');
-			mobileNavigation.classList.remove('open');
 		}
 	});
 
@@ -137,11 +122,20 @@ function updateOnEvent()
 				if(!yellowTheme) yellowTheme = true;
 				else yellowTheme = false;
 
-				cards.forEach((card) =>
-				{
-					if(yellowTheme) card.style.border = '3px solid yellow';
-					else card.style.border = '3px solid aqua';
-				});				
+				// Update cards border colors
+				cards.forEach((card) => {
+					card.style.borderColor = yellowTheme ? 'yellow' : 'aqua';
+				});
+				// Update components based on theme
+				if(yellowTheme) {
+					applyYellowThemeToComponents();
+				} else {
+					applyCyanThemeToComponents();
+				}
+				
+				// Update other components that depend on theme
+				updateIndicatorTheme();
+				updateMobileNavColors();
 				updateColors();
 			}, 500);
 		});
@@ -175,13 +169,25 @@ function updateOnEvent()
 	{
 		card.addEventListener("mouseover", () => 
 		{
-			card.style.border = '3px solid black';
+			if(card.classList.contains('theme-yellow')) 
+			{
+				card.style.borderColor = 'var(--hover-border-color)';
+			}
+			else if(card.classList.contains('theme-cyan'))
+			{
+				card.style.borderColor = 'var(--hover-border-color)';
+			}
 		});
-
 		card.addEventListener("mouseout", () => 
 		{
-			if(yellowTheme) card.style.border = '3px solid yellow';
-			else card.style.border = '3px solid aqua';
+			if(card.classList.contains('theme-yellow')) 
+			{
+				card.style.borderColor = 'var(--primary-border-color)';
+			}
+			else if(card.classList.contains('theme-cyan'))
+			{
+				card.style.borderColor = 'var(--secondary-border-color)';
+			}
 		});
 	});
 
@@ -202,6 +208,9 @@ function updateOnEvent()
 				nav.style.backgroundColor = "transparent";
 				if(nav.matches(":hover")) navHoverBgYellow(nav);
 			});
+			
+			// Reset all theme components
+			resetThemeComponents();
 		}
 		else
 		{
@@ -210,22 +219,10 @@ function updateOnEvent()
 				logoSrc.style.filter = 'sepia(0) hue-rotate(300deg) saturate(1) brightness(1) contrast(2)';
 				header.style.backgroundColor = "black";
 				header.style.transition = 'background-color 2s ease';
-				navIndicator.style.backgroundColor = 'white';
-				navIndicator.style.borderBottom = '1px solid transparent';
-				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid yellow;}';
-				AfterSectionTitle.innerHTML = '.container-title::after {background-color: yellow; transition: background-color 2s ease;}';
-				contactFormBtn.innerHTML = 'form button {border: 2px solid yellow;}';
-				pageHint.innerHTML = '.contact .content .hint {color: yellow;}';
-
-				skillBarRule.forEach((skillBar) =>
-				{
-					skillBar.style.backgroundColor = 'rgba(234, 255, 0, 0.2)';
-				});
-				skillLevelRule.forEach((skillLevel) =>
-				{
-					skillLevel.style.backgroundColor = 'yellow';
-				});
-
+				
+				// Apply yellow theme to components
+				applyYellowThemeToComponents();
+				
 				navLinks.forEach((nav) =>
 				{
 					nav.style.color = 'yellow';
@@ -238,22 +235,10 @@ function updateOnEvent()
 				logoSrc.style.filter = 'sepia(1) hue-rotate(300deg) saturate(15) brightness(1) invert(1)';
 				header.style.transition = 'background-color 2s ease';
 				header.style.backgroundColor = "aqua";
-				navIndicator.style.backgroundColor = 'black';
-				navIndicator.style.borderBottom = '1px solid white';
-				webSiteCodeSrc.innerHTML = '.websiteCode {border: 3px solid aqua;}';
-				AfterSectionTitle.innerHTML = '.container-title::after {background-color: aqua; transition: background-color 2s ease;}';
-				contactFormBtn.innerHTML = 'form button {border: 2px solid aqua;}';
-				pageHint.innerHTML = '.contact .content .hint {color: aqua;}';
-
-				skillBarRule.forEach((skillBar) =>
-				{
-					skillBar.style.backgroundColor = 'rgba(0, 255, 238, 0.2)';
-				});
-				skillLevelRule.forEach((skillLevel) =>
-				{
-					skillLevel.style.backgroundColor = 'aqua';
-				});
-
+				
+				// Apply cyan theme to components
+				applyCyanThemeToComponents();
+				
 				navLinks.forEach((nav) =>
 				{
 					nav.style.color = "black";
@@ -265,8 +250,113 @@ function updateOnEvent()
 		updateMobileNavColors();
 	}
 
+	// Function to apply yellow theme to components
+	function applyYellowThemeToComponents() {
+		// Apply theme classes to cards
+		cards.forEach(card => {
+			card.classList.add('theme-yellow');
+			card.classList.remove('theme-cyan');
+		});
+		
+		// Apply theme to section titles via classes
+		sectionTitleRule.forEach(title => {
+			title.classList.add('theme-yellow');
+			title.classList.remove('theme-cyan');
+		});
+		
+		// Apply theme to form buttons
+		formButtons.forEach(button => {
+			button.classList.add('theme-yellow');
+			button.classList.remove('theme-cyan');
+		});
+		
+		// Apply theme to skill bars
+		skillBarRule.forEach(skillBar => {
+			skillBar.classList.add('theme-yellow');
+			skillBar.classList.remove('theme-cyan');
+		});
+		
+		skillLevelRule.forEach(skillLevel => {
+			skillLevel.classList.add('theme-yellow');
+			skillLevel.classList.remove('theme-cyan');
+		});
+		
+		// Apply theme to website code section
+		websiteSrcRule.classList.add('theme-yellow');
+		websiteSrcRule.classList.remove('theme-cyan');
+		
+		// Apply theme to nav indicator
+		updateIndicatorTheme();
+	}
+	
+	// Function to apply cyan theme to components
+	function applyCyanThemeToComponents() {
+		// Apply theme classes to cards
+		cards.forEach(card => {
+			card.classList.remove('theme-yellow');
+			card.classList.add('theme-cyan');
+		});
+		
+		// Apply theme to section titles via classes
+		sectionTitleRule.forEach(title => {
+			title.classList.remove('theme-yellow');
+			title.classList.add('theme-cyan');
+		});
+		
+		// Apply theme to form buttons
+		formButtons.forEach(button => {
+			button.classList.remove('theme-yellow');
+			button.classList.add('theme-cyan');
+		});
+		
+		// Apply theme to skill bars
+		skillBarRule.forEach(skillBar => {
+			skillBar.classList.remove('theme-yellow');
+			skillBar.classList.add('theme-cyan');
+		});
+		
+		skillLevelRule.forEach(skillLevel => {
+			skillLevel.classList.remove('theme-yellow');
+			skillLevel.classList.add('theme-cyan');
+		});
+		
+		// Apply theme to website code section
+		websiteSrcRule.classList.remove('theme-yellow');
+		websiteSrcRule.classList.add('theme-cyan');
+		
+		// Apply theme to nav indicator
+		updateIndicatorTheme();
+	}
+	
+	// Function to reset theme components
+	function resetThemeComponents() {
+		// Remove all theme classes
+		cards.forEach(card => {
+			card.classList.remove('theme-yellow', 'theme-cyan');
+		});
+		
+		// Reset section titles
+		sectionTitleRule.forEach(title => {
+			title.classList.remove('theme-yellow', 'theme-cyan');
+		});
+		
+		// Reset other components
+		formButtons.forEach(button => {
+			button.classList.remove('theme-yellow', 'theme-cyan');
+		});
+		
+		skillBarRule.forEach(skillBar => {
+			skillBar.classList.remove('theme-yellow', 'theme-cyan');
+		});
+		
+		skillLevelRule.forEach(skillLevel => {
+			skillLevel.classList.remove('theme-yellow', 'theme-cyan');
+		});
+		
+		websiteSrcRule.classList.remove('theme-yellow', 'theme-cyan');
+	}
+
 	mobileMenuToggle.addEventListener('click', () => {
-		updateColors();
 		mobileMenuToggle.classList.toggle('open');
 		mobileNavigation.classList.toggle('open');
 	});
@@ -317,19 +407,11 @@ function sectionPositionUpdate()
 				{
 					if(section.hasAttribute('id') && nav.getAttribute("href") == '#' + section.id)
 					{
+						// Ensure indicator has the right theme
+						updateIndicatorTheme();
+						
 						if(nav.matches(":hover"))
 						{
-							if(yellowTheme)
-							{
-								navIndicator.style.backgroundColor = 'white';
-								navIndicator.style.borderBottom = '1px solid transparent';
-							}
-							else
-							{
-								navIndicator.style.backgroundColor = 'black';
-								navIndicator.style.borderBottom = '1px solid white';
-							}
-
 							navIndicator.style.transition = '0.2s ease width, 0.2s ease left';
 							navIndicator.style.width = `${(nav.offsetWidth)}px`;
 							navIndicator.style.left = `${(nav.offsetLeft)}px`;
@@ -431,19 +513,17 @@ function contactMsgSend(e)
 function navHoverBgYellow(navLink)
 {
 	navHoverBackground.style.opacity = '1';
-	navHoverBackground.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+	navHoverBackground.classList.add('theme-yellow');
+	navHoverBackground.classList.remove('theme-cyan');
 	navHoverBackground.style.width = `${navLink.offsetWidth}px`;
 	navHoverBackground.style.left = `${navLink.offsetLeft}px`;
 }
+
 function navHoverBgCyan(navLink)
 {
 	navHoverBackground.style.opacity = '1';
-
-	if(pageStart)
-		navHoverBackground.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-	else
-		navHoverBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
-
+	navHoverBackground.classList.remove('theme-yellow');
+	navHoverBackground.classList.add('theme-cyan');
 	navHoverBackground.style.width = `${navLink.offsetWidth}px`;
 	navHoverBackground.style.left = `${navLink.offsetLeft}px`;
 }
@@ -451,35 +531,33 @@ function navHoverBgCyan(navLink)
 
 
 function updateMobileNavColors() {
-	if(pageStart)
-	{
-		mobileNavigation.style.background = 'rgb(0, 0, 0, 0.75)';
-		mobileMenuToggleSpan[0].style.background = 'white';
-		mobileMenuToggleSpan[1].style.background = 'white';
-		mobileMenuToggleSpan[2].style.background = 'white';
-        mobileNavLinks.forEach(link => {
-            link.style.color = 'yellow';
-        });
+	// Only update mobile-specific elements
+	if(pageStart || yellowTheme) {
+		mobileNavigation.classList.remove('theme-cyan');
+		mobileMenuToggleSpan.forEach(span => {
+			span.closest('.mobile-menu-toggle').classList.remove('theme-cyan');
+		});
+		mobileNavLinks.forEach(link => {
+			link.style.color = 'yellow';
+		});
+	} else {
+		mobileNavigation.classList.add('theme-cyan');
+		mobileMenuToggleSpan.forEach(span => {
+			span.closest('.mobile-menu-toggle').classList.add('theme-cyan');
+		});
+		mobileNavLinks.forEach(link => {
+			link.style.color = 'black';
+		});
 	}
-	else
-	{
-		if (yellowTheme) {
-			mobileNavigation.style.background = 'rgb(0, 0, 0, 0.75)';
-			mobileMenuToggleSpan[0].style.background = 'white';
-			mobileMenuToggleSpan[1].style.background = 'white';
-			mobileMenuToggleSpan[2].style.background = 'white';
-			mobileNavLinks.forEach(link => {
-				link.style.color = 'yellow';
-			});
-		} else {
-			mobileNavigation.style.background = 'rgb(0, 255, 255, 0.75)';
-			mobileMenuToggleSpan[0].style.background = 'black';
-			mobileMenuToggleSpan[1].style.background = 'black';
-			mobileMenuToggleSpan[2].style.background = 'black';
-			mobileNavLinks.forEach(link => {
-				link.style.color = 'black';
-			});
-		}
-	}
+}
 
+// Update this in sectionPositionUpdate function
+function updateIndicatorTheme() {
+	if(yellowTheme) {
+		navIndicator.classList.add('theme-yellow');
+		navIndicator.classList.remove('theme-cyan');
+	} else {
+		navIndicator.classList.remove('theme-yellow');
+		navIndicator.classList.add('theme-cyan');
+	}
 }
