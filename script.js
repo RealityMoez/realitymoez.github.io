@@ -149,17 +149,43 @@ function updateOnEvent()
 
 	navLinks.forEach((nav) =>
 	{
-		nav.addEventListener("mouseover", () => 
-		{
-			if(yellowTheme)	navHoverBgYellow(nav);
-			else navHoverBgCyan(nav);
+		const handleMouseMove = (e) => 
+			{
+			const rect = nav.getBoundingClientRect();
+			const { clientX, clientY } = e;
+			const { left, top, width, height } = rect;
+			const x = (clientX - left - width / 2) * 0.2;
+			const y = (clientY - top - height / 2) * 0.2;
+			
+			navHoverBackground.style.opacity = '1';
+
+			if(yellowTheme || pageStart) {
+				navHoverBackground.classList.add('theme-yellow');
+				navHoverBackground.classList.remove('theme-cyan');
+				navHoverBackground.style.width = `${nav.offsetWidth}px`;
+				navHoverBackground.style.left = `${nav.offsetLeft}px`;
+				navHoverBackground.style.transform = `translate(${x}px, ${y}px)`;
+			} else {
+				navHoverBackground.classList.remove('theme-yellow');
+				navHoverBackground.classList.add('theme-cyan');
+				navHoverBackground.style.width = `${nav.offsetWidth}px`;
+				navHoverBackground.style.left = `${nav.offsetLeft}px`;
+				navHoverBackground.style.transform = `translate(${x}px, ${y}px)`;
+			}
 			updateColors();
+		};
+		
+		nav.addEventListener("mouseover", () => {
+			nav.addEventListener("mousemove", handleMouseMove);
 		});
+		
 		nav.addEventListener("mouseout", () =>
 		{
+			nav.removeEventListener("mousemove", handleMouseMove);
 			nav.style.backgroundColor = 'transparent';
 			navIndicator.style.transition = '0.2s ease width, 0.2s ease left';
 			navHoverBackground.style.opacity = '0';
+			navHoverBackground.style.transform = 'translate(0, 0)';
 			updateColors();
 		});
 	});
@@ -179,7 +205,7 @@ function updateOnEvent()
 			{
 				nav.style.color = "yellow";
 				nav.style.backgroundColor = "transparent";
-				if(nav.matches(":hover")) navHoverBgYellow(nav);
+				// Don't trigger hover effect here - already handled by mousemove event
 			});
 			
 			// Reset all theme components
@@ -200,7 +226,7 @@ function updateOnEvent()
 				{
 					nav.style.color = 'yellow';
 					sectionPositionUpdate();
-					if(nav.matches(":hover")) navHoverBgYellow(nav);
+					// Don't trigger hover effect here - already handled by mousemove event
 				});
 			}
 			else
@@ -216,7 +242,7 @@ function updateOnEvent()
 				{
 					nav.style.color = "black";
 					sectionPositionUpdate();
-					if(nav.matches(":hover")) navHoverBgCyan(nav);
+					// Don't trigger hover effect here - already handled by mousemove event
 				});
 			}
 		}
@@ -489,6 +515,7 @@ function navHoverBgYellow(navLink)
 	navHoverBackground.classList.remove('theme-cyan');
 	navHoverBackground.style.width = `${navLink.offsetWidth}px`;
 	navHoverBackground.style.left = `${navLink.offsetLeft}px`;
+	// Transform is now handled in the mousemove event listener
 }
 
 function navHoverBgCyan(navLink)
@@ -498,6 +525,7 @@ function navHoverBgCyan(navLink)
 	navHoverBackground.classList.add('theme-cyan');
 	navHoverBackground.style.width = `${navLink.offsetWidth}px`;
 	navHoverBackground.style.left = `${navLink.offsetLeft}px`;
+	// Transform is now handled in the mousemove event listener
 }
 /* ----------------------------------------------NAVIGATION HOVER EFFECT END----------------------------------------- */
 
