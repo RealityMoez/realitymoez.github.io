@@ -12,7 +12,7 @@ const sectionTitleRule = document.querySelectorAll(".container-title");
 const cards = document.querySelectorAll('.card');
 const cardHeaders = document.querySelectorAll('.projects .content .card h5');
 
-const websiteSrcRule = document.querySelector('.websiteCode');
+const websiteSrcBtn = document.querySelector('.websiteCode');
 
 const skillBarRule = document.querySelectorAll('.skill-bar');
 const skillLevelRule = document.querySelectorAll('.skill-level');
@@ -55,6 +55,8 @@ const skills = [
 console.log(skills)
 /* ----------------------------------------------VARIABLES END----------------------------------------- */
 
+updateOnEvent();
+
 // SCROLLING ANIMATION
 const observer = new IntersectionObserver((entries) =>
 {
@@ -86,6 +88,8 @@ skills.forEach((skill) =>
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
 {
+	changeTheme();
+
 	window.addEventListener('scroll', () => 
 	{
 		updateColors();
@@ -107,8 +111,8 @@ function updateOnEvent()
 			mobileMenuToggle.classList.remove('shown');
 		}
 	});
-
-	function updateTheme()
+	
+	function changeTheme()
 	{
 		let timeout;
 		logoSrc.addEventListener("mouseover", (e) => 
@@ -122,10 +126,6 @@ function updateOnEvent()
 				if(!yellowTheme) yellowTheme = true;
 				else yellowTheme = false;
 
-				// Update cards border colors
-				cards.forEach((card) => {
-					card.style.borderColor = yellowTheme ? 'yellow' : 'aqua';
-				});
 				// Update components based on theme
 				if(yellowTheme) {
 					applyYellowThemeToComponents();
@@ -146,7 +146,6 @@ function updateOnEvent()
 			updateColors();
 		});
 	}
-	updateTheme();
 
 	navLinks.forEach((nav) =>
 	{
@@ -162,32 +161,6 @@ function updateOnEvent()
 			navIndicator.style.transition = '0.2s ease width, 0.2s ease left';
 			navHoverBackground.style.opacity = '0';
 			updateColors();
-		});
-	});
-
-	cards.forEach((card) =>
-	{
-		card.addEventListener("mouseover", () => 
-		{
-			if(card.classList.contains('theme-yellow')) 
-			{
-				card.style.borderColor = 'var(--hover-border-color)';
-			}
-			else if(card.classList.contains('theme-cyan'))
-			{
-				card.style.borderColor = 'var(--hover-border-color)';
-			}
-		});
-		card.addEventListener("mouseout", () => 
-		{
-			if(card.classList.contains('theme-yellow')) 
-			{
-				card.style.borderColor = 'var(--primary-border-color)';
-			}
-			else if(card.classList.contains('theme-cyan'))
-			{
-				card.style.borderColor = 'var(--secondary-border-color)';
-			}
 		});
 	});
 
@@ -282,8 +255,8 @@ function updateOnEvent()
 		});
 		
 		// Apply theme to website code section
-		websiteSrcRule.classList.add('theme-yellow');
-		websiteSrcRule.classList.remove('theme-cyan');
+		websiteSrcBtn.classList.add('theme-yellow');
+		websiteSrcBtn.classList.remove('theme-cyan');
 		
 		// Apply theme to nav indicator
 		updateIndicatorTheme();
@@ -321,8 +294,8 @@ function updateOnEvent()
 		});
 		
 		// Apply theme to website code section
-		websiteSrcRule.classList.remove('theme-yellow');
-		websiteSrcRule.classList.add('theme-cyan');
+		websiteSrcBtn.classList.remove('theme-yellow');
+		websiteSrcBtn.classList.add('theme-cyan');
 		
 		// Apply theme to nav indicator
 		updateIndicatorTheme();
@@ -353,7 +326,7 @@ function updateOnEvent()
 			skillLevel.classList.remove('theme-yellow', 'theme-cyan');
 		});
 		
-		websiteSrcRule.classList.remove('theme-yellow', 'theme-cyan');
+		websiteSrcBtn.classList.remove('theme-yellow', 'theme-cyan');
 	}
 
 	mobileMenuToggle.addEventListener('click', () => {
@@ -361,7 +334,6 @@ function updateOnEvent()
 		mobileNavigation.classList.toggle('open');
 	});
 }
-updateOnEvent();
 // ─────────────────────────────────────────────────────────────────────────────
 
 // TYPING TEXT 

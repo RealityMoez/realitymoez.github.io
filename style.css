@@ -20,7 +20,7 @@
     /* THEME VARIABLES */
     --primary-border-color: yellow;
     --secondary-border-color: aqua;
-    --hover-border-color: black;
+    --card-hover-border-color: black;
     --nav-hover-light-bg: rgba(255, 255, 255, 0.2);
     --nav-hover-dark-bg: rgba(0, 0, 0, 0.2);
     --nav-hover-transition-speed: 0.1s;
@@ -32,39 +32,6 @@
     --mobile-nav-bg: rgb(0, 0, 0, 0.75);
     --mobile-toggle-color: white;
     /* COLORS END */
-}
-
-/* Component-specific theme classes */
-.mobile-navigation.theme-cyan {
-    background: rgb(0, 255, 255, 0.75) !important;
-}
-
-.mobile-menu-toggle.theme-cyan span {
-    background: black !important;
-}
-
-.mobile-navigation.theme-cyan a {
-    color: black !important;
-}
-
-/* Nav hover background themes */
-.navHoverBackground.theme-yellow {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.navHoverBackground.theme-cyan {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-/* Indicator themes */
-.indicator.theme-yellow {
-    background-color: white;
-    border-bottom: 1px solid transparent;
-}
-
-.indicator.theme-cyan {
-    background-color: black;
-    border-bottom: 1px solid white;
 }
 
 /* GENERAL STYLES */
@@ -682,12 +649,12 @@ header .shown
     text-align: center;
     position: relative;
     cursor: default;
-    transition: border-color 0.6s ease;
+    transition: border-color 0.5s ease;
 }
 
-.card:hover
+.card.theme-yellow:hover, .card.theme-cyan:hover
 {
-    border-color: var(--hover-border-color);
+    border-color: var(--card-hover-border-color);
 }
 
 .cardLayer
@@ -871,11 +838,11 @@ header .shown
     cursor: default;
 }
 
-.websiteCode:hover
+.websiteCode.theme-yellow:hover, .websiteCode.theme-cyan:hover
 {
     box-shadow: rgb(255, 255, 255, 0.5) 0px 0px 30px;
     background: rgb(222, 222, 222);
-    border: 3px solid var(--hover-border-color);
+    border: 3px solid var(--card-hover-border-color);
     color: black;
     cursor: pointer;
 }
@@ -1268,7 +1235,37 @@ footer h5 span
 }
 /* PAGE RESPONSIVENESS END */
 
-/* Card theme styling */
+/* THEMING CLASSES */
+.mobile-navigation.theme-cyan {
+    background: rgb(0, 255, 255, 0.75) !important;
+}
+
+.mobile-menu-toggle.theme-cyan span {
+    background: black !important;
+}
+
+.mobile-navigation.theme-cyan a {
+    color: black !important;
+}
+
+.navHoverBackground.theme-yellow {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.navHoverBackground.theme-cyan {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.indicator.theme-yellow {
+    background-color: white;
+    border-bottom: 1px solid transparent;
+}
+
+.indicator.theme-cyan {
+    background-color: black;
+    border-bottom: 1px solid white;
+}
+
 .card.theme-yellow {
     border: 3px solid yellow;
 }
@@ -1277,16 +1274,6 @@ footer h5 span
     border: 3px solid aqua;
 }
 
-/* Form button theme styling */
-form button.theme-yellow {
-    border: 2px solid yellow;
-}
-
-form button.theme-cyan {
-    border: 2px solid aqua;
-}
-
-/* Section title theme styling */
 .container-title::after {
     transition: background-color 2s ease;
 }
@@ -1299,7 +1286,14 @@ form button.theme-cyan {
     background-color: aqua;
 }
 
-/* Skill bar theme styling */
+.websiteCode.theme-yellow {
+    border: 3px solid yellow;
+}
+
+.websiteCode.theme-cyan {
+    border: 3px solid aqua;
+}
+
 .skill-bar.theme-yellow {
     background-color: rgba(234, 255, 0, 0.2);
 }
@@ -1316,16 +1310,11 @@ form button.theme-cyan {
     background-color: aqua;
 }
 
-/* WebsiteCode theme classes */
-.websiteCode.theme-yellow {
-    border: 3px solid yellow;
-}
-
-.websiteCode.theme-cyan {
-    border: 3px solid aqua;
-}
-
-/* Form button theme styling */
 form button.theme-yellow {
     border: 2px solid yellow;
 }
+
+form button.theme-cyan {
+    border: 2px solid aqua;
+}
+/* THEMING CLASSES END */
