@@ -201,13 +201,14 @@ form button
             rgba(0, 0, 0, 0.4) 100%);
     border: 2px solid yellow;
     border-radius: 0px;
-    transition: border 0.6s ease, background 0.6s ease,
-        color 0.6s ease;
+    transition: border 0.4s ease, background 0.5s ease,
+        color 0.4s ease;
     cursor: pointer;
     letter-spacing: 2px;
 }
 
-form button:hover
+form button.theme-yellow:hover,
+form button.theme-cyan:hover
 {
     color: black;
     background: white;
@@ -328,9 +329,11 @@ footer h5
     height: var(--nav-hover-height);
     transition: var(--nav-hover-transition-speed) ease width, 
                 var(--nav-hover-transition-speed) ease left, 
-                0.3s ease opacity;
+                0.3s ease opacity,
+                0.1s ease transform;
     border-radius: 0px;
     background: var(--nav-hover-light-bg);
+    transform: translate(0, 0);
 }
 
 :root.theme-cyan .navHoverBackground {
@@ -445,8 +448,8 @@ footer h5
     background: linear-gradient(rgba(255, 255, 255, 0.3) 0%,
             rgba(0, 0, 0, 0.4) 100%);
     border: 2px solid var(--primary-border-color);
-    transition: transform 0.2s ease, border 0.2s ease, background 0.2s ease,
-        color 0.2s ease;
+    transition: transform 0.2s ease, border 0.2s ease, background-color 0.4s ease,
+        color 0.4s ease;
 }
 
 .my_work_btn a::after
@@ -469,7 +472,7 @@ footer h5
 .my_work_btn a:hover
 {
     background-color: rgba(255, 255, 0, 0.8);
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid black;
     color: rgb(0, 0, 0);
 }
 
@@ -477,7 +480,7 @@ footer h5
 {    
     display: inline-block;
     position: relative;
-    opacity: 0.6;
+    opacity: 0.7;
     font-size: 0.7em;
     color: cyan;
     letter-spacing: 2px;
@@ -487,32 +490,33 @@ footer h5
     padding-left: 4px;
     padding-right: 4px;
     border-radius: 3px;
-    transition: 0.1s ease;
+    transition: all 0.2s ease;
     text-transform: uppercase;
 }
 
 .my_resume a:hover
 {
     opacity: 1;
-    color: rgb(255, 255, 255);
     background: rgba(0, 255, 255, 0.1);
 }
 
 .my_resume a::after {
     content: '';
     position: absolute;
-    width: 0;
+    opacity: 0.4;
+    width: 93%;
     height: 1px;
     bottom: -1px;
     left: 4px;
-    background: white;
-    visibility: hidden;
-    transition: all 0.2s ease-in-out;
+    background: cyan;
+    transition: all 0.2s ease;
 }
 
 .my_resume a:hover::after {
     visibility: visible;
     width: 93%;
+    opacity: 1;
+    height: 3px;
 }
 
 .social_icons a
