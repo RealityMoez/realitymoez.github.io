@@ -11,6 +11,7 @@ const sectionTitleRule = document.querySelectorAll(".container-title");
 
 const cards = document.querySelectorAll('.card');
 const cardHeaders = document.querySelectorAll('.projects .content .card h5');
+const cardHints = document.querySelectorAll('.projects .content .card .cardHint');
 
 const websiteSrcBtn = document.querySelector('.websiteCode');
 
@@ -32,8 +33,8 @@ const form_email = document.getElementById('uEmail');;
 const form_message = document.getElementById('uMessage');
 
 var navHoverBackground = document.getElementsByClassName('navHoverBackground')[0];
-const mobileMenuToggleSpan = document.querySelectorAll('.mobile-menu-toggle span');
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const mobileMenuToggleIconSpan = document.querySelectorAll('.mobile-menu-toggle-icon span');
+const mobileMenuToggleIcon = document.querySelector('.mobile-menu-toggle-icon');
 const mobileNavigation = document.querySelector('.mobile-navigation');
 const mobileNavLinks = mobileNavigation.querySelectorAll('a');
 /* -------------------------------------------VARIABLES----------------------------------------- */
@@ -88,7 +89,8 @@ skills.forEach((skill) =>
 // CHANGE ELEMENTS' COLOR & POSITION BASED ON EVENT
 function updateOnEvent()
 {
-	changeTheme();
+	updateTheme();
+	updateColors();
 
 	window.addEventListener('scroll', () => 
 	{
@@ -102,17 +104,17 @@ function updateOnEvent()
 		sectionPositionUpdate();
 		if(window.innerWidth < 935)
 		{
-			mobileMenuToggle.classList.remove('hidden');
-			mobileMenuToggle.classList.add('shown');
+			mobileMenuToggleIcon.classList.remove('hidden');
+			mobileMenuToggleIcon.classList.add('shown');
 		}
 		else
 		{
-			mobileMenuToggle.classList.add('hidden');
-			mobileMenuToggle.classList.remove('shown');
+			mobileMenuToggleIcon.classList.add('hidden');
+			mobileMenuToggleIcon.classList.remove('shown');
 		}
 	});
 	
-	function changeTheme()
+	function updateTheme()
 	{
 		let timeout;
 		logoSrc.addEventListener("mouseover", (e) => 
@@ -133,7 +135,6 @@ function updateOnEvent()
 					applyCyanThemeToComponents();
 				}
 				
-				// Update other components that depend on theme
 				updateIndicatorTheme();
 				updateMobileNavColors();
 				updateColors();
@@ -147,10 +148,11 @@ function updateOnEvent()
 		});
 	}
 
+	/* ----------------------------------------------NAVIGATION HOVER EFFECT--------------------------------------------- */
 	navLinks.forEach((nav) =>
 	{
 		const handleMouseMove = (e) => 
-			{
+		{
 			const rect = nav.getBoundingClientRect();
 			const { clientX, clientY } = e;
 			const { left, top, width, height } = rect;
@@ -189,7 +191,8 @@ function updateOnEvent()
 			updateColors();
 		});
 	});
-
+	/* ----------------------------------------------NAVIGATION HOVER EFFECT END----------------------------------------- */
+	
 	function updateColors()
 	{
 		pageStart = (window.scrollY <= 120);
@@ -205,10 +208,8 @@ function updateOnEvent()
 			{
 				nav.style.color = "yellow";
 				nav.style.backgroundColor = "transparent";
-				// Don't trigger hover effect here - already handled by mousemove event
 			});
 			
-			// Reset all theme components
 			resetThemeComponents();
 		}
 		else
@@ -219,14 +220,12 @@ function updateOnEvent()
 				header.style.backgroundColor = "black";
 				header.style.transition = 'background-color 2s ease';
 				
-				// Apply yellow theme to components
 				applyYellowThemeToComponents();
 				
 				navLinks.forEach((nav) =>
 				{
 					nav.style.color = 'yellow';
 					sectionPositionUpdate();
-					// Don't trigger hover effect here - already handled by mousemove event
 				});
 			}
 			else
@@ -235,41 +234,39 @@ function updateOnEvent()
 				header.style.transition = 'background-color 2s ease';
 				header.style.backgroundColor = "aqua";
 				
-				// Apply cyan theme to components
 				applyCyanThemeToComponents();
 				
 				navLinks.forEach((nav) =>
 				{
 					nav.style.color = "black";
 					sectionPositionUpdate();
-					// Don't trigger hover effect here - already handled by mousemove event
 				});
 			}
 		}
 		updateMobileNavColors();
 	}
 
-	// Function to apply yellow theme to components
 	function applyYellowThemeToComponents() {
-		// Apply theme classes to cards
 		cards.forEach(card => {
 			card.classList.add('theme-yellow');
 			card.classList.remove('theme-cyan');
 		});
+
+		cardHints.forEach(cardHint => {
+			cardHint.classList.add('theme-yellow');
+			cardHint.classList.remove('theme-cyan');
+		});
 		
-		// Apply theme to section titles via classes
 		sectionTitleRule.forEach(title => {
 			title.classList.add('theme-yellow');
 			title.classList.remove('theme-cyan');
 		});
 		
-		// Apply theme to form buttons
 		formButtons.forEach(button => {
 			button.classList.add('theme-yellow');
 			button.classList.remove('theme-cyan');
 		});
 		
-		// Apply theme to skill bars
 		skillBarRule.forEach(skillBar => {
 			skillBar.classList.add('theme-yellow');
 			skillBar.classList.remove('theme-cyan');
@@ -280,35 +277,31 @@ function updateOnEvent()
 			skillLevel.classList.remove('theme-cyan');
 		});
 		
-		// Apply theme to website code section
 		websiteSrcBtn.classList.add('theme-yellow');
 		websiteSrcBtn.classList.remove('theme-cyan');
-		
-		// Apply theme to nav indicator
-		updateIndicatorTheme();
 	}
 	
-	// Function to apply cyan theme to components
 	function applyCyanThemeToComponents() {
-		// Apply theme classes to cards
 		cards.forEach(card => {
 			card.classList.remove('theme-yellow');
 			card.classList.add('theme-cyan');
 		});
+
+		cardHints.forEach(cardHint => {
+			cardHint.classList.remove('theme-yellow');
+			cardHint.classList.add('theme-cyan');
+		});
 		
-		// Apply theme to section titles via classes
 		sectionTitleRule.forEach(title => {
 			title.classList.remove('theme-yellow');
 			title.classList.add('theme-cyan');
 		});
 		
-		// Apply theme to form buttons
 		formButtons.forEach(button => {
 			button.classList.remove('theme-yellow');
 			button.classList.add('theme-cyan');
 		});
 		
-		// Apply theme to skill bars
 		skillBarRule.forEach(skillBar => {
 			skillBar.classList.remove('theme-yellow');
 			skillBar.classList.add('theme-cyan');
@@ -319,27 +312,19 @@ function updateOnEvent()
 			skillLevel.classList.add('theme-cyan');
 		});
 		
-		// Apply theme to website code section
 		websiteSrcBtn.classList.remove('theme-yellow');
 		websiteSrcBtn.classList.add('theme-cyan');
-		
-		// Apply theme to nav indicator
-		updateIndicatorTheme();
 	}
 	
-	// Function to reset theme components
 	function resetThemeComponents() {
-		// Remove all theme classes
 		cards.forEach(card => {
 			card.classList.remove('theme-yellow', 'theme-cyan');
 		});
 		
-		// Reset section titles
 		sectionTitleRule.forEach(title => {
 			title.classList.remove('theme-yellow', 'theme-cyan');
 		});
 		
-		// Reset other components
 		formButtons.forEach(button => {
 			button.classList.remove('theme-yellow', 'theme-cyan');
 		});
@@ -355,8 +340,8 @@ function updateOnEvent()
 		websiteSrcBtn.classList.remove('theme-yellow', 'theme-cyan');
 	}
 
-	mobileMenuToggle.addEventListener('click', () => {
-		mobileMenuToggle.classList.toggle('open');
+	mobileMenuToggleIcon.addEventListener('click', () => {
+		mobileMenuToggleIcon.classList.toggle('open');
 		mobileNavigation.classList.toggle('open');
 	});
 }
@@ -379,7 +364,6 @@ var type = new Typed(".changing_text", {
 	});
 // ─────────────────────────────────────────────────────────────────────────────
 
-/* ----------------------------------------------NAVIGATION INDICATOR----------------------------------------- */
 // NAVIGATION INDICATOR AUTO MOVE BASED ON SECTION
 function sectionPositionUpdate()
 {
@@ -405,8 +389,6 @@ function sectionPositionUpdate()
 				{
 					if(section.hasAttribute('id') && nav.getAttribute("href") == '#' + section.id)
 					{
-						// Ensure indicator has the right theme
-						updateIndicatorTheme();
 						
 						if(nav.matches(":hover"))
 						{
@@ -437,7 +419,6 @@ function sectionPositionUpdate()
 	});
 }
 // ─────────────────────────────────────────────────────────────────────────────
-/* ----------------------------------------------NAVIGATION INDICATOR END----------------------------------------- */
 
 var divElement = document.createElement('div');
 var loadingElement = document.createElement('div');
@@ -507,43 +488,21 @@ function contactMsgSend(e)
 }
 /* ----------------------------------------------CONTACT FORM - RECIEVE EMAIL END----------------------------------- */
 
-/* ----------------------------------------------NAVIGATION HOVER EFFECT--------------------------------------------- */
-function navHoverBgYellow(navLink)
-{
-	navHoverBackground.style.opacity = '1';
-	navHoverBackground.classList.add('theme-yellow');
-	navHoverBackground.classList.remove('theme-cyan');
-	navHoverBackground.style.width = `${navLink.offsetWidth}px`;
-	navHoverBackground.style.left = `${navLink.offsetLeft}px`;
-	// Transform is now handled in the mousemove event listener
-}
-
-function navHoverBgCyan(navLink)
-{
-	navHoverBackground.style.opacity = '1';
-	navHoverBackground.classList.remove('theme-yellow');
-	navHoverBackground.classList.add('theme-cyan');
-	navHoverBackground.style.width = `${navLink.offsetWidth}px`;
-	navHoverBackground.style.left = `${navLink.offsetLeft}px`;
-	// Transform is now handled in the mousemove event listener
-}
-/* ----------------------------------------------NAVIGATION HOVER EFFECT END----------------------------------------- */
-
-
 function updateMobileNavColors() {
-	// Only update mobile-specific elements
 	if(pageStart || yellowTheme) {
 		mobileNavigation.classList.remove('theme-cyan');
-		mobileMenuToggleSpan.forEach(span => {
-			span.closest('.mobile-menu-toggle').classList.remove('theme-cyan');
+		mobileMenuToggleIconSpan.forEach(span => {
+			span?.classList.remove('theme-cyan');
+			span?.classList.add('theme-yellow');
 		});
 		mobileNavLinks.forEach(link => {
 			link.style.color = 'yellow';
 		});
 	} else {
 		mobileNavigation.classList.add('theme-cyan');
-		mobileMenuToggleSpan.forEach(span => {
-			span.closest('.mobile-menu-toggle').classList.add('theme-cyan');
+		mobileMenuToggleIconSpan.forEach(span => {
+			span?.classList.add('theme-cyan');
+			span?.classList.remove('theme-yellow');
 		});
 		mobileNavLinks.forEach(link => {
 			link.style.color = 'black';
@@ -551,7 +510,6 @@ function updateMobileNavColors() {
 	}
 }
 
-// Update this in sectionPositionUpdate function
 function updateIndicatorTheme() {
 	if(yellowTheme) {
 		navIndicator.classList.add('theme-yellow');
