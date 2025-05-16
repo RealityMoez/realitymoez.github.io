@@ -147,7 +147,7 @@ function updateOnEvent()
 			updateColors();
 		});
 	}
-
+	
 	/* ----------------------------------------------NAVIGATION HOVER EFFECT--------------------------------------------- */
 	navLinks.forEach((nav) =>
 	{
@@ -192,7 +192,7 @@ function updateOnEvent()
 		});
 	});
 	/* ----------------------------------------------NAVIGATION HOVER EFFECT END----------------------------------------- */
-	
+
 	function updateColors()
 	{
 		pageStart = (window.scrollY <= 120);
@@ -340,10 +340,20 @@ function updateOnEvent()
 		websiteSrcBtn.classList.remove('theme-yellow', 'theme-cyan');
 	}
 
-	mobileMenuToggleIcon.addEventListener('click', () => {
-		mobileMenuToggleIcon.classList.toggle('open');
-		mobileNavigation.classList.toggle('open');
+	mobileMenuToggleIcon.onclick = () => {
+		toggleMobileMenu();
+	};
+
+	mobileNavLinks.forEach(link => {
+		link.onclick = () => {
+			toggleMobileMenu();
+		};
 	});
+}
+
+function toggleMobileMenu() {
+	mobileMenuToggleIcon.classList.toggle('open');
+	mobileNavigation.classList.toggle('open');
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
